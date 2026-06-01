@@ -655,7 +655,7 @@ type UserRepo interface {
 	GetStakeGitRecordsQueue(ctx context.Context) ([]*StakeGitRecordTwo, error)
 	SetStakeGitByQueue(ctx context.Context, id, userId uint64, amount, amountTwo float64, day uint64) error
 	NewRecommendReward(ctx context.Context, userId, lowUserId uint64, amount, ispay float64) error
-	UpdateUserMyTotalAmountAdd(ctx context.Context, userId int64, amountUsdt float64) error
+	UpdateUserMyTotalAmountAdd(ctx context.Context, userId int64, amountUsdt float64, i bool) error
 	NewRecommendRewardNew(ctx context.Context, userId, userIdTwo, i uint64, amount float64) error
 }
 
@@ -9084,7 +9084,9 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		}
 	}
 
+	tmpI := 0
 	for i := totalTmp; i >= 0; i-- {
+		tmpI++
 		tmpUserId, _ := strconv.ParseInt(tmpRecommendUserIds[i], 10, 64) // 最后一位是直推人
 		if 0 >= tmpUserId {
 			continue
@@ -9095,9 +9097,13 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 			continue
 		}
 
+		addTotal := false
+		if 1 == tmpI {
+			addTotal = true
+		}
 		// 增加业绩
 		if err = ac.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
-			err = ac.userRepo.UpdateUserMyTotalAmountAdd(ctx, tmpUserId, float64(eth.Amount))
+			err = ac.userRepo.UpdateUserMyTotalAmountAdd(ctx, tmpUserId, float64(eth.Amount), addTotal)
 			if err != nil {
 				return err
 			}

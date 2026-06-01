@@ -482,9 +482,19 @@ func NewUserRepo(data *Data, logger log.Logger) biz.UserRepo {
 }
 
 // UpdateUserMyTotalAmountAdd .
-func (u *UserRepo) UpdateUserMyTotalAmountAdd(ctx context.Context, userId int64, amountUsdt float64) error {
+func (u *UserRepo) UpdateUserMyTotalAmountAdd(ctx context.Context, userId int64, amountUsdt float64, i bool) error {
+
+	updateColums := map[string]interface{}{
+		"my_total_amount_new": gorm.Expr("my_total_amount_new + ?", amountUsdt),
+		"updated_at":          time.Now().Format("2006-01-02 15:04:05"),
+	}
+
+	if i {
+		updateColums["amount_usdt_total"] = gorm.Expr("amount_usdt_total + ?", amountUsdt)
+	}
+
 	res := u.data.DB(ctx).Table("user").Where("id=?", userId).
-		Updates(map[string]interface{}{"my_total_amount_new": gorm.Expr("my_total_amount_new + ?", amountUsdt)})
+		Updates(updateColums)
 	if res.Error != nil || 1 != res.RowsAffected {
 		return errors.New(500, "UPDATE_USER_ERROR", "用户信息修改失败")
 	}
@@ -4817,9 +4827,8 @@ func (u *UserRepo) AddGiwThree(ctx context.Context, address string, giw float64)
 func (u *UserRepo) AddUsdt(ctx context.Context, address string, usdt uint64) error {
 	res := u.data.DB(ctx).Table("user").Where("address=?", address).
 		Updates(map[string]interface{}{
-			"amount_usdt":       gorm.Expr("amount_usdt + ?", float64(usdt)),
-			"amount_usdt_total": gorm.Expr("amount_usdt_total + ?", float64(usdt)),
-			"updated_at":        time.Now().Format("2006-01-02 15:04:05"),
+			"amount_usdt": gorm.Expr("amount_usdt + ?", float64(usdt)),
+			"updated_at":  time.Now().Format("2006-01-02 15:04:05"),
 		})
 	if res.Error != nil || 1 != res.RowsAffected {
 		return errors.New(500, "BuyBox", "用户信息修改失败")
