@@ -6250,6 +6250,16 @@ func (ac *AppUsecase) AdminGetConfig(ctx context.Context, req *pb.AdminGetConfig
 		"g_6",
 		"g_7",
 		"g_8",
+		"v_1",
+		"v_2",
+		"v_3",
+		"v_4",
+		"v_5",
+		"v_6",
+		"v_7",
+		"v_8",
+		"v_9",
+		"v_10",
 	)
 	if nil != err || nil == configs {
 		return &pb.AdminGetConfigReply{
@@ -8864,6 +8874,16 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		r8           float64
 		r9           float64
 		r10          float64
+		v1           float64
+		v2           float64
+		v3           float64
+		v4           float64
+		v5           float64
+		v6           float64
+		v7           float64
+		v8           float64
+		v9           float64
+		v10          float64
 		//g1           float64
 		//g2           float64
 		//g3           float64
@@ -8889,6 +8909,16 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		"rate_r_8",
 		"rate_r_9",
 		"rate_r_10",
+		"v_1",
+		"v_2",
+		"v_3",
+		"v_4",
+		"v_5",
+		"v_6",
+		"v_7",
+		"v_8",
+		"v_9",
+		"v_10",
 	)
 	if nil != err || nil == configs {
 		return nil
@@ -8936,36 +8966,36 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		if "rate_r_10" == vConfig.KeyName {
 			r10, _ = strconv.ParseFloat(vConfig.Value, 10)
 		}
-		//if "g_1" == vConfig.KeyName {
-		//	g1, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "g_2" == vConfig.KeyName {
-		//	g2, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "g_3" == vConfig.KeyName {
-		//	g3, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "g_4" == vConfig.KeyName {
-		//	g4, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "g_5" == vConfig.KeyName {
-		//	g5, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "g_6" == vConfig.KeyName {
-		//	g6, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "g_7" == vConfig.KeyName {
-		//	g7, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "g_8" == vConfig.KeyName {
-		//	g8, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "g_9" == vConfig.KeyName {
-		//	g9, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "g_10" == vConfig.KeyName {
-		//	g10, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
+		if "v_1" == vConfig.KeyName {
+			v1, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_2" == vConfig.KeyName {
+			v2, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_3" == vConfig.KeyName {
+			v3, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_4" == vConfig.KeyName {
+			v4, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_5" == vConfig.KeyName {
+			v5, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_6" == vConfig.KeyName {
+			v6, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_7" == vConfig.KeyName {
+			v7, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "g_8" == vConfig.KeyName {
+			v8, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_9" == vConfig.KeyName {
+			v9, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_10" == vConfig.KeyName {
+			v10, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
 	}
 
 	user, err = ac.userRepo.GetUserByAddress(ctx, eth.Address) // 查询用户
@@ -9137,34 +9167,34 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 
 		tmpLevel := 0
 		var tmpRate float64
-		if 15000000 <= tmpRecommendUser.MyTotalAmountNew {
+		if v10 <= tmpRecommendUser.MyTotalAmountNew {
 			tmpLevel = 10
 			tmpRate = r10
-		} else if 5000000 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v9 <= tmpRecommendUser.MyTotalAmountNew {
 			tmpLevel = 9
 			tmpRate = r9
-		} else if 1000000 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v8 <= tmpRecommendUser.MyTotalAmountNew {
 			tmpLevel = 8
 			tmpRate = r8
-		} else if 500000 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v7 <= tmpRecommendUser.MyTotalAmountNew {
 			tmpLevel = 7
 			tmpRate = r7
-		} else if 100000 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v6 <= tmpRecommendUser.MyTotalAmountNew {
 			tmpLevel = 6
 			tmpRate = r6
-		} else if 30000 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v5 <= tmpRecommendUser.MyTotalAmountNew {
 			tmpLevel = 5
 			tmpRate = r5
-		} else if 10000 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v4 <= tmpRecommendUser.MyTotalAmountNew {
 			tmpLevel = 4
 			tmpRate = r4
-		} else if 5000 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v3 <= tmpRecommendUser.MyTotalAmountNew {
 			tmpLevel = 3
 			tmpRate = r3
-		} else if 1000 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v2 <= tmpRecommendUser.MyTotalAmountNew {
 			tmpLevel = 2
 			tmpRate = r2
-		} else if 300 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v1 <= tmpRecommendUser.MyTotalAmountNew {
 			tmpLevel = 1
 			tmpRate = r1
 		}
