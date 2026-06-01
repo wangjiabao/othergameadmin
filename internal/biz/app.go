@@ -6230,6 +6230,26 @@ func (ac *AppUsecase) AdminGetConfig(ctx context.Context, req *pb.AdminGetConfig
 		"exchange_stake_rate",
 		"queue_amount",
 		"one_rate_new",
+		"stake_price",
+		"stake_price_on",
+		"rate_r_1",
+		"rate_r_2",
+		"rate_r_3",
+		"rate_r_4",
+		"rate_r_5",
+		"rate_r_6",
+		"rate_r_7",
+		"rate_r_8",
+		"rate_r_9",
+		"rate_r_10",
+		"g_1",
+		"g_2",
+		"g_3",
+		"g_4",
+		"g_5",
+		"g_6",
+		"g_7",
+		"g_8",
 	)
 	if nil != err || nil == configs {
 		return &pb.AdminGetConfigReply{
@@ -8869,16 +8889,6 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		"rate_r_8",
 		"rate_r_9",
 		"rate_r_10",
-		"g_1",
-		"g_2",
-		"g_3",
-		"g_4",
-		"g_5",
-		"g_6",
-		"g_7",
-		"g_8",
-		"g_9",
-		"g_10",
 	)
 	if nil != err || nil == configs {
 		return nil
