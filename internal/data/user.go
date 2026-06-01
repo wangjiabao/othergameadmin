@@ -482,7 +482,7 @@ func NewUserRepo(data *Data, logger log.Logger) biz.UserRepo {
 }
 
 // UpdateUserMyTotalAmountAdd .
-func (u *UserRepo) UpdateUserMyTotalAmountAdd(ctx context.Context, userId int64, amountUsdt float64, i bool) error {
+func (u *UserRepo) UpdateUserMyTotalAmountAdd(ctx context.Context, userId, userIdTwo uint64, amountUsdt float64, i bool) error {
 
 	updateColums := map[string]interface{}{
 		"my_total_amount_new": gorm.Expr("my_total_amount_new + ?", amountUsdt),
@@ -498,6 +498,18 @@ func (u *UserRepo) UpdateUserMyTotalAmountAdd(ctx context.Context, userId int64,
 	if res.Error != nil || 1 != res.RowsAffected {
 		return errors.New(500, "UPDATE_USER_ERROR", "用户信息修改失败")
 	}
+
+	var reward Reward
+
+	reward.Reason = 1
+	reward.UserId = userId
+	reward.Amount = amountUsdt
+	reward.One = userIdTwo
+	resThree := u.data.DB(ctx).Table("reward_four").Create(&reward)
+	if resThree.Error != nil {
+		return errors.New(500, "PlantPlatTwoTwoL", "用户信息修改失败")
+	}
+
 	return nil
 }
 

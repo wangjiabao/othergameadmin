@@ -655,7 +655,7 @@ type UserRepo interface {
 	GetStakeGitRecordsQueue(ctx context.Context) ([]*StakeGitRecordTwo, error)
 	SetStakeGitByQueue(ctx context.Context, id, userId uint64, amount, amountTwo float64, day uint64) error
 	NewRecommendReward(ctx context.Context, userId, lowUserId uint64, amount, ispay float64) error
-	UpdateUserMyTotalAmountAdd(ctx context.Context, userId int64, amountUsdt float64, i bool) error
+	UpdateUserMyTotalAmountAdd(ctx context.Context, userId, userIdTwo uint64, amountUsdt float64, i bool) error
 	NewRecommendRewardNew(ctx context.Context, userId, userIdTwo, i uint64, amount float64) error
 }
 
@@ -9103,7 +9103,7 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		}
 		// 增加业绩
 		if err = ac.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
-			err = ac.userRepo.UpdateUserMyTotalAmountAdd(ctx, tmpUserId, float64(eth.Amount), addTotal)
+			err = ac.userRepo.UpdateUserMyTotalAmountAdd(ctx, uint64(tmpUserId), eth.UserId, float64(eth.Amount), addTotal)
 			if err != nil {
 				return err
 			}
