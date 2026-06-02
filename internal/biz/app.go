@@ -4989,7 +4989,7 @@ func (ac *AppUsecase) StakeGetPlay(ctx context.Context, address string, req *pb.
 		}
 
 		return &pb.StakeGetPlayReply{Status: "ok", PlayStatus: 1, Amount: tmpGit}, nil
-	} else { // 输：下注金额加入池子
+	} else {                                                         // 输：下注金额加入池子
 		if err = ac.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
 			err = ac.userRepo.SetStakeGetPlaySub(ctx, user.ID, float64(req.SendBody.Amount))
 			if nil != err {
@@ -7943,35 +7943,20 @@ func (ac *AppUsecase) AdminDailyReward(ctx context.Context, req *pb.AdminDailyRe
 
 func (ac *AppUsecase) AdminDaily(ctx context.Context, req *pb.AdminDailyRequest) (*pb.AdminDailyReply, error) {
 	var (
-		stakeGitRecord []*StakeGitRecord
-		configs        []*Config
-		oneRate        float64
-		twoRate        float64
-		threeRate      float64
-		stakeOneRate   float64
-		//stakeTwoRate   float64
-		//stakeThreeRate float64
-		//stakeFourRate  float64
-		//stakeFiveRate  float64
-		g1  float64
-		g2  float64
-		g3  float64
-		g4  float64
-		g5  float64
-		g6  float64
-		g7  float64
-		g8  float64
-		err error
+		configs []*Config
+		g1      float64
+		g2      float64
+		g3      float64
+		g4      float64
+		g5      float64
+		g6      float64
+		g7      float64
+		g8      float64
+		err     error
 	)
-	stakeGitRecord, err = ac.userRepo.GetStakeGitRecords(ctx)
-	if nil != err {
-		fmt.Println("错误粮仓分红", err)
-		return &pb.AdminDailyReply{}, nil
-	}
 
 	// 配置
 	configs, err = ac.userRepo.GetConfigByKeys(ctx,
-		"stake_recommend_one", "stake_recommend_two", "stake_recommend_three", "stake_ispay_one", "stake_ispay_two", "stake_ispay_three", "stake_ispay_four", "stake_ispay_five",
 		"g_1",
 		"g_2",
 		"g_3",
@@ -7987,31 +7972,6 @@ func (ac *AppUsecase) AdminDaily(ctx context.Context, req *pb.AdminDailyRequest)
 	}
 
 	for _, vConfig := range configs {
-		if "stake_recommend_one" == vConfig.KeyName {
-			oneRate, _ = strconv.ParseFloat(vConfig.Value, 10)
-		}
-		if "stake_recommend_two" == vConfig.KeyName {
-			twoRate, _ = strconv.ParseFloat(vConfig.Value, 10)
-		}
-		if "stake_recommend_three" == vConfig.KeyName {
-			threeRate, _ = strconv.ParseFloat(vConfig.Value, 10)
-		}
-		if "stake_ispay_one" == vConfig.KeyName {
-			stakeOneRate, _ = strconv.ParseFloat(vConfig.Value, 10)
-		}
-		//if "stake_ispay_two" == vConfig.KeyName {
-		//	stakeTwoRate, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "stake_ispay_three" == vConfig.KeyName {
-		//	stakeThreeRate, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "stake_ispay_four" == vConfig.KeyName {
-		//	stakeFourRate, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-		//if "stake_ispay_five" == vConfig.KeyName {
-		//	stakeFiveRate, _ = strconv.ParseFloat(vConfig.Value, 10)
-		//}
-
 		if "g_1" == vConfig.KeyName {
 			g1, _ = strconv.ParseFloat(vConfig.Value, 10)
 		}
@@ -8038,11 +7998,6 @@ func (ac *AppUsecase) AdminDaily(ctx context.Context, req *pb.AdminDailyRequest)
 		}
 	}
 
-	//if 0 >= uPrice {
-	//	fmt.Println("错误粮仓分红，u和biw价格，配置", uPrice, err)
-	//	return &pb.AdminDailyReply{}, nil
-	//}
-
 	// 推荐人
 	var (
 		userRecommends    []*UserRecommend
@@ -8059,115 +8014,6 @@ func (ac *AppUsecase) AdminDaily(ctx context.Context, req *pb.AdminDailyRequest)
 
 	for _, vUr := range userRecommends {
 		userRecommendsMap[vUr.UserId] = vUr
-	}
-
-	// 美区时间16点以后执行的
-	//lastDay := time.Now().UTC().AddDate(0, 0, -1)
-	//lastDayStart := time.Date(lastDay.Year(), lastDay.Month(), lastDay.Day(), 16, 0, 0, 0, time.UTC)
-
-	for _, v := range stakeGitRecord {
-		tmpRate := float64(0)
-		//if 30 == v.Day {
-		tmpRate = stakeOneRate
-		//} else if 60 == v.Day {
-		//	tmpRate = stakeTwoRate
-		//} else if 90 == v.Day {
-		//	tmpRate = stakeThreeRate
-		//} else if 120 == v.Day {
-		//	tmpRate = stakeFourRate
-		//} else if 360 == v.Day {
-		//	tmpRate = stakeFiveRate
-		//} else {
-		//	continue
-		//}
-
-		if _, ok := userRecommendsMap[v.UserId]; !ok {
-			continue
-		}
-
-		if nil == userRecommendsMap[v.UserId] {
-			continue
-		}
-
-		vUr := userRecommendsMap[v.UserId]
-		// 我的直推
-		var (
-			tmpRecommendUserIds []string
-		)
-		tmpRecommendUserIds = strings.Split(vUr.RecommendCode, "D")
-
-		tmpAmount := v.Amount * tmpRate
-
-		// 分红，状态变更
-		if err = ac.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
-			err = ac.userRepo.DailyReward(ctx, v.ID, v.UserId, tmpAmount)
-			if nil != err {
-				return err
-			}
-
-			err = ac.userRepo.CreateNotice(
-				ctx,
-				v.UserId,
-				"您在粮仓获得了"+fmt.Sprintf("%.5f", tmpAmount)+"ISPAY",
-				"You've harvest "+fmt.Sprintf("%.5f", tmpAmount)+" ISPAY from stake",
-			)
-			if nil != err {
-				return err
-			}
-
-			// l1-l3，奖励发放
-			if tmpAmount > 0 {
-				tmpI := 0
-				for i := len(tmpRecommendUserIds) - 1; i >= 0; i-- {
-					if 3 <= tmpI {
-						break
-					}
-					tmpI++
-
-					tmpUserId, _ := strconv.ParseUint(tmpRecommendUserIds[i], 10, 64) // 最后一位是直推人
-					if 0 >= tmpUserId {
-						continue
-					}
-
-					tmpReward := float64(0)
-
-					tmpNum := uint64(6)
-					tmpReward = tmpAmount * oneRate
-					if 1 == tmpI {
-
-					} else if 2 == tmpI {
-						tmpReward = tmpAmount * twoRate
-						tmpNum = 9
-					} else if 3 == tmpI {
-						tmpReward = tmpAmount * threeRate
-						tmpNum = 12
-					} else {
-						break
-					}
-
-					// 奖励
-					err = ac.userRepo.DailyRewardL(ctx, v.ID, tmpUserId, v.UserId, tmpNum, tmpReward)
-					if nil != err {
-						return err
-					}
-
-					err = ac.userRepo.CreateNotice(
-						ctx,
-						tmpUserId,
-						"您从下级粮仓收获了"+fmt.Sprintf("%.5f", tmpReward)+"ISPAY",
-						"You've harvest "+fmt.Sprintf("%.5f", tmpReward)+" ISPAY from neighbor stake",
-					)
-					if nil != err {
-						return err
-					}
-				}
-			}
-
-			return nil
-		}); nil != err {
-			fmt.Println(err, "reward daily", v)
-			return nil, err
-		}
 	}
 
 	var (
