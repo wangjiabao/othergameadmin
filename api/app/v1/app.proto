@@ -1718,6 +1718,7 @@ message AdminRewardListReply {
 	message List {
 		string userAddress = 9;
 		double amount = 2; // 金额
+		double amountTwo = 3;
 		string address = 4; // 下级地址
 		uint64 rewardType = 6; // 类型
 		string createdAt = 5; // 奖励时间

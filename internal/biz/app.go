@@ -9609,6 +9609,7 @@ func (ac *AppUsecase) AdminRewardList(ctx context.Context, req *pb.AdminRewardLi
 		res = append(res, &pb.AdminRewardListReply_List{
 			UserAddress: userAddress,
 			Amount:      v.Amount,
+			AmountTwo:   v.Three,
 			Address:     address,
 			RewardType:  v.Reason,
 			CreatedAt:   v.CreatedAt.Add(8 * time.Hour).Format("2006-01-02 15:04:05"),

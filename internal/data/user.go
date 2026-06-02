@@ -5050,6 +5050,7 @@ func (u *UserRepo) NewRecommendRewardNew(ctx context.Context, userId, userIdTwo,
 		reward.Reason = 27
 		reward.UserId = userId
 		reward.Amount = amount
+		reward.Three = ispay
 		reward.One = userIdTwo
 		reward.Two = i
 		resThree := u.data.DB(ctx).Table("reward").Create(&reward)

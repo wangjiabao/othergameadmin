@@ -2606,6 +2606,9 @@ components:
                 amount:
                     type: number
                     format: double
+                amountTwo:
+                    type: number
+                    format: double
                 address:
                     type: string
                 rewardType:
