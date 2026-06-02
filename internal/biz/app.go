@@ -74,6 +74,7 @@ type User struct {
 	Amount           float64
 	AmountGet        float64
 	AmountUsdt       float64
+	AmountUsdtTotal  float64
 	MyTotalAmount    float64
 	OutNum           uint64
 	LandReward       float64
@@ -9044,7 +9045,7 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		users    []*User
 		usersMap map[uint64]*User
 	)
-	users, err = ac.userRepo.GetAllUsersBuy(ctx)
+	users, err = ac.userRepo.GetAllUsers(ctx)
 	if nil == users {
 		return err
 	}

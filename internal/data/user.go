@@ -41,6 +41,7 @@ type User struct {
 	Amount           float64   `gorm:"type:decimal(65,20);default:0.00000000000000000000;"`
 	AmountGet        float64   `gorm:"type:decimal(65,20);default:0.00000000000000000000;"`
 	AmountUsdt       float64   `gorm:"type:decimal(65,20);default:0.00000000000000000000;"`
+	AmountUsdtTotal  float64   `gorm:"type:decimal(65,20);default:0.00000000000000000000;"`
 	MyTotalAmount    float64   `gorm:"type:decimal(65,20);default:0.00000000000000000000;"`
 	MyTotalAmountNew float64   `gorm:"type:decimal(65,20);default:0.00000000000000000000;"`
 	OutNum           uint64    `gorm:"type:int;"`
@@ -632,6 +633,8 @@ func (u *UserRepo) GetAllUsers(ctx context.Context) ([]*biz.User, error) {
 			VipAdmin:         user.VipAdmin,
 			LockReward:       user.LockReward,
 			LandReward:       user.LandReward,
+			MyTotalAmountNew: user.MyTotalAmountNew,
+			AmountUsdtTotal:  user.AmountUsdtTotal,
 		})
 	}
 
