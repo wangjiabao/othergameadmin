@@ -361,6 +361,18 @@ type EthRecord struct {
 	UpdatedAt time.Time `gorm:"type:datetime;not null"`
 }
 
+type EthRecordTwo struct {
+	ID            uint64    `gorm:"primarykey;type:int;comment:主键"`
+	UserId        uint64    `gorm:"type:int;not null;comment:用户id"`
+	Amount        uint64    `gorm:"type:bigint(20);not null;"`
+	Last          uint64    `gorm:"type:bigint(20);not null;"`
+	Address       string    `gorm:"type:varchar(100);not null;default:'default';"`
+	Coin          string    `gorm:"type:varchar(100);"`
+	RecommendCode string    `gorm:"type:varchar(1000);not null"`
+	CreatedAt     time.Time `gorm:"type:datetime;not null"`
+	UpdatedAt     time.Time `gorm:"type:datetime;not null"`
+}
+
 type EthRecordNew struct {
 	ID          uint64    `gorm:"primarykey;type:int;comment:主键"`
 	UserId      uint64    `gorm:"type:int;not null;comment:用户id"`
@@ -945,30 +957,26 @@ func (u *UserRepo) GetRecordPageTwo(ctx context.Context, address string, b *biz.
 func (u *UserRepo) GetSumEthTwoThree(ctx context.Context) (uint64, error) {
 	var totalStakeRate uint64
 
-	now := time.Now()
+	now := time.Now().UTC()
+	var startDate time.Time
+	var endDate time.Time
 
-	// 昨日 00:00:00
-	yesterdayStart := time.Date(
-		now.Year(),
-		now.Month(),
-		now.Day()-2,
-		0, 0, 0, 0,
-		now.Location(),
-	)
+	if 16 <= now.Hour() {
+		startDate = now.AddDate(0, 0, -2)
+		endDate = now.AddDate(0, 0, -1)
+	} else {
+		startDate = now.AddDate(0, 0, -3)
+		endDate = now.AddDate(0, 0, -2)
+	}
 
-	// 昨日 23:59:59
-	yesterdayEnd := time.Date(
-		now.Year(),
-		now.Month(),
-		now.Day()-2,
-		23, 59, 59, 0,
-		now.Location(),
-	)
+	todayStart := time.Date(startDate.Year(), startDate.Month(), startDate.Day(), 16, 0, 0, 0, time.UTC)
+	todayEnd := time.Date(endDate.Year(), endDate.Month(), endDate.Day(), 16, 0, 0, 0, time.UTC)
 
 	if err := u.data.DB(ctx).
-		Table("eth_record_two").
-		Where("created_at >= ?", yesterdayStart).
-		Where("created_at <= ?", yesterdayEnd).
+		Table("withdraw").
+		Where("created_at >= ?", todayStart).
+		Where("created_at < ?", todayEnd).
+		Where("coin=?", "usdt").
 		Select("IFNULL(SUM(amount), 0)").
 		Scan(&totalStakeRate).Error; err != nil {
 		return 0, errors.New(500, "ETH_TWO_SUM_ERROR", err.Error())
@@ -981,30 +989,25 @@ func (u *UserRepo) GetSumEthTwoThree(ctx context.Context) (uint64, error) {
 func (u *UserRepo) GetSumEthTwo(ctx context.Context) (uint64, error) {
 	var totalStakeRate uint64
 
-	now := time.Now()
+	now := time.Now().UTC()
+	var startDate time.Time
+	var endDate time.Time
+	if 16 <= now.Hour() {
+		startDate = now.AddDate(0, 0, -1)
+		endDate = now
+	} else {
+		startDate = now.AddDate(0, 0, -2)
+		endDate = now.AddDate(0, 0, -1)
+	}
 
-	// 昨日 00:00:00
-	yesterdayStart := time.Date(
-		now.Year(),
-		now.Month(),
-		now.Day()-1,
-		0, 0, 0, 0,
-		now.Location(),
-	)
-
-	// 昨日 23:59:59
-	yesterdayEnd := time.Date(
-		now.Year(),
-		now.Month(),
-		now.Day()-1,
-		23, 59, 59, 0,
-		now.Location(),
-	)
+	todayStart := time.Date(startDate.Year(), startDate.Month(), startDate.Day(), 16, 0, 0, 0, time.UTC)
+	todayEnd := time.Date(endDate.Year(), endDate.Month(), endDate.Day(), 16, 0, 0, 0, time.UTC)
 
 	if err := u.data.DB(ctx).
-		Table("eth_record_two").
-		Where("created_at >= ?", yesterdayStart).
-		Where("created_at <= ?", yesterdayEnd).
+		Table("withdraw").
+		Where("created_at >= ?", todayStart).
+		Where("created_at < ?", todayEnd).
+		Where("coin=?", "usdt").
 		Select("IFNULL(SUM(amount), 0)").
 		Scan(&totalStakeRate).Error; err != nil {
 		return 0, errors.New(500, "ETH_TWO_SUM_ERROR", err.Error())
@@ -4649,13 +4652,14 @@ func (u *UserRepo) CreateEthNew(ctx context.Context, e *biz.EthRecord, amountFlo
 	return nil
 }
 
-func (u *UserRepo) CreateEthTwo(ctx context.Context, e *biz.EthRecord) error {
-	var eth EthRecord
+func (u *UserRepo) CreateEthTwo(ctx context.Context, e *biz.EthRecordTwo) error {
+	var eth EthRecordTwo
 	eth.Address = e.Address
 	eth.Last = e.Last
 	eth.Amount = e.Amount
 	eth.UserId = e.UserId
 	eth.Coin = e.Coin
+	eth.RecommendCode = e.RecommendCode
 
 	res := u.data.DB(ctx).Table("eth_record_two").Create(&eth)
 	if res.Error != nil {
@@ -5034,10 +5038,10 @@ func (u *UserRepo) NewRecommendReward(ctx context.Context, userId, lowUserId uin
 }
 
 // NewRecommendRewardNew .
-func (u *UserRepo) NewRecommendRewardNew(ctx context.Context, userId, userIdTwo, i uint64, amount float64) error {
+func (u *UserRepo) NewRecommendRewardNew(ctx context.Context, userId, userIdTwo, i uint64, amount, ispay float64) error {
 	if amount > 0 {
 		res := u.data.DB(ctx).Table("user").Where("id=?", userId).
-			Updates(map[string]interface{}{"amount_usdt": gorm.Expr("amount_usdt + ?", amount), "updated_at": time.Now().Format("2006-01-02 15:04:05")})
+			Updates(map[string]interface{}{"amount_usdt": gorm.Expr("amount_usdt + ?", amount), "git_new": gorm.Expr("git_new + ?", ispay), "updated_at": time.Now().Format("2006-01-02 15:04:05")})
 		if res.Error != nil || 1 != res.RowsAffected {
 			return errors.New(500, "PlantPlatTwoTwoL", "用户信息修改失败")
 		}

@@ -381,6 +381,18 @@ type EthRecord struct {
 	UpdatedAt time.Time
 }
 
+type EthRecordTwo struct {
+	ID            uint64
+	UserId        uint64
+	Amount        uint64
+	Last          uint64
+	Address       string
+	Coin          string
+	RecommendCode string
+	CreatedAt     time.Time
+	UpdatedAt     time.Time
+}
+
 type EthRecordThree struct {
 	ID        uint64
 	UserId    uint64
@@ -606,7 +618,7 @@ type UserRepo interface {
 	CreateBuyLandRecord(ctx context.Context, limit uint64, bl *BuyLandRecord) error
 	GetAdminByAccount(ctx context.Context, account string, password string) (*Admin, error)
 	CreateEth(ctx context.Context, e *EthRecord) error
-	CreateEthTwo(ctx context.Context, e *EthRecord) error
+	CreateEthTwo(ctx context.Context, e *EthRecordTwo) error
 	GetSumEthTwo(ctx context.Context) (uint64, error)
 	GetSumEthTwoThree(ctx context.Context) (uint64, error)
 	CreateEthNew(ctx context.Context, e *EthRecord, amountFloat float64) error
@@ -656,7 +668,7 @@ type UserRepo interface {
 	SetStakeGitByQueue(ctx context.Context, id, userId uint64, amount, amountTwo float64, day uint64) error
 	NewRecommendReward(ctx context.Context, userId, lowUserId uint64, amount, ispay float64) error
 	UpdateUserMyTotalAmountAdd(ctx context.Context, userId, userIdTwo uint64, amountUsdt float64, i bool) error
-	NewRecommendRewardNew(ctx context.Context, userId, userIdTwo, i uint64, amount float64) error
+	NewRecommendRewardNew(ctx context.Context, userId, userIdTwo, i uint64, amount, ispay float64) error
 }
 
 // AppUsecase is an app usecase.
@@ -8832,7 +8844,7 @@ func GetReservers() (float64, float64, error) {
 			continue
 		}
 
-		contractAddress := "0xCa4122dE1Ad3f3063DF012732a802026905515D0"
+		contractAddress := "0x3c987dA0C102f5E7e9a3282568e41a90f7ceD424"
 
 		tokenAddress := common.HexToAddress(contractAddress)
 		instance, err := NewPair(tokenAddress, client)
@@ -8898,7 +8910,9 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 
 	// 配置
 	configs, err = ac.userRepo.GetConfigByKeys(ctx,
-		"one_rate_new", "open_box_price", "open_box_price_use",
+		"one_rate_new",
+		"stake_price",
+		"stake_price_on",
 		"rate_r_1",
 		"rate_r_2",
 		"rate_r_3",
@@ -8928,11 +8942,11 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		if "one_rate_new" == vConfig.KeyName {
 			oneRate, _ = strconv.ParseFloat(vConfig.Value, 10)
 		}
-		if "open_box_price" == vConfig.KeyName {
+		if "stake_price" == vConfig.KeyName {
 			priceOpen, _ = strconv.ParseFloat(vConfig.Value, 10)
 		}
 
-		if "open_box_price_use" == vConfig.KeyName {
+		if "stake_price_on" == vConfig.KeyName {
 			priceOpenUse, _ = strconv.ParseUint(vConfig.Value, 10, 64)
 		}
 
@@ -9046,7 +9060,14 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 			return err
 		}
 
-		err = ac.userRepo.CreateEthTwo(ctx, eth)
+		err = ac.userRepo.CreateEthTwo(ctx, &EthRecordTwo{
+			UserId:        eth.UserId,
+			Amount:        eth.Amount,
+			Last:          eth.Last,
+			Address:       eth.Address,
+			Coin:          eth.Coin,
+			RecommendCode: userRecommend.RecommendCode,
+		})
 		if nil != err {
 			return err
 		}
@@ -9079,7 +9100,7 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 				ispayL float64
 			)
 			reward = reward / 2
-			if 0 == priceOpenUse {
+			if 1 == priceOpenUse {
 				ispayL = reward / priceOpen
 			} else {
 				ispayL = reward * tmp1 / tmp0
@@ -9162,39 +9183,40 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 			continue
 		}
 
+		tmpVip := usersMap[uint64(tmpUserId)].Vip
 		// 直推
 		tmpRecommendUser := usersMap[uint64(tmpUserId)]
 
 		tmpLevel := 0
 		var tmpRate float64
-		if v10 <= tmpRecommendUser.MyTotalAmountNew {
+		if v10 <= tmpRecommendUser.MyTotalAmountNew || 10 == tmpVip {
 			tmpLevel = 10
 			tmpRate = r10
-		} else if v9 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v9 <= tmpRecommendUser.MyTotalAmountNew || 9 == tmpVip {
 			tmpLevel = 9
 			tmpRate = r9
-		} else if v8 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v8 <= tmpRecommendUser.MyTotalAmountNew || 8 == tmpVip {
 			tmpLevel = 8
 			tmpRate = r8
-		} else if v7 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v7 <= tmpRecommendUser.MyTotalAmountNew || 7 == tmpVip {
 			tmpLevel = 7
 			tmpRate = r7
-		} else if v6 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v6 <= tmpRecommendUser.MyTotalAmountNew || 6 == tmpVip {
 			tmpLevel = 6
 			tmpRate = r6
-		} else if v5 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v5 <= tmpRecommendUser.MyTotalAmountNew || 5 == tmpVip {
 			tmpLevel = 5
 			tmpRate = r5
-		} else if v4 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v4 <= tmpRecommendUser.MyTotalAmountNew || 4 == tmpVip {
 			tmpLevel = 4
 			tmpRate = r4
-		} else if v3 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v3 <= tmpRecommendUser.MyTotalAmountNew || 3 == tmpVip {
 			tmpLevel = 3
 			tmpRate = r3
-		} else if v2 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v2 <= tmpRecommendUser.MyTotalAmountNew || 2 == tmpVip {
 			tmpLevel = 2
 			tmpRate = r2
-		} else if v1 <= tmpRecommendUser.MyTotalAmountNew {
+		} else if v1 <= tmpRecommendUser.MyTotalAmountNew || 1 == tmpVip {
 			tmpLevel = 1
 			tmpRate = r1
 		}
@@ -9209,9 +9231,19 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		}
 
 		if 0.000001 < tmpReward {
+			var (
+				ispayL float64
+			)
+			tmpReward = tmpReward / 2
+			if 1 == priceOpenUse {
+				ispayL = tmpReward / priceOpen
+			} else {
+				ispayL = tmpReward * tmp1 / tmp0
+			}
+
 			// 入金
 			if err = ac.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
-				err = ac.userRepo.NewRecommendRewardNew(ctx, uint64(tmpUserId), eth.UserId, uint64(tmpLevel), tmpReward)
+				err = ac.userRepo.NewRecommendRewardNew(ctx, uint64(tmpUserId), eth.UserId, uint64(tmpLevel), tmpReward, ispayL)
 				if err != nil {
 					fmt.Println("错误分红直推：", err)
 					return err
@@ -9220,8 +9252,8 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 				err = ac.userRepo.CreateNotice(
 					ctx,
 					uint64(tmpUserId),
-					"您在下级充值获得了"+fmt.Sprintf("%.5f", tmpReward)+"USDT",
-					"You've harvest "+fmt.Sprintf("%.5f", tmpReward)+" USDT from team deposit",
+					"您在下级充值获得了"+fmt.Sprintf("%.5f", tmpReward)+"USDT 和 "+fmt.Sprintf("%.5f", ispayL)+"ISPAY",
+					"You've harvest "+fmt.Sprintf("%.5f", tmpReward)+" USDT and "+fmt.Sprintf("%.5f", ispayL)+"ISPAY from team deposit",
 				)
 				if nil != err {
 					return err
