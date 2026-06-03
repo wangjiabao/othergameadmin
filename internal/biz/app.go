@@ -8849,7 +8849,7 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		if "v_7" == vConfig.KeyName {
 			v7, _ = strconv.ParseFloat(vConfig.Value, 10)
 		}
-		if "g_8" == vConfig.KeyName {
+		if "v_8" == vConfig.KeyName {
 			v8, _ = strconv.ParseFloat(vConfig.Value, 10)
 		}
 		if "v_9" == vConfig.KeyName {
