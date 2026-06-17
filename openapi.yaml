@@ -1318,6 +1318,34 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Status'
+    /api/admin_dhb/user_stake_list:
+        get:
+            tags:
+                - App
+            description: 用户
+            operationId: App_AdminUserStakeList
+            parameters:
+                - name: page
+                  in: query
+                  schema:
+                    type: string
+                - name: address
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AdminUserStakeListReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
     /api/admin_dhb/withdraw:
         get:
             tags:
@@ -3201,6 +3229,31 @@ components:
                 recommendTotalBiw:
                     type: number
                     format: double
+        AdminUserStakeListReply:
+            type: object
+            properties:
+                status:
+                    type: string
+                stakeList:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/AdminUserStakeListReply_ListStake'
+                count:
+                    type: string
+        AdminUserStakeListReply_ListStake:
+            type: object
+            properties:
+                userId:
+                    type: string
+                address:
+                    type: string
+                amount:
+                    type: number
+                    format: double
+                status:
+                    type: string
+                createdAt:
+                    type: string
         AdminWithdrawListReply:
             type: object
             properties:
