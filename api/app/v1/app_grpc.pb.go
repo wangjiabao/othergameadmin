@@ -63,6 +63,7 @@ const (
 	App_SetLand_FullMethodName                = "/api.app.v1.App/SetLand"
 	App_AdminLogin_FullMethodName             = "/api.app.v1.App/AdminLogin"
 	App_AdminUserList_FullMethodName          = "/api.app.v1.App/AdminUserList"
+	App_AdminUserStakeList_FullMethodName     = "/api.app.v1.App/AdminUserStakeList"
 	App_AdminUserBuy_FullMethodName           = "/api.app.v1.App/AdminUserBuy"
 	App_AdminUserLand_FullMethodName          = "/api.app.v1.App/AdminUserLand"
 	App_AdminRewardListTwo_FullMethodName     = "/api.app.v1.App/AdminRewardListTwo"
@@ -204,6 +205,8 @@ type AppClient interface {
 	AdminLogin(ctx context.Context, in *AdminLoginRequest, opts ...grpc.CallOption) (*AdminLoginReply, error)
 	// 用户
 	AdminUserList(ctx context.Context, in *AdminUserListRequest, opts ...grpc.CallOption) (*AdminUserListReply, error)
+	// 用户
+	AdminUserStakeList(ctx context.Context, in *AdminUserStakeListRequest, opts ...grpc.CallOption) (*AdminUserStakeListReply, error)
 	// 管理认购信息
 	AdminUserBuy(ctx context.Context, in *AdminUserBuyRequest, opts ...grpc.CallOption) (*AdminUserBuyReply, error)
 	// 管理土地信息
@@ -701,6 +704,15 @@ func (c *appClient) AdminLogin(ctx context.Context, in *AdminLoginRequest, opts 
 func (c *appClient) AdminUserList(ctx context.Context, in *AdminUserListRequest, opts ...grpc.CallOption) (*AdminUserListReply, error) {
 	out := new(AdminUserListReply)
 	err := c.cc.Invoke(ctx, App_AdminUserList_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *appClient) AdminUserStakeList(ctx context.Context, in *AdminUserStakeListRequest, opts ...grpc.CallOption) (*AdminUserStakeListReply, error) {
+	out := new(AdminUserStakeListReply)
+	err := c.cc.Invoke(ctx, App_AdminUserStakeList_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1262,6 +1274,8 @@ type AppServer interface {
 	AdminLogin(context.Context, *AdminLoginRequest) (*AdminLoginReply, error)
 	// 用户
 	AdminUserList(context.Context, *AdminUserListRequest) (*AdminUserListReply, error)
+	// 用户
+	AdminUserStakeList(context.Context, *AdminUserStakeListRequest) (*AdminUserStakeListReply, error)
 	// 管理认购信息
 	AdminUserBuy(context.Context, *AdminUserBuyRequest) (*AdminUserBuyReply, error)
 	// 管理土地信息
@@ -1497,6 +1511,9 @@ func (UnimplementedAppServer) AdminLogin(context.Context, *AdminLoginRequest) (*
 }
 func (UnimplementedAppServer) AdminUserList(context.Context, *AdminUserListRequest) (*AdminUserListReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AdminUserList not implemented")
+}
+func (UnimplementedAppServer) AdminUserStakeList(context.Context, *AdminUserStakeListRequest) (*AdminUserStakeListReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AdminUserStakeList not implemented")
 }
 func (UnimplementedAppServer) AdminUserBuy(context.Context, *AdminUserBuyRequest) (*AdminUserBuyReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AdminUserBuy not implemented")
@@ -2455,6 +2472,24 @@ func _App_AdminUserList_Handler(srv interface{}, ctx context.Context, dec func(i
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AppServer).AdminUserList(ctx, req.(*AdminUserListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _App_AdminUserStakeList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AdminUserStakeListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppServer).AdminUserStakeList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: App_AdminUserStakeList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppServer).AdminUserStakeList(ctx, req.(*AdminUserStakeListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -3577,6 +3612,10 @@ var App_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AdminUserList",
 			Handler:    _App_AdminUserList_Handler,
+		},
+		{
+			MethodName: "AdminUserStakeList",
+			Handler:    _App_AdminUserStakeList_Handler,
 		},
 		{
 			MethodName: "AdminUserBuy",

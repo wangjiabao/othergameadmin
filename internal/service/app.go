@@ -1706,6 +1706,10 @@ func (a *AppService) AdminUserList(ctx context.Context, req *pb.AdminUserListReq
 	return a.ac.AdminUserList(ctx, req)
 }
 
+func (a *AppService) AdminUserStakeList(ctx context.Context, req *pb.AdminUserStakeListRequest) (*pb.AdminUserStakeListReply, error) {
+	return a.ac.AdminUserStakeList(ctx, req)
+}
+
 func (a *AppService) AdminUserRecommend(ctx context.Context, req *pb.AdminUserRecommendRequest) (*pb.AdminUserRecommendReply, error) {
 	return a.ac.AdminRecommendList(ctx, req)
 }

@@ -536,6 +536,8 @@ type UserRepo interface {
 	GetStakeGitByUserID(ctx context.Context, userID int64) (*StakeGit, error)
 	GetStakeGitRecordsByUserID(ctx context.Context, userID uint64, b *Pagination) ([]*StakeGitRecord, error)
 	GetStakeGitRecordsByUserIDIspay(ctx context.Context, userID uint64) ([]*StakeGitRecord, error)
+	GetStakeGitRecordsByUserIDIspayRecordCount(ctx context.Context, userId uint64) (int64, error)
+	GetStakeGitRecordsByUserIDIspayRecord(ctx context.Context, userID int64, b *Pagination) ([]*StakeGitRecord, error)
 	GetStakeGitRecordsByUserIDIspayQueue(ctx context.Context, userID uint64) ([]*StakeGitRecord, error)
 	GetStakeGitRecordsByID(ctx context.Context, id, userId uint64) (*StakeGitRecord, error)
 	GetWithdrawRecordsByUserID(ctx context.Context, userID int64, b *Pagination) ([]*Withdraw, error)
@@ -4989,7 +4991,7 @@ func (ac *AppUsecase) StakeGetPlay(ctx context.Context, address string, req *pb.
 		}
 
 		return &pb.StakeGetPlayReply{Status: "ok", PlayStatus: 1, Amount: tmpGit}, nil
-	} else {                                                         // 输：下注金额加入池子
+	} else { // 输：下注金额加入池子
 		if err = ac.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
 			err = ac.userRepo.SetStakeGetPlaySub(ctx, user.ID, float64(req.SendBody.Amount))
 			if nil != err {
@@ -5358,6 +5360,82 @@ func (ac *AppUsecase) AdminLogin(ctx context.Context, req *pb.AdminLoginRequest,
 	return res, nil
 }
 
+func (ac *AppUsecase) AdminUserStakeList(ctx context.Context, req *pb.AdminUserStakeListRequest) (*pb.AdminUserStakeListReply, error) {
+	var (
+		count     int64
+		err       error
+		user      *User
+		userId    uint64
+		userStake []*StakeGitRecord
+	)
+
+	if 0 < len(req.Address) {
+		user, err = ac.userRepo.GetUserByAddress(ctx, req.Address) // 查询用户
+		if nil != err || nil == user {
+			return &pb.AdminUserStakeListReply{
+				Status: "不存在用户",
+			}, nil
+		}
+		userId = user.ID
+	}
+
+	userRes := make([]*pb.AdminUserStakeListReply_ListStake, 0)
+
+	count, err = ac.userRepo.GetStakeGitRecordsByUserIDIspayRecordCount(ctx, userId)
+	if nil != err {
+		return &pb.AdminUserStakeListReply{
+			Status:    "ok",
+			StakeList: userRes,
+			Count:     count,
+		}, nil
+	}
+
+	userStake, err = ac.userRepo.GetStakeGitRecordsByUserIDIspayRecord(ctx, int64(userId), &Pagination{
+		PageNum:  int(req.Page),
+		PageSize: 20,
+	})
+	if nil != err {
+		return &pb.AdminUserStakeListReply{
+			Status:    "ok",
+			StakeList: userRes,
+			Count:     count,
+		}, nil
+	}
+
+	userIds := make([]uint64, 0)
+	for _, v := range userStake {
+		userIds = append(userIds, v.UserId)
+	}
+
+	usersMap := make(map[uint64]*User)
+	usersMap, err = ac.userRepo.GetUserByUserIds(ctx, userIds)
+	if nil != err {
+		return &pb.AdminUserStakeListReply{
+			Status: "错误查询",
+		}, nil
+	}
+
+	for _, v := range userStake {
+		addressTmp := ""
+		if _, ok := usersMap[v.UserId]; ok {
+			addressTmp = usersMap[v.UserId].Address
+		}
+
+		userRes = append(userRes, &pb.AdminUserStakeListReply_ListStake{
+			Address:   addressTmp,
+			Amount:    v.Amount,
+			Status:    uint64(v.StakeType),
+			CreatedAt: v.CreatedAt.Add(8 * time.Hour).Format("2006-01-02 15:04:05"),
+		})
+	}
+
+	return &pb.AdminUserStakeListReply{
+		Status:    "ok",
+		StakeList: userRes,
+		Count:     count,
+	}, nil
+}
+
 func (ac *AppUsecase) AdminUserList(ctx context.Context, req *pb.AdminUserListRequest) (*pb.AdminUserListReply, error) {
 	var (
 		users []*User
@@ -5667,7 +5745,7 @@ func (ac *AppUsecase) AdminRecordList(ctx context.Context, req *pb.RecordListReq
 				Coin:      v.Coin,
 			})
 		}
-	} else if "biw" == req.Coin {
+	} else if "ispay" == req.Coin {
 		count, err = ac.userRepo.GetRecordPageCount(ctx, req.Address)
 		if nil != err {
 			return &pb.RecordListReply{

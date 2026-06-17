@@ -334,6 +334,13 @@ service App {
 		};
 	};
 
+	// 用户
+	rpc AdminUserStakeList (AdminUserStakeListRequest) returns (AdminUserStakeListReply) {
+		option (google.api.http) = {
+			get: "/api/admin_dhb/user_stake_list"
+		};
+	};
+
 	// 管理认购信息
 	rpc AdminUserBuy (AdminUserBuyRequest) returns (AdminUserBuyReply) {
 		option (google.api.http) = {
@@ -1420,6 +1427,25 @@ message AdminLoginRequest {
 message AdminLoginReply {
 	string status = 1; // 不是“ok”，弹窗内容，确定按钮关闭弹窗
 	string token = 2;
+}
+
+message AdminUserStakeListRequest {
+	int64 page = 1;
+	string address = 2;
+}
+
+message AdminUserStakeListReply {// 用户信息
+	string status = 1; // 状态为字符串"ok"时接口正常，其他情况忽略，弹出显示该字段文案即可
+	repeated ListStake stakeList = 2;
+	message ListStake {
+		uint64 userId = 20;
+		string address = 2;
+		double amount = 3;
+		uint64 status = 4;
+		string createdAt = 1;
+	}
+
+	int64 count = 3;
 }
 
 message AdminUserListRequest {

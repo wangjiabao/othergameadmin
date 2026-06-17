@@ -4678,6 +4678,124 @@ func (x *AdminLoginReply) GetToken() string {
 	return ""
 }
 
+type AdminUserStakeListRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Page    int64  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	Address string `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+}
+
+func (x *AdminUserStakeListRequest) Reset() {
+	*x = AdminUserStakeListRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_app_v1_app_proto_msgTypes[86]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AdminUserStakeListRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AdminUserStakeListRequest) ProtoMessage() {}
+
+func (x *AdminUserStakeListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_app_v1_app_proto_msgTypes[86]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AdminUserStakeListRequest.ProtoReflect.Descriptor instead.
+func (*AdminUserStakeListRequest) Descriptor() ([]byte, []int) {
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{86}
+}
+
+func (x *AdminUserStakeListRequest) GetPage() int64 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *AdminUserStakeListRequest) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+type AdminUserStakeListReply struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Status    string                               `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"` // 状态为字符串"ok"时接口正常，其他情况忽略，弹出显示该字段文案即可
+	StakeList []*AdminUserStakeListReply_ListStake `protobuf:"bytes,2,rep,name=stakeList,proto3" json:"stakeList,omitempty"`
+	Count     int64                                `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`
+}
+
+func (x *AdminUserStakeListReply) Reset() {
+	*x = AdminUserStakeListReply{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_app_v1_app_proto_msgTypes[87]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AdminUserStakeListReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AdminUserStakeListReply) ProtoMessage() {}
+
+func (x *AdminUserStakeListReply) ProtoReflect() protoreflect.Message {
+	mi := &file_api_app_v1_app_proto_msgTypes[87]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AdminUserStakeListReply.ProtoReflect.Descriptor instead.
+func (*AdminUserStakeListReply) Descriptor() ([]byte, []int) {
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{87}
+}
+
+func (x *AdminUserStakeListReply) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *AdminUserStakeListReply) GetStakeList() []*AdminUserStakeListReply_ListStake {
+	if x != nil {
+		return x.StakeList
+	}
+	return nil
+}
+
+func (x *AdminUserStakeListReply) GetCount() int64 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
 type AdminUserListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4692,7 +4810,7 @@ type AdminUserListRequest struct {
 func (x *AdminUserListRequest) Reset() {
 	*x = AdminUserListRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[86]
+		mi := &file_api_app_v1_app_proto_msgTypes[88]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4705,7 +4823,7 @@ func (x *AdminUserListRequest) String() string {
 func (*AdminUserListRequest) ProtoMessage() {}
 
 func (x *AdminUserListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[86]
+	mi := &file_api_app_v1_app_proto_msgTypes[88]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4718,7 +4836,7 @@ func (x *AdminUserListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserListRequest.ProtoReflect.Descriptor instead.
 func (*AdminUserListRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{86}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{88}
 }
 
 func (x *AdminUserListRequest) GetPage() int64 {
@@ -4762,7 +4880,7 @@ type AdminUserListReply struct {
 func (x *AdminUserListReply) Reset() {
 	*x = AdminUserListReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[87]
+		mi := &file_api_app_v1_app_proto_msgTypes[89]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4775,7 +4893,7 @@ func (x *AdminUserListReply) String() string {
 func (*AdminUserListReply) ProtoMessage() {}
 
 func (x *AdminUserListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[87]
+	mi := &file_api_app_v1_app_proto_msgTypes[89]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4788,7 +4906,7 @@ func (x *AdminUserListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserListReply.ProtoReflect.Descriptor instead.
 func (*AdminUserListReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{87}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{89}
 }
 
 func (x *AdminUserListReply) GetStatus() string {
@@ -4823,7 +4941,7 @@ type AdminUserBuyRequest struct {
 func (x *AdminUserBuyRequest) Reset() {
 	*x = AdminUserBuyRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[88]
+		mi := &file_api_app_v1_app_proto_msgTypes[90]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4836,7 +4954,7 @@ func (x *AdminUserBuyRequest) String() string {
 func (*AdminUserBuyRequest) ProtoMessage() {}
 
 func (x *AdminUserBuyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[88]
+	mi := &file_api_app_v1_app_proto_msgTypes[90]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4849,7 +4967,7 @@ func (x *AdminUserBuyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserBuyRequest.ProtoReflect.Descriptor instead.
 func (*AdminUserBuyRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{88}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{90}
 }
 
 func (x *AdminUserBuyRequest) GetAddress() string {
@@ -4891,7 +5009,7 @@ type AdminUserBuyReply struct {
 func (x *AdminUserBuyReply) Reset() {
 	*x = AdminUserBuyReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[89]
+		mi := &file_api_app_v1_app_proto_msgTypes[91]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4904,7 +5022,7 @@ func (x *AdminUserBuyReply) String() string {
 func (*AdminUserBuyReply) ProtoMessage() {}
 
 func (x *AdminUserBuyReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[89]
+	mi := &file_api_app_v1_app_proto_msgTypes[91]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4917,7 +5035,7 @@ func (x *AdminUserBuyReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserBuyReply.ProtoReflect.Descriptor instead.
 func (*AdminUserBuyReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{89}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{91}
 }
 
 func (x *AdminUserBuyReply) GetStatus() string {
@@ -5086,7 +5204,7 @@ type AdminUserLandRequest struct {
 func (x *AdminUserLandRequest) Reset() {
 	*x = AdminUserLandRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[90]
+		mi := &file_api_app_v1_app_proto_msgTypes[92]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5099,7 +5217,7 @@ func (x *AdminUserLandRequest) String() string {
 func (*AdminUserLandRequest) ProtoMessage() {}
 
 func (x *AdminUserLandRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[90]
+	mi := &file_api_app_v1_app_proto_msgTypes[92]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5112,7 +5230,7 @@ func (x *AdminUserLandRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserLandRequest.ProtoReflect.Descriptor instead.
 func (*AdminUserLandRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{90}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{92}
 }
 
 func (x *AdminUserLandRequest) GetPage() uint64 {
@@ -5142,7 +5260,7 @@ type AdminUserLandReply struct {
 func (x *AdminUserLandReply) Reset() {
 	*x = AdminUserLandReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[91]
+		mi := &file_api_app_v1_app_proto_msgTypes[93]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5155,7 +5273,7 @@ func (x *AdminUserLandReply) String() string {
 func (*AdminUserLandReply) ProtoMessage() {}
 
 func (x *AdminUserLandReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[91]
+	mi := &file_api_app_v1_app_proto_msgTypes[93]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5168,7 +5286,7 @@ func (x *AdminUserLandReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserLandReply.ProtoReflect.Descriptor instead.
 func (*AdminUserLandReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{91}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{93}
 }
 
 func (x *AdminUserLandReply) GetStatus() string {
@@ -5203,7 +5321,7 @@ type AdminSendLandListRequest struct {
 func (x *AdminSendLandListRequest) Reset() {
 	*x = AdminSendLandListRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[92]
+		mi := &file_api_app_v1_app_proto_msgTypes[94]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5216,7 +5334,7 @@ func (x *AdminSendLandListRequest) String() string {
 func (*AdminSendLandListRequest) ProtoMessage() {}
 
 func (x *AdminSendLandListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[92]
+	mi := &file_api_app_v1_app_proto_msgTypes[94]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5229,7 +5347,7 @@ func (x *AdminSendLandListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSendLandListRequest.ProtoReflect.Descriptor instead.
 func (*AdminSendLandListRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{92}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{94}
 }
 
 func (x *AdminSendLandListRequest) GetPage() uint64 {
@@ -5252,7 +5370,7 @@ type AdminSendLandListReply struct {
 func (x *AdminSendLandListReply) Reset() {
 	*x = AdminSendLandListReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[93]
+		mi := &file_api_app_v1_app_proto_msgTypes[95]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5265,7 +5383,7 @@ func (x *AdminSendLandListReply) String() string {
 func (*AdminSendLandListReply) ProtoMessage() {}
 
 func (x *AdminSendLandListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[93]
+	mi := &file_api_app_v1_app_proto_msgTypes[95]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5278,7 +5396,7 @@ func (x *AdminSendLandListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSendLandListReply.ProtoReflect.Descriptor instead.
 func (*AdminSendLandListReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{93}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{95}
 }
 
 func (x *AdminSendLandListReply) GetStatus() string {
@@ -5314,7 +5432,7 @@ type AdminUserBackListRequest struct {
 func (x *AdminUserBackListRequest) Reset() {
 	*x = AdminUserBackListRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[94]
+		mi := &file_api_app_v1_app_proto_msgTypes[96]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5327,7 +5445,7 @@ func (x *AdminUserBackListRequest) String() string {
 func (*AdminUserBackListRequest) ProtoMessage() {}
 
 func (x *AdminUserBackListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[94]
+	mi := &file_api_app_v1_app_proto_msgTypes[96]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5340,7 +5458,7 @@ func (x *AdminUserBackListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserBackListRequest.ProtoReflect.Descriptor instead.
 func (*AdminUserBackListRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{94}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{96}
 }
 
 func (x *AdminUserBackListRequest) GetPage() uint64 {
@@ -5370,7 +5488,7 @@ type AdminUserBackListReply struct {
 func (x *AdminUserBackListReply) Reset() {
 	*x = AdminUserBackListReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[95]
+		mi := &file_api_app_v1_app_proto_msgTypes[97]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5383,7 +5501,7 @@ func (x *AdminUserBackListReply) String() string {
 func (*AdminUserBackListReply) ProtoMessage() {}
 
 func (x *AdminUserBackListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[95]
+	mi := &file_api_app_v1_app_proto_msgTypes[97]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5396,7 +5514,7 @@ func (x *AdminUserBackListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserBackListReply.ProtoReflect.Descriptor instead.
 func (*AdminUserBackListReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{95}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{97}
 }
 
 func (x *AdminUserBackListReply) GetStatus() string {
@@ -5432,7 +5550,7 @@ type AdminSendListRequest struct {
 func (x *AdminSendListRequest) Reset() {
 	*x = AdminSendListRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[96]
+		mi := &file_api_app_v1_app_proto_msgTypes[98]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5445,7 +5563,7 @@ func (x *AdminSendListRequest) String() string {
 func (*AdminSendListRequest) ProtoMessage() {}
 
 func (x *AdminSendListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[96]
+	mi := &file_api_app_v1_app_proto_msgTypes[98]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5458,7 +5576,7 @@ func (x *AdminSendListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSendListRequest.ProtoReflect.Descriptor instead.
 func (*AdminSendListRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{96}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{98}
 }
 
 func (x *AdminSendListRequest) GetPage() uint64 {
@@ -5488,7 +5606,7 @@ type AdminSendListReply struct {
 func (x *AdminSendListReply) Reset() {
 	*x = AdminSendListReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[97]
+		mi := &file_api_app_v1_app_proto_msgTypes[99]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5501,7 +5619,7 @@ func (x *AdminSendListReply) String() string {
 func (*AdminSendListReply) ProtoMessage() {}
 
 func (x *AdminSendListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[97]
+	mi := &file_api_app_v1_app_proto_msgTypes[99]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5514,7 +5632,7 @@ func (x *AdminSendListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSendListReply.ProtoReflect.Descriptor instead.
 func (*AdminSendListReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{97}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{99}
 }
 
 func (x *AdminSendListReply) GetStatus() string {
@@ -5547,7 +5665,7 @@ type AdminDepositRequest struct {
 func (x *AdminDepositRequest) Reset() {
 	*x = AdminDepositRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[98]
+		mi := &file_api_app_v1_app_proto_msgTypes[100]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5560,7 +5678,7 @@ func (x *AdminDepositRequest) String() string {
 func (*AdminDepositRequest) ProtoMessage() {}
 
 func (x *AdminDepositRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[98]
+	mi := &file_api_app_v1_app_proto_msgTypes[100]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5573,7 +5691,7 @@ func (x *AdminDepositRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminDepositRequest.ProtoReflect.Descriptor instead.
 func (*AdminDepositRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{98}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{100}
 }
 
 type AdminDepositReply struct {
@@ -5585,7 +5703,7 @@ type AdminDepositReply struct {
 func (x *AdminDepositReply) Reset() {
 	*x = AdminDepositReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[99]
+		mi := &file_api_app_v1_app_proto_msgTypes[101]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5598,7 +5716,7 @@ func (x *AdminDepositReply) String() string {
 func (*AdminDepositReply) ProtoMessage() {}
 
 func (x *AdminDepositReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[99]
+	mi := &file_api_app_v1_app_proto_msgTypes[101]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5611,7 +5729,7 @@ func (x *AdminDepositReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminDepositReply.ProtoReflect.Descriptor instead.
 func (*AdminDepositReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{99}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{101}
 }
 
 type AdminDepositUsdtRequest struct {
@@ -5623,7 +5741,7 @@ type AdminDepositUsdtRequest struct {
 func (x *AdminDepositUsdtRequest) Reset() {
 	*x = AdminDepositUsdtRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[100]
+		mi := &file_api_app_v1_app_proto_msgTypes[102]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5636,7 +5754,7 @@ func (x *AdminDepositUsdtRequest) String() string {
 func (*AdminDepositUsdtRequest) ProtoMessage() {}
 
 func (x *AdminDepositUsdtRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[100]
+	mi := &file_api_app_v1_app_proto_msgTypes[102]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5649,7 +5767,7 @@ func (x *AdminDepositUsdtRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminDepositUsdtRequest.ProtoReflect.Descriptor instead.
 func (*AdminDepositUsdtRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{100}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{102}
 }
 
 type AdminDepositUsdtReply struct {
@@ -5661,7 +5779,7 @@ type AdminDepositUsdtReply struct {
 func (x *AdminDepositUsdtReply) Reset() {
 	*x = AdminDepositUsdtReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[101]
+		mi := &file_api_app_v1_app_proto_msgTypes[103]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5674,7 +5792,7 @@ func (x *AdminDepositUsdtReply) String() string {
 func (*AdminDepositUsdtReply) ProtoMessage() {}
 
 func (x *AdminDepositUsdtReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[101]
+	mi := &file_api_app_v1_app_proto_msgTypes[103]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5687,7 +5805,7 @@ func (x *AdminDepositUsdtReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminDepositUsdtReply.ProtoReflect.Descriptor instead.
 func (*AdminDepositUsdtReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{101}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{103}
 }
 
 type AdminDepositUsdtTwoRequest struct {
@@ -5699,7 +5817,7 @@ type AdminDepositUsdtTwoRequest struct {
 func (x *AdminDepositUsdtTwoRequest) Reset() {
 	*x = AdminDepositUsdtTwoRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[102]
+		mi := &file_api_app_v1_app_proto_msgTypes[104]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5712,7 +5830,7 @@ func (x *AdminDepositUsdtTwoRequest) String() string {
 func (*AdminDepositUsdtTwoRequest) ProtoMessage() {}
 
 func (x *AdminDepositUsdtTwoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[102]
+	mi := &file_api_app_v1_app_proto_msgTypes[104]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5725,7 +5843,7 @@ func (x *AdminDepositUsdtTwoRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminDepositUsdtTwoRequest.ProtoReflect.Descriptor instead.
 func (*AdminDepositUsdtTwoRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{102}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{104}
 }
 
 type AdminDepositUsdtTwoReply struct {
@@ -5737,7 +5855,7 @@ type AdminDepositUsdtTwoReply struct {
 func (x *AdminDepositUsdtTwoReply) Reset() {
 	*x = AdminDepositUsdtTwoReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[103]
+		mi := &file_api_app_v1_app_proto_msgTypes[105]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5750,7 +5868,7 @@ func (x *AdminDepositUsdtTwoReply) String() string {
 func (*AdminDepositUsdtTwoReply) ProtoMessage() {}
 
 func (x *AdminDepositUsdtTwoReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[103]
+	mi := &file_api_app_v1_app_proto_msgTypes[105]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5763,7 +5881,7 @@ func (x *AdminDepositUsdtTwoReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminDepositUsdtTwoReply.ProtoReflect.Descriptor instead.
 func (*AdminDepositUsdtTwoReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{103}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{105}
 }
 
 type AdminDailyRequest struct {
@@ -5775,7 +5893,7 @@ type AdminDailyRequest struct {
 func (x *AdminDailyRequest) Reset() {
 	*x = AdminDailyRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[104]
+		mi := &file_api_app_v1_app_proto_msgTypes[106]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5788,7 +5906,7 @@ func (x *AdminDailyRequest) String() string {
 func (*AdminDailyRequest) ProtoMessage() {}
 
 func (x *AdminDailyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[104]
+	mi := &file_api_app_v1_app_proto_msgTypes[106]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5801,7 +5919,7 @@ func (x *AdminDailyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminDailyRequest.ProtoReflect.Descriptor instead.
 func (*AdminDailyRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{104}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{106}
 }
 
 type AdminDailyReply struct {
@@ -5813,7 +5931,7 @@ type AdminDailyReply struct {
 func (x *AdminDailyReply) Reset() {
 	*x = AdminDailyReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[105]
+		mi := &file_api_app_v1_app_proto_msgTypes[107]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5826,7 +5944,7 @@ func (x *AdminDailyReply) String() string {
 func (*AdminDailyReply) ProtoMessage() {}
 
 func (x *AdminDailyReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[105]
+	mi := &file_api_app_v1_app_proto_msgTypes[107]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5839,7 +5957,7 @@ func (x *AdminDailyReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminDailyReply.ProtoReflect.Descriptor instead.
 func (*AdminDailyReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{105}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{107}
 }
 
 type AdminDailyRewardRequest struct {
@@ -5851,7 +5969,7 @@ type AdminDailyRewardRequest struct {
 func (x *AdminDailyRewardRequest) Reset() {
 	*x = AdminDailyRewardRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[106]
+		mi := &file_api_app_v1_app_proto_msgTypes[108]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5864,7 +5982,7 @@ func (x *AdminDailyRewardRequest) String() string {
 func (*AdminDailyRewardRequest) ProtoMessage() {}
 
 func (x *AdminDailyRewardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[106]
+	mi := &file_api_app_v1_app_proto_msgTypes[108]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5877,7 +5995,7 @@ func (x *AdminDailyRewardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminDailyRewardRequest.ProtoReflect.Descriptor instead.
 func (*AdminDailyRewardRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{106}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{108}
 }
 
 type AdminDailyRewardReply struct {
@@ -5889,7 +6007,7 @@ type AdminDailyRewardReply struct {
 func (x *AdminDailyRewardReply) Reset() {
 	*x = AdminDailyRewardReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[107]
+		mi := &file_api_app_v1_app_proto_msgTypes[109]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5902,7 +6020,7 @@ func (x *AdminDailyRewardReply) String() string {
 func (*AdminDailyRewardReply) ProtoMessage() {}
 
 func (x *AdminDailyRewardReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[107]
+	mi := &file_api_app_v1_app_proto_msgTypes[109]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5915,7 +6033,7 @@ func (x *AdminDailyRewardReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminDailyRewardReply.ProtoReflect.Descriptor instead.
 func (*AdminDailyRewardReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{107}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{109}
 }
 
 type AdminPriceChangeRequest struct {
@@ -5927,7 +6045,7 @@ type AdminPriceChangeRequest struct {
 func (x *AdminPriceChangeRequest) Reset() {
 	*x = AdminPriceChangeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[108]
+		mi := &file_api_app_v1_app_proto_msgTypes[110]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5940,7 +6058,7 @@ func (x *AdminPriceChangeRequest) String() string {
 func (*AdminPriceChangeRequest) ProtoMessage() {}
 
 func (x *AdminPriceChangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[108]
+	mi := &file_api_app_v1_app_proto_msgTypes[110]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5953,7 +6071,7 @@ func (x *AdminPriceChangeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminPriceChangeRequest.ProtoReflect.Descriptor instead.
 func (*AdminPriceChangeRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{108}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{110}
 }
 
 type AdminPriceChangeReply struct {
@@ -5965,7 +6083,7 @@ type AdminPriceChangeReply struct {
 func (x *AdminPriceChangeReply) Reset() {
 	*x = AdminPriceChangeReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[109]
+		mi := &file_api_app_v1_app_proto_msgTypes[111]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5978,7 +6096,7 @@ func (x *AdminPriceChangeReply) String() string {
 func (*AdminPriceChangeReply) ProtoMessage() {}
 
 func (x *AdminPriceChangeReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[109]
+	mi := &file_api_app_v1_app_proto_msgTypes[111]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5991,7 +6109,7 @@ func (x *AdminPriceChangeReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminPriceChangeReply.ProtoReflect.Descriptor instead.
 func (*AdminPriceChangeReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{109}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{111}
 }
 
 type AdminWithdrawRequest struct {
@@ -6003,7 +6121,7 @@ type AdminWithdrawRequest struct {
 func (x *AdminWithdrawRequest) Reset() {
 	*x = AdminWithdrawRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[110]
+		mi := &file_api_app_v1_app_proto_msgTypes[112]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6016,7 +6134,7 @@ func (x *AdminWithdrawRequest) String() string {
 func (*AdminWithdrawRequest) ProtoMessage() {}
 
 func (x *AdminWithdrawRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[110]
+	mi := &file_api_app_v1_app_proto_msgTypes[112]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6029,7 +6147,7 @@ func (x *AdminWithdrawRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminWithdrawRequest.ProtoReflect.Descriptor instead.
 func (*AdminWithdrawRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{110}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{112}
 }
 
 type AdminWithdrawReply struct {
@@ -6041,7 +6159,7 @@ type AdminWithdrawReply struct {
 func (x *AdminWithdrawReply) Reset() {
 	*x = AdminWithdrawReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[111]
+		mi := &file_api_app_v1_app_proto_msgTypes[113]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6054,7 +6172,7 @@ func (x *AdminWithdrawReply) String() string {
 func (*AdminWithdrawReply) ProtoMessage() {}
 
 func (x *AdminWithdrawReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[111]
+	mi := &file_api_app_v1_app_proto_msgTypes[113]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6067,7 +6185,7 @@ func (x *AdminWithdrawReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminWithdrawReply.ProtoReflect.Descriptor instead.
 func (*AdminWithdrawReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{111}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{113}
 }
 
 type AdminWithdrawListRequest struct {
@@ -6082,7 +6200,7 @@ type AdminWithdrawListRequest struct {
 func (x *AdminWithdrawListRequest) Reset() {
 	*x = AdminWithdrawListRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[112]
+		mi := &file_api_app_v1_app_proto_msgTypes[114]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6095,7 +6213,7 @@ func (x *AdminWithdrawListRequest) String() string {
 func (*AdminWithdrawListRequest) ProtoMessage() {}
 
 func (x *AdminWithdrawListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[112]
+	mi := &file_api_app_v1_app_proto_msgTypes[114]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6108,7 +6226,7 @@ func (x *AdminWithdrawListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminWithdrawListRequest.ProtoReflect.Descriptor instead.
 func (*AdminWithdrawListRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{112}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{114}
 }
 
 func (x *AdminWithdrawListRequest) GetPage() int64 {
@@ -6138,7 +6256,7 @@ type AdminWithdrawListReply struct {
 func (x *AdminWithdrawListReply) Reset() {
 	*x = AdminWithdrawListReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[113]
+		mi := &file_api_app_v1_app_proto_msgTypes[115]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6151,7 +6269,7 @@ func (x *AdminWithdrawListReply) String() string {
 func (*AdminWithdrawListReply) ProtoMessage() {}
 
 func (x *AdminWithdrawListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[113]
+	mi := &file_api_app_v1_app_proto_msgTypes[115]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6164,7 +6282,7 @@ func (x *AdminWithdrawListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminWithdrawListReply.ProtoReflect.Descriptor instead.
 func (*AdminWithdrawListReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{113}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{115}
 }
 
 func (x *AdminWithdrawListReply) GetWithdraw() []*AdminWithdrawListReply_List {
@@ -6201,7 +6319,7 @@ type RecordListRequest struct {
 func (x *RecordListRequest) Reset() {
 	*x = RecordListRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[114]
+		mi := &file_api_app_v1_app_proto_msgTypes[116]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6214,7 +6332,7 @@ func (x *RecordListRequest) String() string {
 func (*RecordListRequest) ProtoMessage() {}
 
 func (x *RecordListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[114]
+	mi := &file_api_app_v1_app_proto_msgTypes[116]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6227,7 +6345,7 @@ func (x *RecordListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordListRequest.ProtoReflect.Descriptor instead.
 func (*RecordListRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{114}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{116}
 }
 
 func (x *RecordListRequest) GetPage() int64 {
@@ -6264,7 +6382,7 @@ type RecordListReply struct {
 func (x *RecordListReply) Reset() {
 	*x = RecordListReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[115]
+		mi := &file_api_app_v1_app_proto_msgTypes[117]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6277,7 +6395,7 @@ func (x *RecordListReply) String() string {
 func (*RecordListReply) ProtoMessage() {}
 
 func (x *RecordListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[115]
+	mi := &file_api_app_v1_app_proto_msgTypes[117]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6290,7 +6408,7 @@ func (x *RecordListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordListReply.ProtoReflect.Descriptor instead.
 func (*RecordListReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{115}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{117}
 }
 
 func (x *RecordListReply) GetRecordList() []*RecordListReply_List {
@@ -6327,7 +6445,7 @@ type AdminRewardListTwoRequest struct {
 func (x *AdminRewardListTwoRequest) Reset() {
 	*x = AdminRewardListTwoRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[116]
+		mi := &file_api_app_v1_app_proto_msgTypes[118]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6340,7 +6458,7 @@ func (x *AdminRewardListTwoRequest) String() string {
 func (*AdminRewardListTwoRequest) ProtoMessage() {}
 
 func (x *AdminRewardListTwoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[116]
+	mi := &file_api_app_v1_app_proto_msgTypes[118]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6353,7 +6471,7 @@ func (x *AdminRewardListTwoRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminRewardListTwoRequest.ProtoReflect.Descriptor instead.
 func (*AdminRewardListTwoRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{116}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{118}
 }
 
 func (x *AdminRewardListTwoRequest) GetPage() uint64 {
@@ -6390,7 +6508,7 @@ type AdminRewardListTwoReply struct {
 func (x *AdminRewardListTwoReply) Reset() {
 	*x = AdminRewardListTwoReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[117]
+		mi := &file_api_app_v1_app_proto_msgTypes[119]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6403,7 +6521,7 @@ func (x *AdminRewardListTwoReply) String() string {
 func (*AdminRewardListTwoReply) ProtoMessage() {}
 
 func (x *AdminRewardListTwoReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[117]
+	mi := &file_api_app_v1_app_proto_msgTypes[119]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6416,7 +6534,7 @@ func (x *AdminRewardListTwoReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminRewardListTwoReply.ProtoReflect.Descriptor instead.
 func (*AdminRewardListTwoReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{117}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{119}
 }
 
 func (x *AdminRewardListTwoReply) GetStatus() string {
@@ -6453,7 +6571,7 @@ type AdminRewardListRequest struct {
 func (x *AdminRewardListRequest) Reset() {
 	*x = AdminRewardListRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[118]
+		mi := &file_api_app_v1_app_proto_msgTypes[120]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6466,7 +6584,7 @@ func (x *AdminRewardListRequest) String() string {
 func (*AdminRewardListRequest) ProtoMessage() {}
 
 func (x *AdminRewardListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[118]
+	mi := &file_api_app_v1_app_proto_msgTypes[120]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6479,7 +6597,7 @@ func (x *AdminRewardListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminRewardListRequest.ProtoReflect.Descriptor instead.
 func (*AdminRewardListRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{118}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{120}
 }
 
 func (x *AdminRewardListRequest) GetPage() uint64 {
@@ -6516,7 +6634,7 @@ type AdminRewardListReply struct {
 func (x *AdminRewardListReply) Reset() {
 	*x = AdminRewardListReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[119]
+		mi := &file_api_app_v1_app_proto_msgTypes[121]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6529,7 +6647,7 @@ func (x *AdminRewardListReply) String() string {
 func (*AdminRewardListReply) ProtoMessage() {}
 
 func (x *AdminRewardListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[119]
+	mi := &file_api_app_v1_app_proto_msgTypes[121]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6542,7 +6660,7 @@ func (x *AdminRewardListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminRewardListReply.ProtoReflect.Descriptor instead.
 func (*AdminRewardListReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{119}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{121}
 }
 
 func (x *AdminRewardListReply) GetStatus() string {
@@ -6575,7 +6693,7 @@ type AdminLandConfigRequest struct {
 func (x *AdminLandConfigRequest) Reset() {
 	*x = AdminLandConfigRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[120]
+		mi := &file_api_app_v1_app_proto_msgTypes[122]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6588,7 +6706,7 @@ func (x *AdminLandConfigRequest) String() string {
 func (*AdminLandConfigRequest) ProtoMessage() {}
 
 func (x *AdminLandConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[120]
+	mi := &file_api_app_v1_app_proto_msgTypes[122]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6601,7 +6719,7 @@ func (x *AdminLandConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminLandConfigRequest.ProtoReflect.Descriptor instead.
 func (*AdminLandConfigRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{120}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{122}
 }
 
 type AdminLandConfigReply struct {
@@ -6617,7 +6735,7 @@ type AdminLandConfigReply struct {
 func (x *AdminLandConfigReply) Reset() {
 	*x = AdminLandConfigReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[121]
+		mi := &file_api_app_v1_app_proto_msgTypes[123]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6630,7 +6748,7 @@ func (x *AdminLandConfigReply) String() string {
 func (*AdminLandConfigReply) ProtoMessage() {}
 
 func (x *AdminLandConfigReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[121]
+	mi := &file_api_app_v1_app_proto_msgTypes[123]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6643,7 +6761,7 @@ func (x *AdminLandConfigReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminLandConfigReply.ProtoReflect.Descriptor instead.
 func (*AdminLandConfigReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{121}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{123}
 }
 
 func (x *AdminLandConfigReply) GetStatus() string {
@@ -6678,7 +6796,7 @@ type AdminLandConfigSetRequest struct {
 func (x *AdminLandConfigSetRequest) Reset() {
 	*x = AdminLandConfigSetRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[122]
+		mi := &file_api_app_v1_app_proto_msgTypes[124]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6691,7 +6809,7 @@ func (x *AdminLandConfigSetRequest) String() string {
 func (*AdminLandConfigSetRequest) ProtoMessage() {}
 
 func (x *AdminLandConfigSetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[122]
+	mi := &file_api_app_v1_app_proto_msgTypes[124]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6704,7 +6822,7 @@ func (x *AdminLandConfigSetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminLandConfigSetRequest.ProtoReflect.Descriptor instead.
 func (*AdminLandConfigSetRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{122}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{124}
 }
 
 func (x *AdminLandConfigSetRequest) GetSendBody() *AdminLandConfigSetRequest_SendBody {
@@ -6725,7 +6843,7 @@ type AdminLandConfigSetReply struct {
 func (x *AdminLandConfigSetReply) Reset() {
 	*x = AdminLandConfigSetReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[123]
+		mi := &file_api_app_v1_app_proto_msgTypes[125]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6738,7 +6856,7 @@ func (x *AdminLandConfigSetReply) String() string {
 func (*AdminLandConfigSetReply) ProtoMessage() {}
 
 func (x *AdminLandConfigSetReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[123]
+	mi := &file_api_app_v1_app_proto_msgTypes[125]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6751,7 +6869,7 @@ func (x *AdminLandConfigSetReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminLandConfigSetReply.ProtoReflect.Descriptor instead.
 func (*AdminLandConfigSetReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{123}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{125}
 }
 
 func (x *AdminLandConfigSetReply) GetStatus() string {
@@ -6770,7 +6888,7 @@ type AdminSeedConfigRequest struct {
 func (x *AdminSeedConfigRequest) Reset() {
 	*x = AdminSeedConfigRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[124]
+		mi := &file_api_app_v1_app_proto_msgTypes[126]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6783,7 +6901,7 @@ func (x *AdminSeedConfigRequest) String() string {
 func (*AdminSeedConfigRequest) ProtoMessage() {}
 
 func (x *AdminSeedConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[124]
+	mi := &file_api_app_v1_app_proto_msgTypes[126]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6796,7 +6914,7 @@ func (x *AdminSeedConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSeedConfigRequest.ProtoReflect.Descriptor instead.
 func (*AdminSeedConfigRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{124}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{126}
 }
 
 type AdminSeedConfigReply struct {
@@ -6812,7 +6930,7 @@ type AdminSeedConfigReply struct {
 func (x *AdminSeedConfigReply) Reset() {
 	*x = AdminSeedConfigReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[125]
+		mi := &file_api_app_v1_app_proto_msgTypes[127]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6825,7 +6943,7 @@ func (x *AdminSeedConfigReply) String() string {
 func (*AdminSeedConfigReply) ProtoMessage() {}
 
 func (x *AdminSeedConfigReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[125]
+	mi := &file_api_app_v1_app_proto_msgTypes[127]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6838,7 +6956,7 @@ func (x *AdminSeedConfigReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSeedConfigReply.ProtoReflect.Descriptor instead.
 func (*AdminSeedConfigReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{125}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{127}
 }
 
 func (x *AdminSeedConfigReply) GetStatus() string {
@@ -6871,7 +6989,7 @@ type AdminMessagesListRequest struct {
 func (x *AdminMessagesListRequest) Reset() {
 	*x = AdminMessagesListRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[126]
+		mi := &file_api_app_v1_app_proto_msgTypes[128]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6884,7 +7002,7 @@ func (x *AdminMessagesListRequest) String() string {
 func (*AdminMessagesListRequest) ProtoMessage() {}
 
 func (x *AdminMessagesListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[126]
+	mi := &file_api_app_v1_app_proto_msgTypes[128]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6897,7 +7015,7 @@ func (x *AdminMessagesListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminMessagesListRequest.ProtoReflect.Descriptor instead.
 func (*AdminMessagesListRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{126}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{128}
 }
 
 type AdminMessagesListReply struct {
@@ -6913,7 +7031,7 @@ type AdminMessagesListReply struct {
 func (x *AdminMessagesListReply) Reset() {
 	*x = AdminMessagesListReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[127]
+		mi := &file_api_app_v1_app_proto_msgTypes[129]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6926,7 +7044,7 @@ func (x *AdminMessagesListReply) String() string {
 func (*AdminMessagesListReply) ProtoMessage() {}
 
 func (x *AdminMessagesListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[127]
+	mi := &file_api_app_v1_app_proto_msgTypes[129]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6939,7 +7057,7 @@ func (x *AdminMessagesListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminMessagesListReply.ProtoReflect.Descriptor instead.
 func (*AdminMessagesListReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{127}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{129}
 }
 
 func (x *AdminMessagesListReply) GetStatus() string {
@@ -6974,7 +7092,7 @@ type AdminSeedConfigSetRequest struct {
 func (x *AdminSeedConfigSetRequest) Reset() {
 	*x = AdminSeedConfigSetRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[128]
+		mi := &file_api_app_v1_app_proto_msgTypes[130]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6987,7 +7105,7 @@ func (x *AdminSeedConfigSetRequest) String() string {
 func (*AdminSeedConfigSetRequest) ProtoMessage() {}
 
 func (x *AdminSeedConfigSetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[128]
+	mi := &file_api_app_v1_app_proto_msgTypes[130]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7000,7 +7118,7 @@ func (x *AdminSeedConfigSetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSeedConfigSetRequest.ProtoReflect.Descriptor instead.
 func (*AdminSeedConfigSetRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{128}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{130}
 }
 
 func (x *AdminSeedConfigSetRequest) GetSendBody() *AdminSeedConfigSetRequest_SendBody {
@@ -7021,7 +7139,7 @@ type AdminSeedConfigSetReply struct {
 func (x *AdminSeedConfigSetReply) Reset() {
 	*x = AdminSeedConfigSetReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[129]
+		mi := &file_api_app_v1_app_proto_msgTypes[131]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7034,7 +7152,7 @@ func (x *AdminSeedConfigSetReply) String() string {
 func (*AdminSeedConfigSetReply) ProtoMessage() {}
 
 func (x *AdminSeedConfigSetReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[129]
+	mi := &file_api_app_v1_app_proto_msgTypes[131]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7047,7 +7165,7 @@ func (x *AdminSeedConfigSetReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSeedConfigSetReply.ProtoReflect.Descriptor instead.
 func (*AdminSeedConfigSetReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{129}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{131}
 }
 
 func (x *AdminSeedConfigSetReply) GetStatus() string {
@@ -7066,7 +7184,7 @@ type AdminPropConfigRequest struct {
 func (x *AdminPropConfigRequest) Reset() {
 	*x = AdminPropConfigRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[130]
+		mi := &file_api_app_v1_app_proto_msgTypes[132]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7079,7 +7197,7 @@ func (x *AdminPropConfigRequest) String() string {
 func (*AdminPropConfigRequest) ProtoMessage() {}
 
 func (x *AdminPropConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[130]
+	mi := &file_api_app_v1_app_proto_msgTypes[132]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7092,7 +7210,7 @@ func (x *AdminPropConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminPropConfigRequest.ProtoReflect.Descriptor instead.
 func (*AdminPropConfigRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{130}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{132}
 }
 
 type AdminPropConfigReply struct {
@@ -7108,7 +7226,7 @@ type AdminPropConfigReply struct {
 func (x *AdminPropConfigReply) Reset() {
 	*x = AdminPropConfigReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[131]
+		mi := &file_api_app_v1_app_proto_msgTypes[133]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7121,7 +7239,7 @@ func (x *AdminPropConfigReply) String() string {
 func (*AdminPropConfigReply) ProtoMessage() {}
 
 func (x *AdminPropConfigReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[131]
+	mi := &file_api_app_v1_app_proto_msgTypes[133]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7134,7 +7252,7 @@ func (x *AdminPropConfigReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminPropConfigReply.ProtoReflect.Descriptor instead.
 func (*AdminPropConfigReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{131}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{133}
 }
 
 func (x *AdminPropConfigReply) GetStatus() string {
@@ -7169,7 +7287,7 @@ type AdminPropConfigSetRequest struct {
 func (x *AdminPropConfigSetRequest) Reset() {
 	*x = AdminPropConfigSetRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[132]
+		mi := &file_api_app_v1_app_proto_msgTypes[134]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7182,7 +7300,7 @@ func (x *AdminPropConfigSetRequest) String() string {
 func (*AdminPropConfigSetRequest) ProtoMessage() {}
 
 func (x *AdminPropConfigSetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[132]
+	mi := &file_api_app_v1_app_proto_msgTypes[134]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7195,7 +7313,7 @@ func (x *AdminPropConfigSetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminPropConfigSetRequest.ProtoReflect.Descriptor instead.
 func (*AdminPropConfigSetRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{132}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{134}
 }
 
 func (x *AdminPropConfigSetRequest) GetSendBody() *AdminPropConfigSetRequest_SendBody {
@@ -7216,7 +7334,7 @@ type AdminPropConfigSetReply struct {
 func (x *AdminPropConfigSetReply) Reset() {
 	*x = AdminPropConfigSetReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[133]
+		mi := &file_api_app_v1_app_proto_msgTypes[135]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7229,7 +7347,7 @@ func (x *AdminPropConfigSetReply) String() string {
 func (*AdminPropConfigSetReply) ProtoMessage() {}
 
 func (x *AdminPropConfigSetReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[133]
+	mi := &file_api_app_v1_app_proto_msgTypes[135]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7242,7 +7360,7 @@ func (x *AdminPropConfigSetReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminPropConfigSetReply.ProtoReflect.Descriptor instead.
 func (*AdminPropConfigSetReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{133}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{135}
 }
 
 func (x *AdminPropConfigSetReply) GetStatus() string {
@@ -7263,7 +7381,7 @@ type AdminUserRecommendRequest struct {
 func (x *AdminUserRecommendRequest) Reset() {
 	*x = AdminUserRecommendRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[134]
+		mi := &file_api_app_v1_app_proto_msgTypes[136]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7276,7 +7394,7 @@ func (x *AdminUserRecommendRequest) String() string {
 func (*AdminUserRecommendRequest) ProtoMessage() {}
 
 func (x *AdminUserRecommendRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[134]
+	mi := &file_api_app_v1_app_proto_msgTypes[136]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7289,7 +7407,7 @@ func (x *AdminUserRecommendRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserRecommendRequest.ProtoReflect.Descriptor instead.
 func (*AdminUserRecommendRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{134}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{136}
 }
 
 func (x *AdminUserRecommendRequest) GetUserId() uint64 {
@@ -7311,7 +7429,7 @@ type AdminUserRecommendReply struct {
 func (x *AdminUserRecommendReply) Reset() {
 	*x = AdminUserRecommendReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[135]
+		mi := &file_api_app_v1_app_proto_msgTypes[137]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7324,7 +7442,7 @@ func (x *AdminUserRecommendReply) String() string {
 func (*AdminUserRecommendReply) ProtoMessage() {}
 
 func (x *AdminUserRecommendReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[135]
+	mi := &file_api_app_v1_app_proto_msgTypes[137]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7337,7 +7455,7 @@ func (x *AdminUserRecommendReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserRecommendReply.ProtoReflect.Descriptor instead.
 func (*AdminUserRecommendReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{135}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{137}
 }
 
 func (x *AdminUserRecommendReply) GetStatus() string {
@@ -7366,7 +7484,7 @@ type AdminSetAddressRequest struct {
 func (x *AdminSetAddressRequest) Reset() {
 	*x = AdminSetAddressRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[136]
+		mi := &file_api_app_v1_app_proto_msgTypes[138]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7379,7 +7497,7 @@ func (x *AdminSetAddressRequest) String() string {
 func (*AdminSetAddressRequest) ProtoMessage() {}
 
 func (x *AdminSetAddressRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[136]
+	mi := &file_api_app_v1_app_proto_msgTypes[138]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7392,7 +7510,7 @@ func (x *AdminSetAddressRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetAddressRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetAddressRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{136}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{138}
 }
 
 func (x *AdminSetAddressRequest) GetAddress() string {
@@ -7420,7 +7538,7 @@ type AdminSetAddressReply struct {
 func (x *AdminSetAddressReply) Reset() {
 	*x = AdminSetAddressReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[137]
+		mi := &file_api_app_v1_app_proto_msgTypes[139]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7433,7 +7551,7 @@ func (x *AdminSetAddressReply) String() string {
 func (*AdminSetAddressReply) ProtoMessage() {}
 
 func (x *AdminSetAddressReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[137]
+	mi := &file_api_app_v1_app_proto_msgTypes[139]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7446,7 +7564,7 @@ func (x *AdminSetAddressReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetAddressReply.ProtoReflect.Descriptor instead.
 func (*AdminSetAddressReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{137}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{139}
 }
 
 func (x *AdminSetAddressReply) GetStatus() string {
@@ -7468,7 +7586,7 @@ type AdminSetGiwRequest struct {
 func (x *AdminSetGiwRequest) Reset() {
 	*x = AdminSetGiwRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[138]
+		mi := &file_api_app_v1_app_proto_msgTypes[140]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7481,7 +7599,7 @@ func (x *AdminSetGiwRequest) String() string {
 func (*AdminSetGiwRequest) ProtoMessage() {}
 
 func (x *AdminSetGiwRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[138]
+	mi := &file_api_app_v1_app_proto_msgTypes[140]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7494,7 +7612,7 @@ func (x *AdminSetGiwRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetGiwRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetGiwRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{138}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{140}
 }
 
 func (x *AdminSetGiwRequest) GetAddress() string {
@@ -7522,7 +7640,7 @@ type AdminSetGiwReply struct {
 func (x *AdminSetGiwReply) Reset() {
 	*x = AdminSetGiwReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[139]
+		mi := &file_api_app_v1_app_proto_msgTypes[141]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7535,7 +7653,7 @@ func (x *AdminSetGiwReply) String() string {
 func (*AdminSetGiwReply) ProtoMessage() {}
 
 func (x *AdminSetGiwReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[139]
+	mi := &file_api_app_v1_app_proto_msgTypes[141]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7548,7 +7666,7 @@ func (x *AdminSetGiwReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetGiwReply.ProtoReflect.Descriptor instead.
 func (*AdminSetGiwReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{139}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{141}
 }
 
 func (x *AdminSetGiwReply) GetStatus() string {
@@ -7570,7 +7688,7 @@ type AdminSetGiwTwoRequest struct {
 func (x *AdminSetGiwTwoRequest) Reset() {
 	*x = AdminSetGiwTwoRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[140]
+		mi := &file_api_app_v1_app_proto_msgTypes[142]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7583,7 +7701,7 @@ func (x *AdminSetGiwTwoRequest) String() string {
 func (*AdminSetGiwTwoRequest) ProtoMessage() {}
 
 func (x *AdminSetGiwTwoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[140]
+	mi := &file_api_app_v1_app_proto_msgTypes[142]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7596,7 +7714,7 @@ func (x *AdminSetGiwTwoRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetGiwTwoRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetGiwTwoRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{140}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{142}
 }
 
 func (x *AdminSetGiwTwoRequest) GetAddress() string {
@@ -7624,7 +7742,7 @@ type AdminSetGiwTwoReply struct {
 func (x *AdminSetGiwTwoReply) Reset() {
 	*x = AdminSetGiwTwoReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[141]
+		mi := &file_api_app_v1_app_proto_msgTypes[143]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7637,7 +7755,7 @@ func (x *AdminSetGiwTwoReply) String() string {
 func (*AdminSetGiwTwoReply) ProtoMessage() {}
 
 func (x *AdminSetGiwTwoReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[141]
+	mi := &file_api_app_v1_app_proto_msgTypes[143]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7650,7 +7768,7 @@ func (x *AdminSetGiwTwoReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetGiwTwoReply.ProtoReflect.Descriptor instead.
 func (*AdminSetGiwTwoReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{141}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{143}
 }
 
 func (x *AdminSetGiwTwoReply) GetStatus() string {
@@ -7673,7 +7791,7 @@ type AdminSetGitRequest struct {
 func (x *AdminSetGitRequest) Reset() {
 	*x = AdminSetGitRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[142]
+		mi := &file_api_app_v1_app_proto_msgTypes[144]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7686,7 +7804,7 @@ func (x *AdminSetGitRequest) String() string {
 func (*AdminSetGitRequest) ProtoMessage() {}
 
 func (x *AdminSetGitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[142]
+	mi := &file_api_app_v1_app_proto_msgTypes[144]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7699,7 +7817,7 @@ func (x *AdminSetGitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetGitRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetGitRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{142}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{144}
 }
 
 func (x *AdminSetGitRequest) GetAddress() string {
@@ -7734,7 +7852,7 @@ type AdminSetGitReply struct {
 func (x *AdminSetGitReply) Reset() {
 	*x = AdminSetGitReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[143]
+		mi := &file_api_app_v1_app_proto_msgTypes[145]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7747,7 +7865,7 @@ func (x *AdminSetGitReply) String() string {
 func (*AdminSetGitReply) ProtoMessage() {}
 
 func (x *AdminSetGitReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[143]
+	mi := &file_api_app_v1_app_proto_msgTypes[145]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7760,7 +7878,7 @@ func (x *AdminSetGitReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetGitReply.ProtoReflect.Descriptor instead.
 func (*AdminSetGitReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{143}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{145}
 }
 
 func (x *AdminSetGitReply) GetStatus() string {
@@ -7782,7 +7900,7 @@ type AdminSetUsdtRequest struct {
 func (x *AdminSetUsdtRequest) Reset() {
 	*x = AdminSetUsdtRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[144]
+		mi := &file_api_app_v1_app_proto_msgTypes[146]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7795,7 +7913,7 @@ func (x *AdminSetUsdtRequest) String() string {
 func (*AdminSetUsdtRequest) ProtoMessage() {}
 
 func (x *AdminSetUsdtRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[144]
+	mi := &file_api_app_v1_app_proto_msgTypes[146]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7808,7 +7926,7 @@ func (x *AdminSetUsdtRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetUsdtRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetUsdtRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{144}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{146}
 }
 
 func (x *AdminSetUsdtRequest) GetAddress() string {
@@ -7836,7 +7954,7 @@ type AdminSetUsdtReply struct {
 func (x *AdminSetUsdtReply) Reset() {
 	*x = AdminSetUsdtReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[145]
+		mi := &file_api_app_v1_app_proto_msgTypes[147]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7849,7 +7967,7 @@ func (x *AdminSetUsdtReply) String() string {
 func (*AdminSetUsdtReply) ProtoMessage() {}
 
 func (x *AdminSetUsdtReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[145]
+	mi := &file_api_app_v1_app_proto_msgTypes[147]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7862,7 +7980,7 @@ func (x *AdminSetUsdtReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetUsdtReply.ProtoReflect.Descriptor instead.
 func (*AdminSetUsdtReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{145}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{147}
 }
 
 func (x *AdminSetUsdtReply) GetStatus() string {
@@ -7884,7 +8002,7 @@ type AdminSetVipRequest struct {
 func (x *AdminSetVipRequest) Reset() {
 	*x = AdminSetVipRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[146]
+		mi := &file_api_app_v1_app_proto_msgTypes[148]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7897,7 +8015,7 @@ func (x *AdminSetVipRequest) String() string {
 func (*AdminSetVipRequest) ProtoMessage() {}
 
 func (x *AdminSetVipRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[146]
+	mi := &file_api_app_v1_app_proto_msgTypes[148]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7910,7 +8028,7 @@ func (x *AdminSetVipRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetVipRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetVipRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{146}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{148}
 }
 
 func (x *AdminSetVipRequest) GetAddress() string {
@@ -7938,7 +8056,7 @@ type AdminSetVipReply struct {
 func (x *AdminSetVipReply) Reset() {
 	*x = AdminSetVipReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[147]
+		mi := &file_api_app_v1_app_proto_msgTypes[149]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7951,7 +8069,7 @@ func (x *AdminSetVipReply) String() string {
 func (*AdminSetVipReply) ProtoMessage() {}
 
 func (x *AdminSetVipReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[147]
+	mi := &file_api_app_v1_app_proto_msgTypes[149]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7964,7 +8082,7 @@ func (x *AdminSetVipReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetVipReply.ProtoReflect.Descriptor instead.
 func (*AdminSetVipReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{147}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{149}
 }
 
 func (x *AdminSetVipReply) GetStatus() string {
@@ -7986,7 +8104,7 @@ type AdminSetCanSellRequest struct {
 func (x *AdminSetCanSellRequest) Reset() {
 	*x = AdminSetCanSellRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[148]
+		mi := &file_api_app_v1_app_proto_msgTypes[150]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7999,7 +8117,7 @@ func (x *AdminSetCanSellRequest) String() string {
 func (*AdminSetCanSellRequest) ProtoMessage() {}
 
 func (x *AdminSetCanSellRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[148]
+	mi := &file_api_app_v1_app_proto_msgTypes[150]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8012,7 +8130,7 @@ func (x *AdminSetCanSellRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetCanSellRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetCanSellRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{148}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{150}
 }
 
 func (x *AdminSetCanSellRequest) GetAddress() string {
@@ -8040,7 +8158,7 @@ type AdminSetCanSellReply struct {
 func (x *AdminSetCanSellReply) Reset() {
 	*x = AdminSetCanSellReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[149]
+		mi := &file_api_app_v1_app_proto_msgTypes[151]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8053,7 +8171,7 @@ func (x *AdminSetCanSellReply) String() string {
 func (*AdminSetCanSellReply) ProtoMessage() {}
 
 func (x *AdminSetCanSellReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[149]
+	mi := &file_api_app_v1_app_proto_msgTypes[151]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8066,7 +8184,7 @@ func (x *AdminSetCanSellReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetCanSellReply.ProtoReflect.Descriptor instead.
 func (*AdminSetCanSellReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{149}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{151}
 }
 
 func (x *AdminSetCanSellReply) GetStatus() string {
@@ -8088,7 +8206,7 @@ type AdminSetCanPlayAddRequest struct {
 func (x *AdminSetCanPlayAddRequest) Reset() {
 	*x = AdminSetCanPlayAddRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[150]
+		mi := &file_api_app_v1_app_proto_msgTypes[152]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8101,7 +8219,7 @@ func (x *AdminSetCanPlayAddRequest) String() string {
 func (*AdminSetCanPlayAddRequest) ProtoMessage() {}
 
 func (x *AdminSetCanPlayAddRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[150]
+	mi := &file_api_app_v1_app_proto_msgTypes[152]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8114,7 +8232,7 @@ func (x *AdminSetCanPlayAddRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetCanPlayAddRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetCanPlayAddRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{150}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{152}
 }
 
 func (x *AdminSetCanPlayAddRequest) GetAddress() string {
@@ -8142,7 +8260,7 @@ type AdminSetCanPlayAddReply struct {
 func (x *AdminSetCanPlayAddReply) Reset() {
 	*x = AdminSetCanPlayAddReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[151]
+		mi := &file_api_app_v1_app_proto_msgTypes[153]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8155,7 +8273,7 @@ func (x *AdminSetCanPlayAddReply) String() string {
 func (*AdminSetCanPlayAddReply) ProtoMessage() {}
 
 func (x *AdminSetCanPlayAddReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[151]
+	mi := &file_api_app_v1_app_proto_msgTypes[153]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8168,7 +8286,7 @@ func (x *AdminSetCanPlayAddReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetCanPlayAddReply.ProtoReflect.Descriptor instead.
 func (*AdminSetCanPlayAddReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{151}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{153}
 }
 
 func (x *AdminSetCanPlayAddReply) GetStatus() string {
@@ -8190,7 +8308,7 @@ type AdminSetCanPlaySixRequest struct {
 func (x *AdminSetCanPlaySixRequest) Reset() {
 	*x = AdminSetCanPlaySixRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[152]
+		mi := &file_api_app_v1_app_proto_msgTypes[154]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8203,7 +8321,7 @@ func (x *AdminSetCanPlaySixRequest) String() string {
 func (*AdminSetCanPlaySixRequest) ProtoMessage() {}
 
 func (x *AdminSetCanPlaySixRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[152]
+	mi := &file_api_app_v1_app_proto_msgTypes[154]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8216,7 +8334,7 @@ func (x *AdminSetCanPlaySixRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetCanPlaySixRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetCanPlaySixRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{152}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{154}
 }
 
 func (x *AdminSetCanPlaySixRequest) GetAddress() string {
@@ -8244,7 +8362,7 @@ type AdminSetCanPlaySixReply struct {
 func (x *AdminSetCanPlaySixReply) Reset() {
 	*x = AdminSetCanPlaySixReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[153]
+		mi := &file_api_app_v1_app_proto_msgTypes[155]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8257,7 +8375,7 @@ func (x *AdminSetCanPlaySixReply) String() string {
 func (*AdminSetCanPlaySixReply) ProtoMessage() {}
 
 func (x *AdminSetCanPlaySixReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[153]
+	mi := &file_api_app_v1_app_proto_msgTypes[155]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8270,7 +8388,7 @@ func (x *AdminSetCanPlaySixReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetCanPlaySixReply.ProtoReflect.Descriptor instead.
 func (*AdminSetCanPlaySixReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{153}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{155}
 }
 
 func (x *AdminSetCanPlaySixReply) GetStatus() string {
@@ -8292,7 +8410,7 @@ type AdminSetCanRentRequest struct {
 func (x *AdminSetCanRentRequest) Reset() {
 	*x = AdminSetCanRentRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[154]
+		mi := &file_api_app_v1_app_proto_msgTypes[156]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8305,7 +8423,7 @@ func (x *AdminSetCanRentRequest) String() string {
 func (*AdminSetCanRentRequest) ProtoMessage() {}
 
 func (x *AdminSetCanRentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[154]
+	mi := &file_api_app_v1_app_proto_msgTypes[156]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8318,7 +8436,7 @@ func (x *AdminSetCanRentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetCanRentRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetCanRentRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{154}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{156}
 }
 
 func (x *AdminSetCanRentRequest) GetAddress() string {
@@ -8346,7 +8464,7 @@ type AdminSetCanRentReply struct {
 func (x *AdminSetCanRentReply) Reset() {
 	*x = AdminSetCanRentReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[155]
+		mi := &file_api_app_v1_app_proto_msgTypes[157]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8359,7 +8477,7 @@ func (x *AdminSetCanRentReply) String() string {
 func (*AdminSetCanRentReply) ProtoMessage() {}
 
 func (x *AdminSetCanRentReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[155]
+	mi := &file_api_app_v1_app_proto_msgTypes[157]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8372,7 +8490,7 @@ func (x *AdminSetCanRentReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetCanRentReply.ProtoReflect.Descriptor instead.
 func (*AdminSetCanRentReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{155}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{157}
 }
 
 func (x *AdminSetCanRentReply) GetStatus() string {
@@ -8394,7 +8512,7 @@ type AdminSetWithdrawMaxRequest struct {
 func (x *AdminSetWithdrawMaxRequest) Reset() {
 	*x = AdminSetWithdrawMaxRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[156]
+		mi := &file_api_app_v1_app_proto_msgTypes[158]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8407,7 +8525,7 @@ func (x *AdminSetWithdrawMaxRequest) String() string {
 func (*AdminSetWithdrawMaxRequest) ProtoMessage() {}
 
 func (x *AdminSetWithdrawMaxRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[156]
+	mi := &file_api_app_v1_app_proto_msgTypes[158]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8420,7 +8538,7 @@ func (x *AdminSetWithdrawMaxRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetWithdrawMaxRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetWithdrawMaxRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{156}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{158}
 }
 
 func (x *AdminSetWithdrawMaxRequest) GetAddress() string {
@@ -8448,7 +8566,7 @@ type AdminSetWithdrawMaxReply struct {
 func (x *AdminSetWithdrawMaxReply) Reset() {
 	*x = AdminSetWithdrawMaxReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[157]
+		mi := &file_api_app_v1_app_proto_msgTypes[159]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8461,7 +8579,7 @@ func (x *AdminSetWithdrawMaxReply) String() string {
 func (*AdminSetWithdrawMaxReply) ProtoMessage() {}
 
 func (x *AdminSetWithdrawMaxReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[157]
+	mi := &file_api_app_v1_app_proto_msgTypes[159]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8474,7 +8592,7 @@ func (x *AdminSetWithdrawMaxReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetWithdrawMaxReply.ProtoReflect.Descriptor instead.
 func (*AdminSetWithdrawMaxReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{157}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{159}
 }
 
 func (x *AdminSetWithdrawMaxReply) GetStatus() string {
@@ -8496,7 +8614,7 @@ type AdminSetCanLandRequest struct {
 func (x *AdminSetCanLandRequest) Reset() {
 	*x = AdminSetCanLandRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[158]
+		mi := &file_api_app_v1_app_proto_msgTypes[160]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8509,7 +8627,7 @@ func (x *AdminSetCanLandRequest) String() string {
 func (*AdminSetCanLandRequest) ProtoMessage() {}
 
 func (x *AdminSetCanLandRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[158]
+	mi := &file_api_app_v1_app_proto_msgTypes[160]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8522,7 +8640,7 @@ func (x *AdminSetCanLandRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetCanLandRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetCanLandRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{158}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{160}
 }
 
 func (x *AdminSetCanLandRequest) GetAddress() string {
@@ -8550,7 +8668,7 @@ type AdminSetCanLandReply struct {
 func (x *AdminSetCanLandReply) Reset() {
 	*x = AdminSetCanLandReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[159]
+		mi := &file_api_app_v1_app_proto_msgTypes[161]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8563,7 +8681,7 @@ func (x *AdminSetCanLandReply) String() string {
 func (*AdminSetCanLandReply) ProtoMessage() {}
 
 func (x *AdminSetCanLandReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[159]
+	mi := &file_api_app_v1_app_proto_msgTypes[161]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8576,7 +8694,7 @@ func (x *AdminSetCanLandReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetCanLandReply.ProtoReflect.Descriptor instead.
 func (*AdminSetCanLandReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{159}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{161}
 }
 
 func (x *AdminSetCanLandReply) GetStatus() string {
@@ -8599,7 +8717,7 @@ type AdminSetLockRequest struct {
 func (x *AdminSetLockRequest) Reset() {
 	*x = AdminSetLockRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[160]
+		mi := &file_api_app_v1_app_proto_msgTypes[162]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8612,7 +8730,7 @@ func (x *AdminSetLockRequest) String() string {
 func (*AdminSetLockRequest) ProtoMessage() {}
 
 func (x *AdminSetLockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[160]
+	mi := &file_api_app_v1_app_proto_msgTypes[162]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8625,7 +8743,7 @@ func (x *AdminSetLockRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetLockRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetLockRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{160}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{162}
 }
 
 func (x *AdminSetLockRequest) GetAddress() string {
@@ -8660,7 +8778,7 @@ type AdminSetLockReply struct {
 func (x *AdminSetLockReply) Reset() {
 	*x = AdminSetLockReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[161]
+		mi := &file_api_app_v1_app_proto_msgTypes[163]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8673,7 +8791,7 @@ func (x *AdminSetLockReply) String() string {
 func (*AdminSetLockReply) ProtoMessage() {}
 
 func (x *AdminSetLockReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[161]
+	mi := &file_api_app_v1_app_proto_msgTypes[163]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8686,7 +8804,7 @@ func (x *AdminSetLockReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetLockReply.ProtoReflect.Descriptor instead.
 func (*AdminSetLockReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{161}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{163}
 }
 
 func (x *AdminSetLockReply) GetStatus() string {
@@ -8709,7 +8827,7 @@ type AdminSetOneTwoThreeRequest struct {
 func (x *AdminSetOneTwoThreeRequest) Reset() {
 	*x = AdminSetOneTwoThreeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[162]
+		mi := &file_api_app_v1_app_proto_msgTypes[164]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8722,7 +8840,7 @@ func (x *AdminSetOneTwoThreeRequest) String() string {
 func (*AdminSetOneTwoThreeRequest) ProtoMessage() {}
 
 func (x *AdminSetOneTwoThreeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[162]
+	mi := &file_api_app_v1_app_proto_msgTypes[164]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8735,7 +8853,7 @@ func (x *AdminSetOneTwoThreeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetOneTwoThreeRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetOneTwoThreeRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{162}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{164}
 }
 
 func (x *AdminSetOneTwoThreeRequest) GetAddress() string {
@@ -8770,7 +8888,7 @@ type AdminSetOneTwoThreeReply struct {
 func (x *AdminSetOneTwoThreeReply) Reset() {
 	*x = AdminSetOneTwoThreeReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[163]
+		mi := &file_api_app_v1_app_proto_msgTypes[165]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8783,7 +8901,7 @@ func (x *AdminSetOneTwoThreeReply) String() string {
 func (*AdminSetOneTwoThreeReply) ProtoMessage() {}
 
 func (x *AdminSetOneTwoThreeReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[163]
+	mi := &file_api_app_v1_app_proto_msgTypes[165]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8796,7 +8914,7 @@ func (x *AdminSetOneTwoThreeReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetOneTwoThreeReply.ProtoReflect.Descriptor instead.
 func (*AdminSetOneTwoThreeReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{163}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{165}
 }
 
 func (x *AdminSetOneTwoThreeReply) GetStatus() string {
@@ -8818,7 +8936,7 @@ type AdminSetLockRewardRequest struct {
 func (x *AdminSetLockRewardRequest) Reset() {
 	*x = AdminSetLockRewardRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[164]
+		mi := &file_api_app_v1_app_proto_msgTypes[166]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8831,7 +8949,7 @@ func (x *AdminSetLockRewardRequest) String() string {
 func (*AdminSetLockRewardRequest) ProtoMessage() {}
 
 func (x *AdminSetLockRewardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[164]
+	mi := &file_api_app_v1_app_proto_msgTypes[166]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8844,7 +8962,7 @@ func (x *AdminSetLockRewardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetLockRewardRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetLockRewardRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{164}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{166}
 }
 
 func (x *AdminSetLockRewardRequest) GetAddress() string {
@@ -8872,7 +8990,7 @@ type AdminSetLockRewardReply struct {
 func (x *AdminSetLockRewardReply) Reset() {
 	*x = AdminSetLockRewardReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[165]
+		mi := &file_api_app_v1_app_proto_msgTypes[167]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8885,7 +9003,7 @@ func (x *AdminSetLockRewardReply) String() string {
 func (*AdminSetLockRewardReply) ProtoMessage() {}
 
 func (x *AdminSetLockRewardReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[165]
+	mi := &file_api_app_v1_app_proto_msgTypes[167]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8898,7 +9016,7 @@ func (x *AdminSetLockRewardReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetLockRewardReply.ProtoReflect.Descriptor instead.
 func (*AdminSetLockRewardReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{165}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{167}
 }
 
 func (x *AdminSetLockRewardReply) GetStatus() string {
@@ -8917,7 +9035,7 @@ type AdminGetBoxRequest struct {
 func (x *AdminGetBoxRequest) Reset() {
 	*x = AdminGetBoxRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[166]
+		mi := &file_api_app_v1_app_proto_msgTypes[168]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8930,7 +9048,7 @@ func (x *AdminGetBoxRequest) String() string {
 func (*AdminGetBoxRequest) ProtoMessage() {}
 
 func (x *AdminGetBoxRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[166]
+	mi := &file_api_app_v1_app_proto_msgTypes[168]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8943,7 +9061,7 @@ func (x *AdminGetBoxRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminGetBoxRequest.ProtoReflect.Descriptor instead.
 func (*AdminGetBoxRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{166}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{168}
 }
 
 type AdminGetBoxReply struct {
@@ -8963,7 +9081,7 @@ type AdminGetBoxReply struct {
 func (x *AdminGetBoxReply) Reset() {
 	*x = AdminGetBoxReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[167]
+		mi := &file_api_app_v1_app_proto_msgTypes[169]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8976,7 +9094,7 @@ func (x *AdminGetBoxReply) String() string {
 func (*AdminGetBoxReply) ProtoMessage() {}
 
 func (x *AdminGetBoxReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[167]
+	mi := &file_api_app_v1_app_proto_msgTypes[169]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8989,7 +9107,7 @@ func (x *AdminGetBoxReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminGetBoxReply.ProtoReflect.Descriptor instead.
 func (*AdminGetBoxReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{167}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{169}
 }
 
 func (x *AdminGetBoxReply) GetStatus() string {
@@ -9052,7 +9170,7 @@ type AdminSetBoxRequest struct {
 func (x *AdminSetBoxRequest) Reset() {
 	*x = AdminSetBoxRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[168]
+		mi := &file_api_app_v1_app_proto_msgTypes[170]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9065,7 +9183,7 @@ func (x *AdminSetBoxRequest) String() string {
 func (*AdminSetBoxRequest) ProtoMessage() {}
 
 func (x *AdminSetBoxRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[168]
+	mi := &file_api_app_v1_app_proto_msgTypes[170]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9078,7 +9196,7 @@ func (x *AdminSetBoxRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetBoxRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetBoxRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{168}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{170}
 }
 
 func (x *AdminSetBoxRequest) GetSendBody() *AdminSetBoxRequest_SendBody {
@@ -9099,7 +9217,7 @@ type AdminSetBoxReply struct {
 func (x *AdminSetBoxReply) Reset() {
 	*x = AdminSetBoxReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[169]
+		mi := &file_api_app_v1_app_proto_msgTypes[171]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9112,7 +9230,7 @@ func (x *AdminSetBoxReply) String() string {
 func (*AdminSetBoxReply) ProtoMessage() {}
 
 func (x *AdminSetBoxReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[169]
+	mi := &file_api_app_v1_app_proto_msgTypes[171]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9125,7 +9243,7 @@ func (x *AdminSetBoxReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetBoxReply.ProtoReflect.Descriptor instead.
 func (*AdminSetBoxReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{169}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{171}
 }
 
 func (x *AdminSetBoxReply) GetStatus() string {
@@ -9144,7 +9262,7 @@ type AdminGetConfigRequest struct {
 func (x *AdminGetConfigRequest) Reset() {
 	*x = AdminGetConfigRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[170]
+		mi := &file_api_app_v1_app_proto_msgTypes[172]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9157,7 +9275,7 @@ func (x *AdminGetConfigRequest) String() string {
 func (*AdminGetConfigRequest) ProtoMessage() {}
 
 func (x *AdminGetConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[170]
+	mi := &file_api_app_v1_app_proto_msgTypes[172]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9170,7 +9288,7 @@ func (x *AdminGetConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminGetConfigRequest.ProtoReflect.Descriptor instead.
 func (*AdminGetConfigRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{170}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{172}
 }
 
 type AdminGetConfigReply struct {
@@ -9185,7 +9303,7 @@ type AdminGetConfigReply struct {
 func (x *AdminGetConfigReply) Reset() {
 	*x = AdminGetConfigReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[171]
+		mi := &file_api_app_v1_app_proto_msgTypes[173]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9198,7 +9316,7 @@ func (x *AdminGetConfigReply) String() string {
 func (*AdminGetConfigReply) ProtoMessage() {}
 
 func (x *AdminGetConfigReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[171]
+	mi := &file_api_app_v1_app_proto_msgTypes[173]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9211,7 +9329,7 @@ func (x *AdminGetConfigReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminGetConfigReply.ProtoReflect.Descriptor instead.
 func (*AdminGetConfigReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{171}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{173}
 }
 
 func (x *AdminGetConfigReply) GetStatus() string {
@@ -9237,7 +9355,7 @@ type AdminLandRewardRequest struct {
 func (x *AdminLandRewardRequest) Reset() {
 	*x = AdminLandRewardRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[172]
+		mi := &file_api_app_v1_app_proto_msgTypes[174]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9250,7 +9368,7 @@ func (x *AdminLandRewardRequest) String() string {
 func (*AdminLandRewardRequest) ProtoMessage() {}
 
 func (x *AdminLandRewardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[172]
+	mi := &file_api_app_v1_app_proto_msgTypes[174]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9263,7 +9381,7 @@ func (x *AdminLandRewardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminLandRewardRequest.ProtoReflect.Descriptor instead.
 func (*AdminLandRewardRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{172}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{174}
 }
 
 type AdminLandRewardReply struct {
@@ -9275,7 +9393,7 @@ type AdminLandRewardReply struct {
 func (x *AdminLandRewardReply) Reset() {
 	*x = AdminLandRewardReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[173]
+		mi := &file_api_app_v1_app_proto_msgTypes[175]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9288,7 +9406,7 @@ func (x *AdminLandRewardReply) String() string {
 func (*AdminLandRewardReply) ProtoMessage() {}
 
 func (x *AdminLandRewardReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[173]
+	mi := &file_api_app_v1_app_proto_msgTypes[175]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9301,7 +9419,7 @@ func (x *AdminLandRewardReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminLandRewardReply.ProtoReflect.Descriptor instead.
 func (*AdminLandRewardReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{173}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{175}
 }
 
 type AdminSetConfigRequest struct {
@@ -9315,7 +9433,7 @@ type AdminSetConfigRequest struct {
 func (x *AdminSetConfigRequest) Reset() {
 	*x = AdminSetConfigRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[174]
+		mi := &file_api_app_v1_app_proto_msgTypes[176]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9328,7 +9446,7 @@ func (x *AdminSetConfigRequest) String() string {
 func (*AdminSetConfigRequest) ProtoMessage() {}
 
 func (x *AdminSetConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[174]
+	mi := &file_api_app_v1_app_proto_msgTypes[176]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9341,7 +9459,7 @@ func (x *AdminSetConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetConfigRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetConfigRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{174}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{176}
 }
 
 func (x *AdminSetConfigRequest) GetSendBody() *AdminSetConfigRequest_SendBody {
@@ -9362,7 +9480,7 @@ type AdminSetConfigReply struct {
 func (x *AdminSetConfigReply) Reset() {
 	*x = AdminSetConfigReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[175]
+		mi := &file_api_app_v1_app_proto_msgTypes[177]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9375,7 +9493,7 @@ func (x *AdminSetConfigReply) String() string {
 func (*AdminSetConfigReply) ProtoMessage() {}
 
 func (x *AdminSetConfigReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[175]
+	mi := &file_api_app_v1_app_proto_msgTypes[177]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9388,7 +9506,7 @@ func (x *AdminSetConfigReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetConfigReply.ProtoReflect.Descriptor instead.
 func (*AdminSetConfigReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{175}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{177}
 }
 
 func (x *AdminSetConfigReply) GetStatus() string {
@@ -9409,7 +9527,7 @@ type AdminSetLandRequest struct {
 func (x *AdminSetLandRequest) Reset() {
 	*x = AdminSetLandRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[176]
+		mi := &file_api_app_v1_app_proto_msgTypes[178]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9422,7 +9540,7 @@ func (x *AdminSetLandRequest) String() string {
 func (*AdminSetLandRequest) ProtoMessage() {}
 
 func (x *AdminSetLandRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[176]
+	mi := &file_api_app_v1_app_proto_msgTypes[178]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9435,7 +9553,7 @@ func (x *AdminSetLandRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetLandRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetLandRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{176}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{178}
 }
 
 func (x *AdminSetLandRequest) GetSendBody() *AdminSetLandRequest_SendBody {
@@ -9456,7 +9574,7 @@ type AdminSetLandReply struct {
 func (x *AdminSetLandReply) Reset() {
 	*x = AdminSetLandReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[177]
+		mi := &file_api_app_v1_app_proto_msgTypes[179]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9469,7 +9587,7 @@ func (x *AdminSetLandReply) String() string {
 func (*AdminSetLandReply) ProtoMessage() {}
 
 func (x *AdminSetLandReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[177]
+	mi := &file_api_app_v1_app_proto_msgTypes[179]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9482,7 +9600,7 @@ func (x *AdminSetLandReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetLandReply.ProtoReflect.Descriptor instead.
 func (*AdminSetLandReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{177}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{179}
 }
 
 func (x *AdminSetLandReply) GetStatus() string {
@@ -9503,7 +9621,7 @@ type AdminSetSeedRequest struct {
 func (x *AdminSetSeedRequest) Reset() {
 	*x = AdminSetSeedRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[178]
+		mi := &file_api_app_v1_app_proto_msgTypes[180]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9516,7 +9634,7 @@ func (x *AdminSetSeedRequest) String() string {
 func (*AdminSetSeedRequest) ProtoMessage() {}
 
 func (x *AdminSetSeedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[178]
+	mi := &file_api_app_v1_app_proto_msgTypes[180]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9529,7 +9647,7 @@ func (x *AdminSetSeedRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetSeedRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetSeedRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{178}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{180}
 }
 
 func (x *AdminSetSeedRequest) GetSendBody() *AdminSetSeedRequest_SendBody {
@@ -9550,7 +9668,7 @@ type AdminSetSeedReply struct {
 func (x *AdminSetSeedReply) Reset() {
 	*x = AdminSetSeedReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[179]
+		mi := &file_api_app_v1_app_proto_msgTypes[181]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9563,7 +9681,7 @@ func (x *AdminSetSeedReply) String() string {
 func (*AdminSetSeedReply) ProtoMessage() {}
 
 func (x *AdminSetSeedReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[179]
+	mi := &file_api_app_v1_app_proto_msgTypes[181]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9576,7 +9694,7 @@ func (x *AdminSetSeedReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetSeedReply.ProtoReflect.Descriptor instead.
 func (*AdminSetSeedReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{179}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{181}
 }
 
 func (x *AdminSetSeedReply) GetStatus() string {
@@ -9597,7 +9715,7 @@ type AdminSetBuyLandRequest struct {
 func (x *AdminSetBuyLandRequest) Reset() {
 	*x = AdminSetBuyLandRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[180]
+		mi := &file_api_app_v1_app_proto_msgTypes[182]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9610,7 +9728,7 @@ func (x *AdminSetBuyLandRequest) String() string {
 func (*AdminSetBuyLandRequest) ProtoMessage() {}
 
 func (x *AdminSetBuyLandRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[180]
+	mi := &file_api_app_v1_app_proto_msgTypes[182]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9623,7 +9741,7 @@ func (x *AdminSetBuyLandRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetBuyLandRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetBuyLandRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{180}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{182}
 }
 
 func (x *AdminSetBuyLandRequest) GetSendBody() *AdminSetBuyLandRequest_SendBody {
@@ -9644,7 +9762,7 @@ type AdminSetBuyLandReply struct {
 func (x *AdminSetBuyLandReply) Reset() {
 	*x = AdminSetBuyLandReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[181]
+		mi := &file_api_app_v1_app_proto_msgTypes[183]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9657,7 +9775,7 @@ func (x *AdminSetBuyLandReply) String() string {
 func (*AdminSetBuyLandReply) ProtoMessage() {}
 
 func (x *AdminSetBuyLandReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[181]
+	mi := &file_api_app_v1_app_proto_msgTypes[183]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9670,7 +9788,7 @@ func (x *AdminSetBuyLandReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetBuyLandReply.ProtoReflect.Descriptor instead.
 func (*AdminSetBuyLandReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{181}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{183}
 }
 
 func (x *AdminSetBuyLandReply) GetStatus() string {
@@ -9691,7 +9809,7 @@ type SetAdminMessagesRequest struct {
 func (x *SetAdminMessagesRequest) Reset() {
 	*x = SetAdminMessagesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[182]
+		mi := &file_api_app_v1_app_proto_msgTypes[184]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9704,7 +9822,7 @@ func (x *SetAdminMessagesRequest) String() string {
 func (*SetAdminMessagesRequest) ProtoMessage() {}
 
 func (x *SetAdminMessagesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[182]
+	mi := &file_api_app_v1_app_proto_msgTypes[184]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9717,7 +9835,7 @@ func (x *SetAdminMessagesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetAdminMessagesRequest.ProtoReflect.Descriptor instead.
 func (*SetAdminMessagesRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{182}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{184}
 }
 
 func (x *SetAdminMessagesRequest) GetSendBody() *SetAdminMessagesRequest_SendBody {
@@ -9738,7 +9856,7 @@ type SetAdminMessagesReply struct {
 func (x *SetAdminMessagesReply) Reset() {
 	*x = SetAdminMessagesReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[183]
+		mi := &file_api_app_v1_app_proto_msgTypes[185]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9751,7 +9869,7 @@ func (x *SetAdminMessagesReply) String() string {
 func (*SetAdminMessagesReply) ProtoMessage() {}
 
 func (x *SetAdminMessagesReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[183]
+	mi := &file_api_app_v1_app_proto_msgTypes[185]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9764,7 +9882,7 @@ func (x *SetAdminMessagesReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetAdminMessagesReply.ProtoReflect.Descriptor instead.
 func (*SetAdminMessagesReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{183}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{185}
 }
 
 func (x *SetAdminMessagesReply) GetStatus() string {
@@ -9785,7 +9903,7 @@ type DeleteAdminMessagesRequest struct {
 func (x *DeleteAdminMessagesRequest) Reset() {
 	*x = DeleteAdminMessagesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[184]
+		mi := &file_api_app_v1_app_proto_msgTypes[186]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9798,7 +9916,7 @@ func (x *DeleteAdminMessagesRequest) String() string {
 func (*DeleteAdminMessagesRequest) ProtoMessage() {}
 
 func (x *DeleteAdminMessagesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[184]
+	mi := &file_api_app_v1_app_proto_msgTypes[186]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9811,7 +9929,7 @@ func (x *DeleteAdminMessagesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAdminMessagesRequest.ProtoReflect.Descriptor instead.
 func (*DeleteAdminMessagesRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{184}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{186}
 }
 
 func (x *DeleteAdminMessagesRequest) GetSendBody() *DeleteAdminMessagesRequest_SendBody {
@@ -9832,7 +9950,7 @@ type DeleteAdminMessagesReply struct {
 func (x *DeleteAdminMessagesReply) Reset() {
 	*x = DeleteAdminMessagesReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[185]
+		mi := &file_api_app_v1_app_proto_msgTypes[187]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9845,7 +9963,7 @@ func (x *DeleteAdminMessagesReply) String() string {
 func (*DeleteAdminMessagesReply) ProtoMessage() {}
 
 func (x *DeleteAdminMessagesReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[185]
+	mi := &file_api_app_v1_app_proto_msgTypes[187]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9858,7 +9976,7 @@ func (x *DeleteAdminMessagesReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAdminMessagesReply.ProtoReflect.Descriptor instead.
 func (*DeleteAdminMessagesReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{185}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{187}
 }
 
 func (x *DeleteAdminMessagesReply) GetStatus() string {
@@ -9879,7 +9997,7 @@ type AdminSetPropRequest struct {
 func (x *AdminSetPropRequest) Reset() {
 	*x = AdminSetPropRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[186]
+		mi := &file_api_app_v1_app_proto_msgTypes[188]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9892,7 +10010,7 @@ func (x *AdminSetPropRequest) String() string {
 func (*AdminSetPropRequest) ProtoMessage() {}
 
 func (x *AdminSetPropRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[186]
+	mi := &file_api_app_v1_app_proto_msgTypes[188]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9905,7 +10023,7 @@ func (x *AdminSetPropRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetPropRequest.ProtoReflect.Descriptor instead.
 func (*AdminSetPropRequest) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{186}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{188}
 }
 
 func (x *AdminSetPropRequest) GetSendBody() *AdminSetPropRequest_SendBody {
@@ -9926,7 +10044,7 @@ type AdminSetPropReply struct {
 func (x *AdminSetPropReply) Reset() {
 	*x = AdminSetPropReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[187]
+		mi := &file_api_app_v1_app_proto_msgTypes[189]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9939,7 +10057,7 @@ func (x *AdminSetPropReply) String() string {
 func (*AdminSetPropReply) ProtoMessage() {}
 
 func (x *AdminSetPropReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[187]
+	mi := &file_api_app_v1_app_proto_msgTypes[189]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9952,7 +10070,7 @@ func (x *AdminSetPropReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetPropReply.ProtoReflect.Descriptor instead.
 func (*AdminSetPropReply) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{187}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{189}
 }
 
 func (x *AdminSetPropReply) GetStatus() string {
@@ -9975,7 +10093,7 @@ type EthAuthorizeRequest_SendBody struct {
 func (x *EthAuthorizeRequest_SendBody) Reset() {
 	*x = EthAuthorizeRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[188]
+		mi := &file_api_app_v1_app_proto_msgTypes[190]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9988,7 +10106,7 @@ func (x *EthAuthorizeRequest_SendBody) String() string {
 func (*EthAuthorizeRequest_SendBody) ProtoMessage() {}
 
 func (x *EthAuthorizeRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[188]
+	mi := &file_api_app_v1_app_proto_msgTypes[190]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10038,7 +10156,7 @@ type UserRecommendReply_List struct {
 func (x *UserRecommendReply_List) Reset() {
 	*x = UserRecommendReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[189]
+		mi := &file_api_app_v1_app_proto_msgTypes[191]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10051,7 +10169,7 @@ func (x *UserRecommendReply_List) String() string {
 func (*UserRecommendReply_List) ProtoMessage() {}
 
 func (x *UserRecommendReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[189]
+	mi := &file_api_app_v1_app_proto_msgTypes[191]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10101,7 +10219,7 @@ type UserRecommendLReply_List struct {
 func (x *UserRecommendLReply_List) Reset() {
 	*x = UserRecommendLReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[190]
+		mi := &file_api_app_v1_app_proto_msgTypes[192]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10114,7 +10232,7 @@ func (x *UserRecommendLReply_List) String() string {
 func (*UserRecommendLReply_List) ProtoMessage() {}
 
 func (x *UserRecommendLReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[190]
+	mi := &file_api_app_v1_app_proto_msgTypes[192]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10170,7 +10288,7 @@ type UserLandReply_List struct {
 func (x *UserLandReply_List) Reset() {
 	*x = UserLandReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[191]
+		mi := &file_api_app_v1_app_proto_msgTypes[193]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10183,7 +10301,7 @@ func (x *UserLandReply_List) String() string {
 func (*UserLandReply_List) ProtoMessage() {}
 
 func (x *UserLandReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[191]
+	mi := &file_api_app_v1_app_proto_msgTypes[193]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10274,7 +10392,7 @@ type UserStakeGitRewardListReply_List struct {
 func (x *UserStakeGitRewardListReply_List) Reset() {
 	*x = UserStakeGitRewardListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[192]
+		mi := &file_api_app_v1_app_proto_msgTypes[194]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10287,7 +10405,7 @@ func (x *UserStakeGitRewardListReply_List) String() string {
 func (*UserStakeGitRewardListReply_List) ProtoMessage() {}
 
 func (x *UserStakeGitRewardListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[192]
+	mi := &file_api_app_v1_app_proto_msgTypes[194]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10331,7 +10449,7 @@ type UserStakeGitStakeListReply_List struct {
 func (x *UserStakeGitStakeListReply_List) Reset() {
 	*x = UserStakeGitStakeListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[193]
+		mi := &file_api_app_v1_app_proto_msgTypes[195]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10344,7 +10462,7 @@ func (x *UserStakeGitStakeListReply_List) String() string {
 func (*UserStakeGitStakeListReply_List) ProtoMessage() {}
 
 func (x *UserStakeGitStakeListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[193]
+	mi := &file_api_app_v1_app_proto_msgTypes[195]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10400,7 +10518,7 @@ type UserBoxListReply_List struct {
 func (x *UserBoxListReply_List) Reset() {
 	*x = UserBoxListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[194]
+		mi := &file_api_app_v1_app_proto_msgTypes[196]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10413,7 +10531,7 @@ func (x *UserBoxListReply_List) String() string {
 func (*UserBoxListReply_List) ProtoMessage() {}
 
 func (x *UserBoxListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[194]
+	mi := &file_api_app_v1_app_proto_msgTypes[196]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10461,7 +10579,7 @@ type UserBackListReply_List struct {
 func (x *UserBackListReply_List) Reset() {
 	*x = UserBackListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[195]
+		mi := &file_api_app_v1_app_proto_msgTypes[197]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10474,7 +10592,7 @@ func (x *UserBackListReply_List) String() string {
 func (*UserBackListReply_List) ProtoMessage() {}
 
 func (x *UserBackListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[195]
+	mi := &file_api_app_v1_app_proto_msgTypes[197]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10561,7 +10679,7 @@ type UserMarketSeedListReply_List struct {
 func (x *UserMarketSeedListReply_List) Reset() {
 	*x = UserMarketSeedListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[196]
+		mi := &file_api_app_v1_app_proto_msgTypes[198]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10574,7 +10692,7 @@ func (x *UserMarketSeedListReply_List) String() string {
 func (*UserMarketSeedListReply_List) ProtoMessage() {}
 
 func (x *UserMarketSeedListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[196]
+	mi := &file_api_app_v1_app_proto_msgTypes[198]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10641,7 +10759,7 @@ type UserMarketLandListReply_List struct {
 func (x *UserMarketLandListReply_List) Reset() {
 	*x = UserMarketLandListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[197]
+		mi := &file_api_app_v1_app_proto_msgTypes[199]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10654,7 +10772,7 @@ func (x *UserMarketLandListReply_List) String() string {
 func (*UserMarketLandListReply_List) ProtoMessage() {}
 
 func (x *UserMarketLandListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[197]
+	mi := &file_api_app_v1_app_proto_msgTypes[199]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10726,7 +10844,7 @@ type UserMarketPropListReply_List struct {
 func (x *UserMarketPropListReply_List) Reset() {
 	*x = UserMarketPropListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[198]
+		mi := &file_api_app_v1_app_proto_msgTypes[200]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10739,7 +10857,7 @@ func (x *UserMarketPropListReply_List) String() string {
 func (*UserMarketPropListReply_List) ProtoMessage() {}
 
 func (x *UserMarketPropListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[198]
+	mi := &file_api_app_v1_app_proto_msgTypes[200]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10800,7 +10918,7 @@ type UserMarketRentLandListReply_List struct {
 func (x *UserMarketRentLandListReply_List) Reset() {
 	*x = UserMarketRentLandListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[199]
+		mi := &file_api_app_v1_app_proto_msgTypes[201]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10813,7 +10931,7 @@ func (x *UserMarketRentLandListReply_List) String() string {
 func (*UserMarketRentLandListReply_List) ProtoMessage() {}
 
 func (x *UserMarketRentLandListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[199]
+	mi := &file_api_app_v1_app_proto_msgTypes[201]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10901,7 +11019,7 @@ type UserMyMarketListReply_List struct {
 func (x *UserMyMarketListReply_List) Reset() {
 	*x = UserMyMarketListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[200]
+		mi := &file_api_app_v1_app_proto_msgTypes[202]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10914,7 +11032,7 @@ func (x *UserMyMarketListReply_List) String() string {
 func (*UserMyMarketListReply_List) ProtoMessage() {}
 
 func (x *UserMyMarketListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[200]
+	mi := &file_api_app_v1_app_proto_msgTypes[202]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11033,7 +11151,7 @@ type UserNoticeListReply_List struct {
 func (x *UserNoticeListReply_List) Reset() {
 	*x = UserNoticeListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[201]
+		mi := &file_api_app_v1_app_proto_msgTypes[203]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11046,7 +11164,7 @@ func (x *UserNoticeListReply_List) String() string {
 func (*UserNoticeListReply_List) ProtoMessage() {}
 
 func (x *UserNoticeListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[201]
+	mi := &file_api_app_v1_app_proto_msgTypes[203]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11091,7 +11209,7 @@ type UserStakeRewardListReply_List struct {
 func (x *UserStakeRewardListReply_List) Reset() {
 	*x = UserStakeRewardListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[202]
+		mi := &file_api_app_v1_app_proto_msgTypes[204]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11104,7 +11222,7 @@ func (x *UserStakeRewardListReply_List) String() string {
 func (*UserStakeRewardListReply_List) ProtoMessage() {}
 
 func (x *UserStakeRewardListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[202]
+	mi := &file_api_app_v1_app_proto_msgTypes[204]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11181,7 +11299,7 @@ type UserIndexListReply_List struct {
 func (x *UserIndexListReply_List) Reset() {
 	*x = UserIndexListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[203]
+		mi := &file_api_app_v1_app_proto_msgTypes[205]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11194,7 +11312,7 @@ func (x *UserIndexListReply_List) String() string {
 func (*UserIndexListReply_List) ProtoMessage() {}
 
 func (x *UserIndexListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[203]
+	mi := &file_api_app_v1_app_proto_msgTypes[205]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11334,7 +11452,7 @@ type UserOrderListReply_List struct {
 func (x *UserOrderListReply_List) Reset() {
 	*x = UserOrderListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[204]
+		mi := &file_api_app_v1_app_proto_msgTypes[206]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11347,7 +11465,7 @@ func (x *UserOrderListReply_List) String() string {
 func (*UserOrderListReply_List) ProtoMessage() {}
 
 func (x *UserOrderListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[204]
+	mi := &file_api_app_v1_app_proto_msgTypes[206]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11389,7 +11507,7 @@ type WithdrawRequest_SendBody struct {
 func (x *WithdrawRequest_SendBody) Reset() {
 	*x = WithdrawRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[205]
+		mi := &file_api_app_v1_app_proto_msgTypes[207]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11402,7 +11520,7 @@ func (x *WithdrawRequest_SendBody) String() string {
 func (*WithdrawRequest_SendBody) ProtoMessage() {}
 
 func (x *WithdrawRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[205]
+	mi := &file_api_app_v1_app_proto_msgTypes[207]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11444,7 +11562,7 @@ type ExchangeRequest_SendBody struct {
 func (x *ExchangeRequest_SendBody) Reset() {
 	*x = ExchangeRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[206]
+		mi := &file_api_app_v1_app_proto_msgTypes[208]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11457,7 +11575,7 @@ func (x *ExchangeRequest_SendBody) String() string {
 func (*ExchangeRequest_SendBody) ProtoMessage() {}
 
 func (x *ExchangeRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[206]
+	mi := &file_api_app_v1_app_proto_msgTypes[208]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11501,7 +11619,7 @@ type GetLandRequest_SendBody struct {
 func (x *GetLandRequest_SendBody) Reset() {
 	*x = GetLandRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[207]
+		mi := &file_api_app_v1_app_proto_msgTypes[209]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11514,7 +11632,7 @@ func (x *GetLandRequest_SendBody) String() string {
 func (*GetLandRequest_SendBody) ProtoMessage() {}
 
 func (x *GetLandRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[207]
+	mi := &file_api_app_v1_app_proto_msgTypes[209]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11572,7 +11690,7 @@ type StakeGitRequest_SendBody struct {
 func (x *StakeGitRequest_SendBody) Reset() {
 	*x = StakeGitRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[208]
+		mi := &file_api_app_v1_app_proto_msgTypes[210]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11585,7 +11703,7 @@ func (x *StakeGitRequest_SendBody) String() string {
 func (*StakeGitRequest_SendBody) ProtoMessage() {}
 
 func (x *StakeGitRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[208]
+	mi := &file_api_app_v1_app_proto_msgTypes[210]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11641,7 +11759,7 @@ type BuyBoxRequest_SendBody struct {
 func (x *BuyBoxRequest_SendBody) Reset() {
 	*x = BuyBoxRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[209]
+		mi := &file_api_app_v1_app_proto_msgTypes[211]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11654,7 +11772,7 @@ func (x *BuyBoxRequest_SendBody) String() string {
 func (*BuyBoxRequest_SendBody) ProtoMessage() {}
 
 func (x *BuyBoxRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[209]
+	mi := &file_api_app_v1_app_proto_msgTypes[211]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11696,7 +11814,7 @@ type OpenBoxRequest_SendBody struct {
 func (x *OpenBoxRequest_SendBody) Reset() {
 	*x = OpenBoxRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[210]
+		mi := &file_api_app_v1_app_proto_msgTypes[212]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11709,7 +11827,7 @@ func (x *OpenBoxRequest_SendBody) String() string {
 func (*OpenBoxRequest_SendBody) ProtoMessage() {}
 
 func (x *OpenBoxRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[210]
+	mi := &file_api_app_v1_app_proto_msgTypes[212]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11754,7 +11872,7 @@ type SellRequest_SendBody struct {
 func (x *SellRequest_SendBody) Reset() {
 	*x = SellRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[211]
+		mi := &file_api_app_v1_app_proto_msgTypes[213]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11767,7 +11885,7 @@ func (x *SellRequest_SendBody) String() string {
 func (*SellRequest_SendBody) ProtoMessage() {}
 
 func (x *SellRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[211]
+	mi := &file_api_app_v1_app_proto_msgTypes[213]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11831,7 +11949,7 @@ type BuyRequest_SendBody struct {
 func (x *BuyRequest_SendBody) Reset() {
 	*x = BuyRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[212]
+		mi := &file_api_app_v1_app_proto_msgTypes[214]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11844,7 +11962,7 @@ func (x *BuyRequest_SendBody) String() string {
 func (*BuyRequest_SendBody) ProtoMessage() {}
 
 func (x *BuyRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[212]
+	mi := &file_api_app_v1_app_proto_msgTypes[214]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11895,7 +12013,7 @@ type RentLandRequest_SendBody struct {
 func (x *RentLandRequest_SendBody) Reset() {
 	*x = RentLandRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[213]
+		mi := &file_api_app_v1_app_proto_msgTypes[215]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11908,7 +12026,7 @@ func (x *RentLandRequest_SendBody) String() string {
 func (*RentLandRequest_SendBody) ProtoMessage() {}
 
 func (x *RentLandRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[213]
+	mi := &file_api_app_v1_app_proto_msgTypes[215]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11965,7 +12083,7 @@ type LandAddOutRateRequest_SendBody struct {
 func (x *LandAddOutRateRequest_SendBody) Reset() {
 	*x = LandAddOutRateRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[214]
+		mi := &file_api_app_v1_app_proto_msgTypes[216]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11978,7 +12096,7 @@ func (x *LandAddOutRateRequest_SendBody) String() string {
 func (*LandAddOutRateRequest_SendBody) ProtoMessage() {}
 
 func (x *LandAddOutRateRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[214]
+	mi := &file_api_app_v1_app_proto_msgTypes[216]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12028,7 +12146,7 @@ type StakeGetRequest_SendBody struct {
 func (x *StakeGetRequest_SendBody) Reset() {
 	*x = StakeGetRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[215]
+		mi := &file_api_app_v1_app_proto_msgTypes[217]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12041,7 +12159,7 @@ func (x *StakeGetRequest_SendBody) String() string {
 func (*StakeGetRequest_SendBody) ProtoMessage() {}
 
 func (x *StakeGetRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[215]
+	mi := &file_api_app_v1_app_proto_msgTypes[217]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12090,7 +12208,7 @@ type StakeGetPlayRequest_SendBody struct {
 func (x *StakeGetPlayRequest_SendBody) Reset() {
 	*x = StakeGetPlayRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[216]
+		mi := &file_api_app_v1_app_proto_msgTypes[218]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12103,7 +12221,7 @@ func (x *StakeGetPlayRequest_SendBody) String() string {
 func (*StakeGetPlayRequest_SendBody) ProtoMessage() {}
 
 func (x *StakeGetPlayRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[216]
+	mi := &file_api_app_v1_app_proto_msgTypes[218]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12148,7 +12266,7 @@ type LandPlayRequest_SendBody struct {
 func (x *LandPlayRequest_SendBody) Reset() {
 	*x = LandPlayRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[217]
+		mi := &file_api_app_v1_app_proto_msgTypes[219]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12161,7 +12279,7 @@ func (x *LandPlayRequest_SendBody) String() string {
 func (*LandPlayRequest_SendBody) ProtoMessage() {}
 
 func (x *LandPlayRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[217]
+	mi := &file_api_app_v1_app_proto_msgTypes[219]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12225,7 +12343,7 @@ type LandPlayOneRequest_SendBody struct {
 func (x *LandPlayOneRequest_SendBody) Reset() {
 	*x = LandPlayOneRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[218]
+		mi := &file_api_app_v1_app_proto_msgTypes[220]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12238,7 +12356,7 @@ func (x *LandPlayOneRequest_SendBody) String() string {
 func (*LandPlayOneRequest_SendBody) ProtoMessage() {}
 
 func (x *LandPlayOneRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[218]
+	mi := &file_api_app_v1_app_proto_msgTypes[220]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12287,7 +12405,7 @@ type LandPlayTwoRequest_SendBody struct {
 func (x *LandPlayTwoRequest_SendBody) Reset() {
 	*x = LandPlayTwoRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[219]
+		mi := &file_api_app_v1_app_proto_msgTypes[221]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12300,7 +12418,7 @@ func (x *LandPlayTwoRequest_SendBody) String() string {
 func (*LandPlayTwoRequest_SendBody) ProtoMessage() {}
 
 func (x *LandPlayTwoRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[219]
+	mi := &file_api_app_v1_app_proto_msgTypes[221]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12343,7 +12461,7 @@ type LandPlayThreeRequest_SendBody struct {
 func (x *LandPlayThreeRequest_SendBody) Reset() {
 	*x = LandPlayThreeRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[220]
+		mi := &file_api_app_v1_app_proto_msgTypes[222]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12356,7 +12474,7 @@ func (x *LandPlayThreeRequest_SendBody) String() string {
 func (*LandPlayThreeRequest_SendBody) ProtoMessage() {}
 
 func (x *LandPlayThreeRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[220]
+	mi := &file_api_app_v1_app_proto_msgTypes[222]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12406,7 +12524,7 @@ type LandPlayFourRequest_SendBody struct {
 func (x *LandPlayFourRequest_SendBody) Reset() {
 	*x = LandPlayFourRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[221]
+		mi := &file_api_app_v1_app_proto_msgTypes[223]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12419,7 +12537,7 @@ func (x *LandPlayFourRequest_SendBody) String() string {
 func (*LandPlayFourRequest_SendBody) ProtoMessage() {}
 
 func (x *LandPlayFourRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[221]
+	mi := &file_api_app_v1_app_proto_msgTypes[223]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12469,7 +12587,7 @@ type LandPlayFiveRequest_SendBody struct {
 func (x *LandPlayFiveRequest_SendBody) Reset() {
 	*x = LandPlayFiveRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[222]
+		mi := &file_api_app_v1_app_proto_msgTypes[224]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12482,7 +12600,7 @@ func (x *LandPlayFiveRequest_SendBody) String() string {
 func (*LandPlayFiveRequest_SendBody) ProtoMessage() {}
 
 func (x *LandPlayFiveRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[222]
+	mi := &file_api_app_v1_app_proto_msgTypes[224]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12532,7 +12650,7 @@ type LandPlaySixRequest_SendBody struct {
 func (x *LandPlaySixRequest_SendBody) Reset() {
 	*x = LandPlaySixRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[223]
+		mi := &file_api_app_v1_app_proto_msgTypes[225]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12545,7 +12663,7 @@ func (x *LandPlaySixRequest_SendBody) String() string {
 func (*LandPlaySixRequest_SendBody) ProtoMessage() {}
 
 func (x *LandPlaySixRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[223]
+	mi := &file_api_app_v1_app_proto_msgTypes[225]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12595,7 +12713,7 @@ type LandPlaySevenRequest_SendBody struct {
 func (x *LandPlaySevenRequest_SendBody) Reset() {
 	*x = LandPlaySevenRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[224]
+		mi := &file_api_app_v1_app_proto_msgTypes[226]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12608,7 +12726,7 @@ func (x *LandPlaySevenRequest_SendBody) String() string {
 func (*LandPlaySevenRequest_SendBody) ProtoMessage() {}
 
 func (x *LandPlaySevenRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[224]
+	mi := &file_api_app_v1_app_proto_msgTypes[226]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12657,7 +12775,7 @@ type AdminLoginRequest_SendBody struct {
 func (x *AdminLoginRequest_SendBody) Reset() {
 	*x = AdminLoginRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[225]
+		mi := &file_api_app_v1_app_proto_msgTypes[227]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12670,7 +12788,7 @@ func (x *AdminLoginRequest_SendBody) String() string {
 func (*AdminLoginRequest_SendBody) ProtoMessage() {}
 
 func (x *AdminLoginRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[225]
+	mi := &file_api_app_v1_app_proto_msgTypes[227]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12696,6 +12814,85 @@ func (x *AdminLoginRequest_SendBody) GetAccount() string {
 func (x *AdminLoginRequest_SendBody) GetPassword() string {
 	if x != nil {
 		return x.Password
+	}
+	return ""
+}
+
+type AdminUserStakeListReply_ListStake struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserId    uint64  `protobuf:"varint,20,opt,name=userId,proto3" json:"userId,omitempty"`
+	Address   string  `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+	Amount    float64 `protobuf:"fixed64,3,opt,name=amount,proto3" json:"amount,omitempty"`
+	Status    uint64  `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`
+	CreatedAt string  `protobuf:"bytes,1,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+}
+
+func (x *AdminUserStakeListReply_ListStake) Reset() {
+	*x = AdminUserStakeListReply_ListStake{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_app_v1_app_proto_msgTypes[228]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AdminUserStakeListReply_ListStake) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AdminUserStakeListReply_ListStake) ProtoMessage() {}
+
+func (x *AdminUserStakeListReply_ListStake) ProtoReflect() protoreflect.Message {
+	mi := &file_api_app_v1_app_proto_msgTypes[228]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AdminUserStakeListReply_ListStake.ProtoReflect.Descriptor instead.
+func (*AdminUserStakeListReply_ListStake) Descriptor() ([]byte, []int) {
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{87, 0}
+}
+
+func (x *AdminUserStakeListReply_ListStake) GetUserId() uint64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *AdminUserStakeListReply_ListStake) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *AdminUserStakeListReply_ListStake) GetAmount() float64 {
+	if x != nil {
+		return x.Amount
+	}
+	return 0
+}
+
+func (x *AdminUserStakeListReply_ListStake) GetStatus() uint64 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *AdminUserStakeListReply_ListStake) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
 	}
 	return ""
 }
@@ -12744,7 +12941,7 @@ type AdminUserListReply_List struct {
 func (x *AdminUserListReply_List) Reset() {
 	*x = AdminUserListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[226]
+		mi := &file_api_app_v1_app_proto_msgTypes[229]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12757,7 +12954,7 @@ func (x *AdminUserListReply_List) String() string {
 func (*AdminUserListReply_List) ProtoMessage() {}
 
 func (x *AdminUserListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[226]
+	mi := &file_api_app_v1_app_proto_msgTypes[229]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12770,7 +12967,7 @@ func (x *AdminUserListReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserListReply_List.ProtoReflect.Descriptor instead.
 func (*AdminUserListReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{87, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{89, 0}
 }
 
 func (x *AdminUserListReply_List) GetUserId() uint64 {
@@ -13031,7 +13228,7 @@ type AdminUserLandReply_List struct {
 func (x *AdminUserLandReply_List) Reset() {
 	*x = AdminUserLandReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[227]
+		mi := &file_api_app_v1_app_proto_msgTypes[230]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13044,7 +13241,7 @@ func (x *AdminUserLandReply_List) String() string {
 func (*AdminUserLandReply_List) ProtoMessage() {}
 
 func (x *AdminUserLandReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[227]
+	mi := &file_api_app_v1_app_proto_msgTypes[230]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13057,7 +13254,7 @@ func (x *AdminUserLandReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserLandReply_List.ProtoReflect.Descriptor instead.
 func (*AdminUserLandReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{91, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{93, 0}
 }
 
 func (x *AdminUserLandReply_List) GetId() uint64 {
@@ -13153,7 +13350,7 @@ type AdminSendLandListReply_List struct {
 func (x *AdminSendLandListReply_List) Reset() {
 	*x = AdminSendLandListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[228]
+		mi := &file_api_app_v1_app_proto_msgTypes[231]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13166,7 +13363,7 @@ func (x *AdminSendLandListReply_List) String() string {
 func (*AdminSendLandListReply_List) ProtoMessage() {}
 
 func (x *AdminSendLandListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[228]
+	mi := &file_api_app_v1_app_proto_msgTypes[231]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13179,7 +13376,7 @@ func (x *AdminSendLandListReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSendLandListReply_List.ProtoReflect.Descriptor instead.
 func (*AdminSendLandListReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{93, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{95, 0}
 }
 
 func (x *AdminSendLandListReply_List) GetId() uint64 {
@@ -13291,7 +13488,7 @@ type AdminUserBackListReply_List struct {
 func (x *AdminUserBackListReply_List) Reset() {
 	*x = AdminUserBackListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[229]
+		mi := &file_api_app_v1_app_proto_msgTypes[232]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13304,7 +13501,7 @@ func (x *AdminUserBackListReply_List) String() string {
 func (*AdminUserBackListReply_List) ProtoMessage() {}
 
 func (x *AdminUserBackListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[229]
+	mi := &file_api_app_v1_app_proto_msgTypes[232]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13317,7 +13514,7 @@ func (x *AdminUserBackListReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserBackListReply_List.ProtoReflect.Descriptor instead.
 func (*AdminUserBackListReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{95, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{97, 0}
 }
 
 func (x *AdminUserBackListReply_List) GetId() uint64 {
@@ -13395,7 +13592,7 @@ type AdminSendListReply_List struct {
 func (x *AdminSendListReply_List) Reset() {
 	*x = AdminSendListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[230]
+		mi := &file_api_app_v1_app_proto_msgTypes[233]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13408,7 +13605,7 @@ func (x *AdminSendListReply_List) String() string {
 func (*AdminSendListReply_List) ProtoMessage() {}
 
 func (x *AdminSendListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[230]
+	mi := &file_api_app_v1_app_proto_msgTypes[233]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13421,7 +13618,7 @@ func (x *AdminSendListReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSendListReply_List.ProtoReflect.Descriptor instead.
 func (*AdminSendListReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{97, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{99, 0}
 }
 
 func (x *AdminSendListReply_List) GetId() uint64 {
@@ -13503,7 +13700,7 @@ type AdminWithdrawListReply_List struct {
 func (x *AdminWithdrawListReply_List) Reset() {
 	*x = AdminWithdrawListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[231]
+		mi := &file_api_app_v1_app_proto_msgTypes[234]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13516,7 +13713,7 @@ func (x *AdminWithdrawListReply_List) String() string {
 func (*AdminWithdrawListReply_List) ProtoMessage() {}
 
 func (x *AdminWithdrawListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[231]
+	mi := &file_api_app_v1_app_proto_msgTypes[234]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13529,7 +13726,7 @@ func (x *AdminWithdrawListReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminWithdrawListReply_List.ProtoReflect.Descriptor instead.
 func (*AdminWithdrawListReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{113, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{115, 0}
 }
 
 func (x *AdminWithdrawListReply_List) GetAddress() string {
@@ -13589,7 +13786,7 @@ type RecordListReply_List struct {
 func (x *RecordListReply_List) Reset() {
 	*x = RecordListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[232]
+		mi := &file_api_app_v1_app_proto_msgTypes[235]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13602,7 +13799,7 @@ func (x *RecordListReply_List) String() string {
 func (*RecordListReply_List) ProtoMessage() {}
 
 func (x *RecordListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[232]
+	mi := &file_api_app_v1_app_proto_msgTypes[235]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13615,7 +13812,7 @@ func (x *RecordListReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordListReply_List.ProtoReflect.Descriptor instead.
 func (*RecordListReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{115, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{117, 0}
 }
 
 func (x *RecordListReply_List) GetCreatedAt() string {
@@ -13671,7 +13868,7 @@ type AdminRewardListTwoReply_List struct {
 func (x *AdminRewardListTwoReply_List) Reset() {
 	*x = AdminRewardListTwoReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[233]
+		mi := &file_api_app_v1_app_proto_msgTypes[236]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13684,7 +13881,7 @@ func (x *AdminRewardListTwoReply_List) String() string {
 func (*AdminRewardListTwoReply_List) ProtoMessage() {}
 
 func (x *AdminRewardListTwoReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[233]
+	mi := &file_api_app_v1_app_proto_msgTypes[236]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13697,7 +13894,7 @@ func (x *AdminRewardListTwoReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminRewardListTwoReply_List.ProtoReflect.Descriptor instead.
 func (*AdminRewardListTwoReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{117, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{119, 0}
 }
 
 func (x *AdminRewardListTwoReply_List) GetUserAddress() string {
@@ -13772,7 +13969,7 @@ type AdminRewardListReply_List struct {
 func (x *AdminRewardListReply_List) Reset() {
 	*x = AdminRewardListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[234]
+		mi := &file_api_app_v1_app_proto_msgTypes[237]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13785,7 +13982,7 @@ func (x *AdminRewardListReply_List) String() string {
 func (*AdminRewardListReply_List) ProtoMessage() {}
 
 func (x *AdminRewardListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[234]
+	mi := &file_api_app_v1_app_proto_msgTypes[237]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13798,7 +13995,7 @@ func (x *AdminRewardListReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminRewardListReply_List.ProtoReflect.Descriptor instead.
 func (*AdminRewardListReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{119, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{121, 0}
 }
 
 func (x *AdminRewardListReply_List) GetUserAddress() string {
@@ -13859,7 +14056,7 @@ type AdminLandConfigReply_List struct {
 func (x *AdminLandConfigReply_List) Reset() {
 	*x = AdminLandConfigReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[235]
+		mi := &file_api_app_v1_app_proto_msgTypes[238]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13872,7 +14069,7 @@ func (x *AdminLandConfigReply_List) String() string {
 func (*AdminLandConfigReply_List) ProtoMessage() {}
 
 func (x *AdminLandConfigReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[235]
+	mi := &file_api_app_v1_app_proto_msgTypes[238]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13885,7 +14082,7 @@ func (x *AdminLandConfigReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminLandConfigReply_List.ProtoReflect.Descriptor instead.
 func (*AdminLandConfigReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{121, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{123, 0}
 }
 
 func (x *AdminLandConfigReply_List) GetCreatedAt() string {
@@ -13945,7 +14142,7 @@ type AdminLandConfigSetRequest_SendBody struct {
 func (x *AdminLandConfigSetRequest_SendBody) Reset() {
 	*x = AdminLandConfigSetRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[236]
+		mi := &file_api_app_v1_app_proto_msgTypes[239]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13958,7 +14155,7 @@ func (x *AdminLandConfigSetRequest_SendBody) String() string {
 func (*AdminLandConfigSetRequest_SendBody) ProtoMessage() {}
 
 func (x *AdminLandConfigSetRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[236]
+	mi := &file_api_app_v1_app_proto_msgTypes[239]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13971,7 +14168,7 @@ func (x *AdminLandConfigSetRequest_SendBody) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use AdminLandConfigSetRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*AdminLandConfigSetRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{122, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{124, 0}
 }
 
 func (x *AdminLandConfigSetRequest_SendBody) GetLevel() uint64 {
@@ -14024,7 +14221,7 @@ type AdminSeedConfigReply_List struct {
 func (x *AdminSeedConfigReply_List) Reset() {
 	*x = AdminSeedConfigReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[237]
+		mi := &file_api_app_v1_app_proto_msgTypes[240]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14037,7 +14234,7 @@ func (x *AdminSeedConfigReply_List) String() string {
 func (*AdminSeedConfigReply_List) ProtoMessage() {}
 
 func (x *AdminSeedConfigReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[237]
+	mi := &file_api_app_v1_app_proto_msgTypes[240]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14050,7 +14247,7 @@ func (x *AdminSeedConfigReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSeedConfigReply_List.ProtoReflect.Descriptor instead.
 func (*AdminSeedConfigReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{125, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{127, 0}
 }
 
 func (x *AdminSeedConfigReply_List) GetCreatedAt() string {
@@ -14102,7 +14299,7 @@ type AdminMessagesListReply_List struct {
 func (x *AdminMessagesListReply_List) Reset() {
 	*x = AdminMessagesListReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[238]
+		mi := &file_api_app_v1_app_proto_msgTypes[241]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14115,7 +14312,7 @@ func (x *AdminMessagesListReply_List) String() string {
 func (*AdminMessagesListReply_List) ProtoMessage() {}
 
 func (x *AdminMessagesListReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[238]
+	mi := &file_api_app_v1_app_proto_msgTypes[241]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14128,7 +14325,7 @@ func (x *AdminMessagesListReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminMessagesListReply_List.ProtoReflect.Descriptor instead.
 func (*AdminMessagesListReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{127, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{129, 0}
 }
 
 func (x *AdminMessagesListReply_List) GetId() uint64 {
@@ -14174,7 +14371,7 @@ type AdminSeedConfigSetRequest_SendBody struct {
 func (x *AdminSeedConfigSetRequest_SendBody) Reset() {
 	*x = AdminSeedConfigSetRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[239]
+		mi := &file_api_app_v1_app_proto_msgTypes[242]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14187,7 +14384,7 @@ func (x *AdminSeedConfigSetRequest_SendBody) String() string {
 func (*AdminSeedConfigSetRequest_SendBody) ProtoMessage() {}
 
 func (x *AdminSeedConfigSetRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[239]
+	mi := &file_api_app_v1_app_proto_msgTypes[242]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14200,7 +14397,7 @@ func (x *AdminSeedConfigSetRequest_SendBody) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use AdminSeedConfigSetRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*AdminSeedConfigSetRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{128, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{130, 0}
 }
 
 func (x *AdminSeedConfigSetRequest_SendBody) GetSeedId() uint64 {
@@ -14252,7 +14449,7 @@ type AdminPropConfigReply_List struct {
 func (x *AdminPropConfigReply_List) Reset() {
 	*x = AdminPropConfigReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[240]
+		mi := &file_api_app_v1_app_proto_msgTypes[243]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14265,7 +14462,7 @@ func (x *AdminPropConfigReply_List) String() string {
 func (*AdminPropConfigReply_List) ProtoMessage() {}
 
 func (x *AdminPropConfigReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[240]
+	mi := &file_api_app_v1_app_proto_msgTypes[243]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14278,7 +14475,7 @@ func (x *AdminPropConfigReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminPropConfigReply_List.ProtoReflect.Descriptor instead.
 func (*AdminPropConfigReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{131, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{133, 0}
 }
 
 func (x *AdminPropConfigReply_List) GetPropType() uint64 {
@@ -14322,7 +14519,7 @@ type AdminPropConfigSetRequest_SendBody struct {
 func (x *AdminPropConfigSetRequest_SendBody) Reset() {
 	*x = AdminPropConfigSetRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[241]
+		mi := &file_api_app_v1_app_proto_msgTypes[244]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14335,7 +14532,7 @@ func (x *AdminPropConfigSetRequest_SendBody) String() string {
 func (*AdminPropConfigSetRequest_SendBody) ProtoMessage() {}
 
 func (x *AdminPropConfigSetRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[241]
+	mi := &file_api_app_v1_app_proto_msgTypes[244]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14348,7 +14545,7 @@ func (x *AdminPropConfigSetRequest_SendBody) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use AdminPropConfigSetRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*AdminPropConfigSetRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{132, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{134, 0}
 }
 
 func (x *AdminPropConfigSetRequest_SendBody) GetPropType() uint64 {
@@ -14386,7 +14583,7 @@ type AdminUserRecommendReply_List struct {
 func (x *AdminUserRecommendReply_List) Reset() {
 	*x = AdminUserRecommendReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[242]
+		mi := &file_api_app_v1_app_proto_msgTypes[245]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14399,7 +14596,7 @@ func (x *AdminUserRecommendReply_List) String() string {
 func (*AdminUserRecommendReply_List) ProtoMessage() {}
 
 func (x *AdminUserRecommendReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[242]
+	mi := &file_api_app_v1_app_proto_msgTypes[245]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14412,7 +14609,7 @@ func (x *AdminUserRecommendReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminUserRecommendReply_List.ProtoReflect.Descriptor instead.
 func (*AdminUserRecommendReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{135, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{137, 0}
 }
 
 func (x *AdminUserRecommendReply_List) GetUserId() uint64 {
@@ -14458,7 +14655,7 @@ type AdminSetBoxRequest_SendBody struct {
 func (x *AdminSetBoxRequest_SendBody) Reset() {
 	*x = AdminSetBoxRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[243]
+		mi := &file_api_app_v1_app_proto_msgTypes[246]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14471,7 +14668,7 @@ func (x *AdminSetBoxRequest_SendBody) String() string {
 func (*AdminSetBoxRequest_SendBody) ProtoMessage() {}
 
 func (x *AdminSetBoxRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[243]
+	mi := &file_api_app_v1_app_proto_msgTypes[246]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14484,7 +14681,7 @@ func (x *AdminSetBoxRequest_SendBody) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetBoxRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*AdminSetBoxRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{168, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{170, 0}
 }
 
 func (x *AdminSetBoxRequest_SendBody) GetStart() string {
@@ -14535,7 +14732,7 @@ type AdminGetConfigReply_List struct {
 func (x *AdminGetConfigReply_List) Reset() {
 	*x = AdminGetConfigReply_List{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[244]
+		mi := &file_api_app_v1_app_proto_msgTypes[247]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14548,7 +14745,7 @@ func (x *AdminGetConfigReply_List) String() string {
 func (*AdminGetConfigReply_List) ProtoMessage() {}
 
 func (x *AdminGetConfigReply_List) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[244]
+	mi := &file_api_app_v1_app_proto_msgTypes[247]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14561,7 +14758,7 @@ func (x *AdminGetConfigReply_List) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminGetConfigReply_List.ProtoReflect.Descriptor instead.
 func (*AdminGetConfigReply_List) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{171, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{173, 0}
 }
 
 func (x *AdminGetConfigReply_List) GetValue() string {
@@ -14597,7 +14794,7 @@ type AdminSetConfigRequest_SendBody struct {
 func (x *AdminSetConfigRequest_SendBody) Reset() {
 	*x = AdminSetConfigRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[245]
+		mi := &file_api_app_v1_app_proto_msgTypes[248]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14610,7 +14807,7 @@ func (x *AdminSetConfigRequest_SendBody) String() string {
 func (*AdminSetConfigRequest_SendBody) ProtoMessage() {}
 
 func (x *AdminSetConfigRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[245]
+	mi := &file_api_app_v1_app_proto_msgTypes[248]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14623,7 +14820,7 @@ func (x *AdminSetConfigRequest_SendBody) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetConfigRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*AdminSetConfigRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{174, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{176, 0}
 }
 
 func (x *AdminSetConfigRequest_SendBody) GetValue() string {
@@ -14658,7 +14855,7 @@ type AdminSetLandRequest_SendBody struct {
 func (x *AdminSetLandRequest_SendBody) Reset() {
 	*x = AdminSetLandRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[246]
+		mi := &file_api_app_v1_app_proto_msgTypes[249]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14671,7 +14868,7 @@ func (x *AdminSetLandRequest_SendBody) String() string {
 func (*AdminSetLandRequest_SendBody) ProtoMessage() {}
 
 func (x *AdminSetLandRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[246]
+	mi := &file_api_app_v1_app_proto_msgTypes[249]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14684,7 +14881,7 @@ func (x *AdminSetLandRequest_SendBody) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetLandRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*AdminSetLandRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{176, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{178, 0}
 }
 
 func (x *AdminSetLandRequest_SendBody) GetAddress() string {
@@ -14756,7 +14953,7 @@ type AdminSetSeedRequest_SendBody struct {
 func (x *AdminSetSeedRequest_SendBody) Reset() {
 	*x = AdminSetSeedRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[247]
+		mi := &file_api_app_v1_app_proto_msgTypes[250]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14769,7 +14966,7 @@ func (x *AdminSetSeedRequest_SendBody) String() string {
 func (*AdminSetSeedRequest_SendBody) ProtoMessage() {}
 
 func (x *AdminSetSeedRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[247]
+	mi := &file_api_app_v1_app_proto_msgTypes[250]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14782,7 +14979,7 @@ func (x *AdminSetSeedRequest_SendBody) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetSeedRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*AdminSetSeedRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{178, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{180, 0}
 }
 
 func (x *AdminSetSeedRequest_SendBody) GetAddress() string {
@@ -14820,7 +15017,7 @@ type AdminSetBuyLandRequest_SendBody struct {
 func (x *AdminSetBuyLandRequest_SendBody) Reset() {
 	*x = AdminSetBuyLandRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[248]
+		mi := &file_api_app_v1_app_proto_msgTypes[251]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14833,7 +15030,7 @@ func (x *AdminSetBuyLandRequest_SendBody) String() string {
 func (*AdminSetBuyLandRequest_SendBody) ProtoMessage() {}
 
 func (x *AdminSetBuyLandRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[248]
+	mi := &file_api_app_v1_app_proto_msgTypes[251]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14846,7 +15043,7 @@ func (x *AdminSetBuyLandRequest_SendBody) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetBuyLandRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*AdminSetBuyLandRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{180, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{182, 0}
 }
 
 func (x *AdminSetBuyLandRequest_SendBody) GetLevel() uint64 {
@@ -14889,7 +15086,7 @@ type SetAdminMessagesRequest_SendBody struct {
 func (x *SetAdminMessagesRequest_SendBody) Reset() {
 	*x = SetAdminMessagesRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[249]
+		mi := &file_api_app_v1_app_proto_msgTypes[252]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14902,7 +15099,7 @@ func (x *SetAdminMessagesRequest_SendBody) String() string {
 func (*SetAdminMessagesRequest_SendBody) ProtoMessage() {}
 
 func (x *SetAdminMessagesRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[249]
+	mi := &file_api_app_v1_app_proto_msgTypes[252]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14915,7 +15112,7 @@ func (x *SetAdminMessagesRequest_SendBody) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetAdminMessagesRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*SetAdminMessagesRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{182, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{184, 0}
 }
 
 func (x *SetAdminMessagesRequest_SendBody) GetContent() string {
@@ -14943,7 +15140,7 @@ type DeleteAdminMessagesRequest_SendBody struct {
 func (x *DeleteAdminMessagesRequest_SendBody) Reset() {
 	*x = DeleteAdminMessagesRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[250]
+		mi := &file_api_app_v1_app_proto_msgTypes[253]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14956,7 +15153,7 @@ func (x *DeleteAdminMessagesRequest_SendBody) String() string {
 func (*DeleteAdminMessagesRequest_SendBody) ProtoMessage() {}
 
 func (x *DeleteAdminMessagesRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[250]
+	mi := &file_api_app_v1_app_proto_msgTypes[253]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14969,7 +15166,7 @@ func (x *DeleteAdminMessagesRequest_SendBody) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use DeleteAdminMessagesRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*DeleteAdminMessagesRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{184, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{186, 0}
 }
 
 func (x *DeleteAdminMessagesRequest_SendBody) GetId() uint64 {
@@ -14992,7 +15189,7 @@ type AdminSetPropRequest_SendBody struct {
 func (x *AdminSetPropRequest_SendBody) Reset() {
 	*x = AdminSetPropRequest_SendBody{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_app_v1_app_proto_msgTypes[251]
+		mi := &file_api_app_v1_app_proto_msgTypes[254]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15005,7 +15202,7 @@ func (x *AdminSetPropRequest_SendBody) String() string {
 func (*AdminSetPropRequest_SendBody) ProtoMessage() {}
 
 func (x *AdminSetPropRequest_SendBody) ProtoReflect() protoreflect.Message {
-	mi := &file_api_app_v1_app_proto_msgTypes[251]
+	mi := &file_api_app_v1_app_proto_msgTypes[254]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15018,7 +15215,7 @@ func (x *AdminSetPropRequest_SendBody) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdminSetPropRequest_SendBody.ProtoReflect.Descriptor instead.
 func (*AdminSetPropRequest_SendBody) Descriptor() ([]byte, []int) {
-	return file_api_app_v1_app_proto_rawDescGZIP(), []int{186, 0}
+	return file_api_app_v1_app_proto_rawDescGZIP(), []int{188, 0}
 }
 
 func (x *AdminSetPropRequest_SendBody) GetAddress() string {
@@ -15783,7 +15980,30 @@ var file_api_app_v1_app_proto_rawDesc = []byte{
 	0x69, 0x6e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x16, 0x0a, 0x06,
 	0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x74,
 	0x61, 0x74, 0x75, 0x73, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x86, 0x01, 0x0a, 0x14, 0x41,
+	0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x49, 0x0a, 0x19, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x53, 0x74, 0x61, 0x6b, 0x65, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x67, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x70, 0x61, 0x67, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x61,
+	0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x64,
+	0x64, 0x72, 0x65, 0x73, 0x73, 0x22, 0xa2, 0x02, 0x0a, 0x17, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55,
+	0x73, 0x65, 0x72, 0x53, 0x74, 0x61, 0x6b, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c,
+	0x79, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x4b, 0x0a, 0x09, 0x73, 0x74, 0x61,
+	0x6b, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55,
+	0x73, 0x65, 0x72, 0x53, 0x74, 0x61, 0x6b, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c,
+	0x79, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x74, 0x61, 0x6b, 0x65, 0x52, 0x09, 0x73, 0x74, 0x61,
+	0x6b, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x1a, 0x8b, 0x01, 0x0a,
+	0x09, 0x4c, 0x69, 0x73, 0x74, 0x53, 0x74, 0x61, 0x6b, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x75, 0x73,
+	0x65, 0x72, 0x49, 0x64, 0x18, 0x14, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72,
+	0x49, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x16, 0x0a, 0x06,
+	0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x01, 0x52, 0x06, 0x61, 0x6d,
+	0x6f, 0x75, 0x6e, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x04,
+	0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x1c, 0x0a, 0x09,
+	0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0x86, 0x01, 0x0a, 0x14, 0x41,
 	0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x03, 0x52, 0x04, 0x70, 0x61, 0x67, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x61, 0x64, 0x64, 0x72, 0x65,
@@ -16556,7 +16776,7 @@ var file_api_app_v1_app_proto_rawDesc = []byte{
 	0x61, 0x6c, 0x18, 0x08, 0x20, 0x01, 0x28, 0x04, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x22,
 	0x2b, 0x0a, 0x11, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x70, 0x52,
 	0x65, 0x70, 0x6c, 0x79, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x32, 0xea, 0x5e, 0x0a,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x32, 0xf5, 0x5f, 0x0a,
 	0x03, 0x41, 0x70, 0x70, 0x12, 0x65, 0x0a, 0x08, 0x54, 0x65, 0x73, 0x74, 0x53, 0x69, 0x67, 0x6e,
 	0x12, 0x1b, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x54, 0x65,
 	0x73, 0x74, 0x53, 0x69, 0x67, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x19, 0x2e,
@@ -16896,429 +17116,437 @@ var file_api_app_v1_app_proto_rawDesc = []byte{
 	0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c,
 	0x79, 0x22, 0x20, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1a, 0x12, 0x18, 0x2f, 0x61, 0x70, 0x69, 0x2f,
 	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x6c,
-	0x69, 0x73, 0x74, 0x12, 0x6f, 0x0a, 0x0c, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72,
-	0x42, 0x75, 0x79, 0x12, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x42, 0x75, 0x79, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
-	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x42, 0x75, 0x79, 0x52, 0x65,
-	0x70, 0x6c, 0x79, 0x22, 0x1f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x19, 0x12, 0x17, 0x2f, 0x61, 0x70,
-	0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x75, 0x73, 0x65, 0x72,
-	0x5f, 0x62, 0x75, 0x79, 0x12, 0x73, 0x0a, 0x0d, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65,
-	0x72, 0x4c, 0x61, 0x6e, 0x64, 0x12, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
-	0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x61, 0x6e, 0x64,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
-	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x61,
-	0x6e, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x20, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1a, 0x12,
-	0x18, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f,
-	0x75, 0x73, 0x65, 0x72, 0x5f, 0x6c, 0x61, 0x6e, 0x64, 0x12, 0x88, 0x01, 0x0a, 0x12, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x77, 0x6f,
-	0x12, 0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x77, 0x6f,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
-	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64,
-	0x4c, 0x69, 0x73, 0x74, 0x54, 0x77, 0x6f, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x26, 0x82, 0xd3,
-	0xe4, 0x93, 0x02, 0x20, 0x12, 0x1e, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e,
-	0x5f, 0x64, 0x68, 0x62, 0x2f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74,
-	0x5f, 0x74, 0x77, 0x6f, 0x12, 0x7b, 0x0a, 0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x77,
-	0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
-	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64,
-	0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70,
+	0x69, 0x73, 0x74, 0x12, 0x88, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65,
+	0x72, 0x53, 0x74, 0x61, 0x6b, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x25, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65,
+	0x72, 0x53, 0x74, 0x61, 0x6b, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
+	0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x53, 0x74, 0x61, 0x6b, 0x65, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x20, 0x12, 0x1e,
+	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x75,
+	0x73, 0x65, 0x72, 0x5f, 0x73, 0x74, 0x61, 0x6b, 0x65, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x6f,
+	0x0a, 0x0c, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x42, 0x75, 0x79, 0x12, 0x1f,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x55, 0x73, 0x65, 0x72, 0x42, 0x75, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
+	0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x42, 0x75, 0x79, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1f,
+	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x19, 0x12, 0x17, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d,
+	0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x62, 0x75, 0x79, 0x12,
+	0x73, 0x0a, 0x0d, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x61, 0x6e, 0x64,
+	0x12, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x70,
+	0x6c, 0x79, 0x22, 0x20, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1a, 0x12, 0x18, 0x2f, 0x61, 0x70, 0x69,
+	0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x5f,
+	0x6c, 0x61, 0x6e, 0x64, 0x12, 0x88, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65,
+	0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x77, 0x6f, 0x12, 0x25, 0x2e, 0x61, 0x70,
 	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65,
-	0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x22, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x1c, 0x12, 0x1a, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69,
-	0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73,
-	0x74, 0x12, 0x84, 0x01, 0x0a, 0x11, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x42,
-	0x61, 0x63, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
-	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x42, 0x61,
-	0x63, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e,
-	0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e,
-	0x55, 0x73, 0x65, 0x72, 0x42, 0x61, 0x63, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0x25, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1f, 0x12, 0x1d, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x62,
-	0x61, 0x63, 0x6b, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x7d, 0x0a, 0x11, 0x41, 0x64, 0x6d, 0x69,
-	0x6e, 0x55, 0x73, 0x65, 0x72, 0x53, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x20, 0x2e,
-	0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e,
-	0x53, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x1e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
-	0x69, 0x6e, 0x53, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22,
-	0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x20, 0x12, 0x1e, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64,
-	0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x73, 0x65,
-	0x6e, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x8e, 0x01, 0x0a, 0x15, 0x41, 0x64, 0x6d, 0x69,
-	0x6e, 0x55, 0x73, 0x65, 0x72, 0x53, 0x65, 0x6e, 0x64, 0x4c, 0x61, 0x6e, 0x64, 0x4c, 0x69, 0x73,
-	0x74, 0x12, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
-	0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x6e, 0x64, 0x4c, 0x61, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
-	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x6e, 0x64, 0x4c, 0x61,
-	0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2b, 0x82, 0xd3, 0xe4,
-	0x93, 0x02, 0x25, 0x12, 0x23, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
-	0x64, 0x68, 0x62, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x6c,
-	0x61, 0x6e, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x87, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d,
-	0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x12,
-	0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
-	0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
-	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x63,
-	0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x25, 0x82, 0xd3, 0xe4,
-	0x93, 0x02, 0x1f, 0x12, 0x1d, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
-	0x64, 0x68, 0x62, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x72, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65,
-	0x6e, 0x64, 0x12, 0x6e, 0x0a, 0x0c, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73,
-	0x69, 0x74, 0x12, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
-	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x52, 0x65, 0x70,
-	0x6c, 0x79, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f, 0x61, 0x70, 0x69,
-	0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x64, 0x65, 0x70, 0x6f, 0x73,
-	0x69, 0x74, 0x12, 0x7f, 0x0a, 0x10, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73,
-	0x69, 0x74, 0x55, 0x73, 0x64, 0x74, 0x12, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
-	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74,
-	0x55, 0x73, 0x64, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x61, 0x70,
-	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65,
-	0x70, 0x6f, 0x73, 0x69, 0x74, 0x55, 0x73, 0x64, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x23,
-	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d, 0x12, 0x1b, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d,
-	0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x64, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x5f, 0x75,
-	0x73, 0x64, 0x74, 0x12, 0x8c, 0x01, 0x0a, 0x13, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70,
-	0x6f, 0x73, 0x69, 0x74, 0x55, 0x73, 0x64, 0x74, 0x54, 0x77, 0x6f, 0x12, 0x26, 0x2e, 0x61, 0x70,
-	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65,
-	0x70, 0x6f, 0x73, 0x69, 0x74, 0x55, 0x73, 0x64, 0x74, 0x54, 0x77, 0x6f, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x55, 0x73, 0x64,
-	0x74, 0x54, 0x77, 0x6f, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02,
-	0x21, 0x12, 0x1f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68,
-	0x62, 0x2f, 0x64, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x5f, 0x75, 0x73, 0x64, 0x74, 0x5f, 0x74,
-	0x77, 0x6f, 0x12, 0x72, 0x0a, 0x0d, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x64,
-	0x72, 0x61, 0x77, 0x12, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
-	0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x19, 0x12, 0x17, 0x2f,
-	0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x77, 0x69,
-	0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x12, 0x66, 0x0a, 0x0a, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44,
-	0x61, 0x69, 0x6c, 0x79, 0x12, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
-	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x70, 0x6c, 0x79,
-	0x22, 0x1c, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x16, 0x12, 0x14, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61,
-	0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x12, 0x7f,
-	0x0a, 0x10, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x77, 0x61,
-	0x72, 0x64, 0x12, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
-	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
-	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52,
-	0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x23, 0x82, 0xd3, 0xe4, 0x93,
-	0x02, 0x1d, 0x12, 0x1b, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64,
-	0x68, 0x62, 0x2f, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12,
-	0x7f, 0x0a, 0x10, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x69, 0x63, 0x65, 0x43, 0x68, 0x61,
-	0x6e, 0x67, 0x65, 0x12, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x69, 0x63, 0x65, 0x43, 0x68, 0x61, 0x6e, 0x67,
-	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61,
-	0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x69, 0x63, 0x65,
-	0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x23, 0x82, 0xd3, 0xe4,
-	0x93, 0x02, 0x1d, 0x12, 0x1b, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
-	0x64, 0x68, 0x62, 0x2f, 0x70, 0x72, 0x69, 0x63, 0x65, 0x5f, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65,
-	0x12, 0x83, 0x01, 0x0a, 0x11, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72,
-	0x61, 0x77, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
-	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61,
-	0x77, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x61,
-	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x57,
-	0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79,
-	0x22, 0x24, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1e, 0x12, 0x1c, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61,
-	0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x77, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61,
-	0x77, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x71, 0x0a, 0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52,
-	0x65, 0x63, 0x6f, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x4c, 0x69, 0x73,
-	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61,
-	0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x22, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1c, 0x12, 0x1a, 0x2f,
-	0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x72, 0x65,
-	0x63, 0x6f, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x84, 0x01, 0x0a, 0x13, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x4c, 0x69, 0x73,
-	0x74, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
-	0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
-	0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x43, 0x6f, 0x6e, 0x66,
-	0x69, 0x67, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12,
-	0x1f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f,
-	0x6c, 0x61, 0x6e, 0x64, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x5f, 0x6c, 0x69, 0x73, 0x74,
-	0x12, 0x93, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x43, 0x6f,
-	0x6e, 0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x12, 0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
-	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x43, 0x6f,
-	0x6e, 0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23,
-	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
-	0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x52, 0x65,
-	0x70, 0x6c, 0x79, 0x22, 0x31, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2b, 0x3a, 0x09, 0x73, 0x65, 0x6e,
-	0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x1e, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d,
-	0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x6c, 0x61, 0x6e, 0x64, 0x5f,
-	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x84, 0x01, 0x0a, 0x13, 0x41, 0x64, 0x6d, 0x69, 0x6e,
-	0x53, 0x65, 0x65, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22,
-	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
-	0x6e, 0x53, 0x65, 0x65, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
-	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x65, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52,
-	0x65, 0x70, 0x6c, 0x79, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61,
-	0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x65,
-	0x64, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x93, 0x01,
-	0x0a, 0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x65, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x53, 0x65, 0x74, 0x12, 0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
-	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x65, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x53, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70,
-	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
-	0x65, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79,
-	0x22, 0x31, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2b, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62,
-	0x6f, 0x64, 0x79, 0x22, 0x1e, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
-	0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x73, 0x65, 0x65, 0x64, 0x5f, 0x63, 0x6f, 0x6e,
-	0x66, 0x69, 0x67, 0x12, 0x84, 0x01, 0x0a, 0x13, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x6f,
-	0x70, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22, 0x2e, 0x61, 0x70,
-	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72,
-	0x6f, 0x70, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
-	0x69, 0x6e, 0x50, 0x72, 0x6f, 0x70, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x70, 0x72, 0x6f, 0x70, 0x5f, 0x63,
-	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x93, 0x01, 0x0a, 0x12, 0x41,
-	0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x6f, 0x70, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53, 0x65,
-	0x74, 0x12, 0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
-	0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x6f, 0x70, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53, 0x65,
-	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61,
-	0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x6f, 0x70, 0x43,
-	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x31, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x2b, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79,
-	0x22, 0x1e, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62,
-	0x2f, 0x73, 0x65, 0x74, 0x5f, 0x70, 0x72, 0x6f, 0x70, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
-	0x12, 0x6b, 0x0a, 0x0b, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x77, 0x12,
-	0x1e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
-	0x69, 0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x77, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x1c, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
-	0x69, 0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x77, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1e, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69,
-	0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x62, 0x69, 0x77, 0x12, 0x7b, 0x0a,
-	0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
-	0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
-	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73,
-	0x73, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x22, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1c, 0x12, 0x1a,
-	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73,
-	0x65, 0x74, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x78, 0x0a, 0x0e, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x77, 0x54, 0x77, 0x6f, 0x12, 0x21, 0x2e, 0x61,
-	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53,
-	0x65, 0x74, 0x47, 0x69, 0x77, 0x54, 0x77, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
-	0x69, 0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x77, 0x54, 0x77, 0x6f, 0x52, 0x65, 0x70, 0x6c, 0x79,
-	0x22, 0x22, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1c, 0x12, 0x1a, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61,
-	0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x62, 0x69, 0x77,
-	0x5f, 0x74, 0x77, 0x6f, 0x12, 0x6b, 0x0a, 0x0b, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74,
-	0x47, 0x69, 0x74, 0x12, 0x1e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x74, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x74, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x67, 0x69,
-	0x77, 0x12, 0x6f, 0x0a, 0x0c, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x55, 0x73, 0x64,
-	0x74, 0x12, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
-	0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x55, 0x73, 0x64, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
-	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x55, 0x73, 0x64, 0x74, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0x1f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x19, 0x12, 0x17, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x75, 0x73,
-	0x64, 0x74, 0x12, 0x6b, 0x0a, 0x0b, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x56, 0x69,
-	0x70, 0x12, 0x1e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
-	0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x56, 0x69, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x1c, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
-	0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x56, 0x69, 0x70, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22,
-	0x1e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64,
-	0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x76, 0x69, 0x70, 0x12,
-	0x7c, 0x0a, 0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53, 0x65,
-	0x6c, 0x6c, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
-	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53, 0x65, 0x6c, 0x6c, 0x52,
+	0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x77, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x54,
+	0x77, 0x6f, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x20, 0x12,
+	0x1e, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f,
+	0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x5f, 0x74, 0x77, 0x6f, 0x12,
+	0x7b, 0x0a, 0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69,
+	0x73, 0x74, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52,
 	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
-	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53,
-	0x65, 0x6c, 0x6c, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x23, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d,
-	0x12, 0x1b, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62,
-	0x2f, 0x73, 0x65, 0x74, 0x5f, 0x63, 0x61, 0x6e, 0x5f, 0x73, 0x65, 0x6c, 0x6c, 0x12, 0x85, 0x01,
-	0x0a, 0x13, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53, 0x65, 0x6c,
-	0x6c, 0x50, 0x72, 0x6f, 0x70, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
-	0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53, 0x65,
-	0x6c, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43,
-	0x61, 0x6e, 0x53, 0x65, 0x6c, 0x6c, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x28, 0x82, 0xd3, 0xe4,
-	0x93, 0x02, 0x22, 0x12, 0x20, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
-	0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x63, 0x61, 0x6e, 0x5f, 0x73, 0x65, 0x6c, 0x6c,
-	0x5f, 0x70, 0x72, 0x6f, 0x70, 0x12, 0x89, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53,
-	0x65, 0x74, 0x43, 0x61, 0x6e, 0x50, 0x6c, 0x61, 0x79, 0x41, 0x64, 0x64, 0x12, 0x25, 0x2e, 0x61,
+	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x22, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1c,
+	0x12, 0x1a, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62,
+	0x2f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x84, 0x01, 0x0a,
+	0x11, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x42, 0x61, 0x63, 0x6b, 0x4c, 0x69,
+	0x73, 0x74, 0x12, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x42, 0x61, 0x63, 0x6b, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61,
+	0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x42,
+	0x61, 0x63, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x25, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x1f, 0x12, 0x1d, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e,
+	0x5f, 0x64, 0x68, 0x62, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x5f, 0x6c,
+	0x69, 0x73, 0x74, 0x12, 0x7d, 0x0a, 0x11, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72,
+	0x53, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61,
+	0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x6e, 0x64, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x6e,
+	0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93,
+	0x02, 0x20, 0x12, 0x1e, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64,
+	0x68, 0x62, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x6c, 0x69,
+	0x73, 0x74, 0x12, 0x8e, 0x01, 0x0a, 0x15, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72,
+	0x53, 0x65, 0x6e, 0x64, 0x4c, 0x61, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x24, 0x2e, 0x61,
 	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53,
-	0x65, 0x74, 0x43, 0x61, 0x6e, 0x50, 0x6c, 0x61, 0x79, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x50, 0x6c, 0x61, 0x79,
-	0x41, 0x64, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21,
-	0x12, 0x1f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62,
-	0x2f, 0x73, 0x65, 0x74, 0x5f, 0x63, 0x61, 0x6e, 0x5f, 0x70, 0x6c, 0x61, 0x79, 0x5f, 0x61, 0x64,
-	0x64, 0x12, 0x89, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61,
-	0x6e, 0x50, 0x6c, 0x61, 0x79, 0x53, 0x69, 0x78, 0x12, 0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61,
-	0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61,
-	0x6e, 0x50, 0x6c, 0x61, 0x79, 0x53, 0x69, 0x78, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
-	0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x50, 0x6c, 0x61, 0x79, 0x53, 0x69, 0x78, 0x52,
-	0x65, 0x70, 0x6c, 0x79, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61,
-	0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74,
-	0x5f, 0x63, 0x61, 0x6e, 0x5f, 0x70, 0x6c, 0x61, 0x79, 0x5f, 0x73, 0x69, 0x78, 0x12, 0x7c, 0x0a,
-	0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x52, 0x65, 0x6e, 0x74,
-	0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x52, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
-	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x52, 0x65, 0x6e,
-	0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x23, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d, 0x12, 0x1b,
-	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73,
-	0x65, 0x74, 0x5f, 0x63, 0x61, 0x6e, 0x5f, 0x72, 0x65, 0x6e, 0x74, 0x12, 0x8c, 0x01, 0x0a, 0x13,
-	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77,
-	0x4d, 0x61, 0x78, 0x12, 0x26, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61,
-	0x77, 0x4d, 0x61, 0x78, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x61, 0x70,
-	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
-	0x74, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x4d, 0x61, 0x78, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x77, 0x69,
-	0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x5f, 0x6d, 0x61, 0x78, 0x12, 0x7c, 0x0a, 0x0f, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x12, 0x22, 0x2e,
+	0x65, 0x6e, 0x64, 0x4c, 0x61, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x6e, 0x64, 0x4c, 0x61, 0x6e, 0x64, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2b, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x25, 0x12, 0x23,
+	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x61,
+	0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x6c, 0x61, 0x6e, 0x64, 0x5f, 0x6c,
+	0x69, 0x73, 0x74, 0x12, 0x87, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65,
+	0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x12, 0x25, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65,
+	0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
+	0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e,
+	0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x25, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1f, 0x12, 0x1d,
+	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x75,
+	0x73, 0x65, 0x72, 0x5f, 0x72, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x12, 0x6e, 0x0a,
+	0x0c, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x12, 0x1f, 0x2e,
 	0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e,
-	0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1e, 0x82,
+	0xd3, 0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69,
+	0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x64, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x12, 0x7f, 0x0a,
+	0x10, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x55, 0x73, 0x64,
+	0x74, 0x12, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
+	0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x55, 0x73, 0x64, 0x74, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
+	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74,
+	0x55, 0x73, 0x64, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x23, 0x82, 0xd3, 0xe4, 0x93, 0x02,
+	0x1d, 0x12, 0x1b, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68,
+	0x62, 0x2f, 0x64, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x5f, 0x75, 0x73, 0x64, 0x74, 0x12, 0x8c,
+	0x01, 0x0a, 0x13, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x55,
+	0x73, 0x64, 0x74, 0x54, 0x77, 0x6f, 0x12, 0x26, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
+	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74,
+	0x55, 0x73, 0x64, 0x74, 0x54, 0x77, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x55, 0x73, 0x64, 0x74, 0x54, 0x77, 0x6f, 0x52,
+	0x65, 0x70, 0x6c, 0x79, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61,
+	0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x64, 0x65, 0x70,
+	0x6f, 0x73, 0x69, 0x74, 0x5f, 0x75, 0x73, 0x64, 0x74, 0x5f, 0x74, 0x77, 0x6f, 0x12, 0x72, 0x0a,
+	0x0d, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x12, 0x20,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x1e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x52, 0x65, 0x70, 0x6c, 0x79,
+	0x22, 0x1f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x19, 0x12, 0x17, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61,
+	0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x77, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61,
+	0x77, 0x12, 0x66, 0x0a, 0x0a, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x12,
+	0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
+	0x69, 0x6e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1b,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1c, 0x82, 0xd3, 0xe4,
+	0x93, 0x02, 0x16, 0x12, 0x14, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
+	0x64, 0x68, 0x62, 0x2f, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x12, 0x7f, 0x0a, 0x10, 0x41, 0x64, 0x6d,
+	0x69, 0x6e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x23, 0x2e,
+	0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e,
+	0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x21, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64,
+	0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x23, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d, 0x12, 0x1b, 0x2f,
+	0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x64, 0x61,
+	0x69, 0x6c, 0x79, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x7f, 0x0a, 0x10, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x50, 0x72, 0x69, 0x63, 0x65, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x23,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x50, 0x72, 0x69, 0x63, 0x65, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
+	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x69, 0x63, 0x65, 0x43, 0x68, 0x61, 0x6e, 0x67,
+	0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x23, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d, 0x12, 0x1b,
+	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x70,
+	0x72, 0x69, 0x63, 0x65, 0x5f, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x83, 0x01, 0x0a, 0x11,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x4c, 0x69, 0x73,
+	0x74, 0x12, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
+	0x64, 0x6d, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
+	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72,
+	0x61, 0x77, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x24, 0x82, 0xd3, 0xe4,
+	0x93, 0x02, 0x1e, 0x12, 0x1c, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
+	0x64, 0x68, 0x62, 0x2f, 0x77, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x5f, 0x6c, 0x69, 0x73,
+	0x74, 0x12, 0x71, 0x0a, 0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64,
+	0x4c, 0x69, 0x73, 0x74, 0x12, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
+	0x31, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
+	0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79,
+	0x22, 0x22, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1c, 0x12, 0x1a, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61,
+	0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x5f,
+	0x6c, 0x69, 0x73, 0x74, 0x12, 0x84, 0x01, 0x0a, 0x13, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61,
+	0x6e, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c,
+	0x61, 0x6e, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x70,
+	0x6c, 0x79, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61, 0x70, 0x69,
+	0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x6c, 0x61, 0x6e, 0x64, 0x5f,
+	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x93, 0x01, 0x0a, 0x12,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53,
+	0x65, 0x74, 0x12, 0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53,
+	0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x31,
+	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2b, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64,
+	0x79, 0x22, 0x1e, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68,
+	0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x6c, 0x61, 0x6e, 0x64, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x12, 0x84, 0x01, 0x0a, 0x13, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x65, 0x64, 0x43,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x65, 0x64,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e,
+	0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e,
+	0x53, 0x65, 0x65, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22,
+	0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64,
+	0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x65, 0x64, 0x5f, 0x63, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x93, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d,
+	0x69, 0x6e, 0x53, 0x65, 0x65, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x12,
+	0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
+	0x69, 0x6e, 0x53, 0x65, 0x65, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
+	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x65, 0x64, 0x43, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x31, 0x82, 0xd3, 0xe4,
+	0x93, 0x02, 0x2b, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x1e,
+	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73,
+	0x65, 0x74, 0x5f, 0x73, 0x65, 0x65, 0x64, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x84,
+	0x01, 0x0a, 0x13, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x6f, 0x70, 0x43, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
+	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x6f, 0x70, 0x43, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x6f,
+	0x70, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x27, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e,
+	0x5f, 0x64, 0x68, 0x62, 0x2f, 0x70, 0x72, 0x6f, 0x70, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x5f, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x93, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50,
+	0x72, 0x6f, 0x70, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x12, 0x25, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50,
+	0x72, 0x6f, 0x70, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x53, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
+	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x50, 0x72, 0x6f, 0x70, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x53, 0x65, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x31, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2b,
+	0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x1e, 0x2f, 0x61, 0x70,
+	0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f,
+	0x70, 0x72, 0x6f, 0x70, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x6b, 0x0a, 0x0b, 0x41,
+	0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x77, 0x12, 0x1e, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74,
+	0x47, 0x69, 0x77, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74,
+	0x47, 0x69, 0x77, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x18,
+	0x12, 0x16, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62,
+	0x2f, 0x73, 0x65, 0x74, 0x5f, 0x62, 0x69, 0x77, 0x12, 0x7b, 0x0a, 0x0f, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x53, 0x65, 0x74, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x22, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
+	0x74, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
+	0x69, 0x6e, 0x53, 0x65, 0x74, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x65, 0x70, 0x6c,
+	0x79, 0x22, 0x22, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1c, 0x12, 0x1a, 0x2f, 0x61, 0x70, 0x69, 0x2f,
+	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x61, 0x64,
+	0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x78, 0x0a, 0x0e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
+	0x74, 0x47, 0x69, 0x77, 0x54, 0x77, 0x6f, 0x12, 0x21, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
+	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x77,
+	0x54, 0x77, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74,
+	0x47, 0x69, 0x77, 0x54, 0x77, 0x6f, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x22, 0x82, 0xd3, 0xe4,
+	0x93, 0x02, 0x1c, 0x12, 0x1a, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
+	0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x62, 0x69, 0x77, 0x5f, 0x74, 0x77, 0x6f, 0x12,
+	0x6b, 0x0a, 0x0b, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x74, 0x12, 0x1e,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x53, 0x65, 0x74, 0x47, 0x69, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1e, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e,
+	0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x67, 0x69, 0x77, 0x12, 0x6f, 0x0a, 0x0c,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x55, 0x73, 0x64, 0x74, 0x12, 0x1f, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53,
+	0x65, 0x74, 0x55, 0x73, 0x64, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e,
+	0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e,
+	0x53, 0x65, 0x74, 0x55, 0x73, 0x64, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1f, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x19, 0x12, 0x17, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e,
+	0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x75, 0x73, 0x64, 0x74, 0x12, 0x6b, 0x0a,
+	0x0b, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x56, 0x69, 0x70, 0x12, 0x1e, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53,
+	0x65, 0x74, 0x56, 0x69, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53,
+	0x65, 0x74, 0x56, 0x69, 0x70, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93,
+	0x02, 0x18, 0x12, 0x16, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64,
+	0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x76, 0x69, 0x70, 0x12, 0x7c, 0x0a, 0x0f, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53, 0x65, 0x6c, 0x6c, 0x12, 0x22, 0x2e,
+	0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e,
+	0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53, 0x65, 0x6c, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
 	0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
-	0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65,
+	0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53, 0x65, 0x6c, 0x6c, 0x52, 0x65,
 	0x70, 0x6c, 0x79, 0x22, 0x23, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d, 0x12, 0x1b, 0x2f, 0x61, 0x70,
 	0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f,
-	0x63, 0x61, 0x6e, 0x5f, 0x6c, 0x61, 0x6e, 0x64, 0x12, 0x6f, 0x0a, 0x0c, 0x41, 0x64, 0x6d, 0x69,
-	0x6e, 0x53, 0x65, 0x74, 0x4c, 0x6f, 0x63, 0x6b, 0x12, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61,
-	0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c, 0x6f,
-	0x63, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c,
-	0x6f, 0x63, 0x6b, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x19,
-	0x12, 0x17, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62,
-	0x2f, 0x73, 0x65, 0x74, 0x5f, 0x6c, 0x6f, 0x63, 0x6b, 0x12, 0x8d, 0x01, 0x0a, 0x13, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x54, 0x77, 0x6f, 0x54, 0x68, 0x72, 0x65,
-	0x65, 0x12, 0x26, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
-	0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x54, 0x77, 0x6f, 0x54, 0x68, 0x72,
-	0x65, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4f,
-	0x6e, 0x65, 0x54, 0x77, 0x6f, 0x54, 0x68, 0x72, 0x65, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22,
-	0x28, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x22, 0x12, 0x20, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64,
-	0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x6f, 0x6e, 0x65, 0x5f,
-	0x74, 0x77, 0x6f, 0x5f, 0x74, 0x68, 0x72, 0x65, 0x65, 0x12, 0x88, 0x01, 0x0a, 0x12, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c, 0x6f, 0x63, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64,
-	0x12, 0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c, 0x6f, 0x63, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
-	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c, 0x6f, 0x63,
-	0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x26, 0x82, 0xd3,
-	0xe4, 0x93, 0x02, 0x20, 0x12, 0x1e, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e,
-	0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x6c, 0x6f, 0x63, 0x6b, 0x5f, 0x72, 0x65,
-	0x77, 0x61, 0x72, 0x64, 0x12, 0x6b, 0x0a, 0x0b, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x65, 0x74,
-	0x42, 0x6f, 0x78, 0x12, 0x1e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x65, 0x74, 0x42, 0x6f, 0x78, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x65, 0x74, 0x42, 0x6f, 0x78, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x67, 0x65, 0x74, 0x5f, 0x62, 0x6f,
-	0x78, 0x12, 0x76, 0x0a, 0x0b, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x42, 0x6f, 0x78,
-	0x12, 0x1e, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x42, 0x6f, 0x78, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x1c, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
-	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x42, 0x6f, 0x78, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x29,
-	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x23, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64,
-	0x79, 0x22, 0x16, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68,
-	0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x62, 0x6f, 0x78, 0x12, 0x77, 0x0a, 0x0e, 0x41, 0x64, 0x6d,
-	0x69, 0x6e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x21, 0x2e, 0x61, 0x70,
-	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x65,
-	0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f,
-	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
-	0x6e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22,
-	0x21, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1b, 0x12, 0x19, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64,
-	0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x67, 0x65, 0x74, 0x5f, 0x63, 0x6f, 0x6e, 0x66,
-	0x69, 0x67, 0x12, 0x7b, 0x0a, 0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52,
-	0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
-	0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x77, 0x61,
-	0x72, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64,
-	0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x22, 0x82, 0xd3, 0xe4,
-	0x93, 0x02, 0x1c, 0x12, 0x1a, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
-	0x64, 0x68, 0x62, 0x2f, 0x6c, 0x61, 0x6e, 0x64, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12,
-	0x82, 0x01, 0x0a, 0x0e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66,
-	0x69, 0x67, 0x12, 0x21, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
-	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
-	0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2c, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x26, 0x3a, 0x09,
-	0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x19, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x63, 0x6f,
-	0x6e, 0x66, 0x69, 0x67, 0x12, 0x77, 0x0a, 0x0d, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74,
-	0x51, 0x75, 0x65, 0x75, 0x65, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
-	0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x77, 0x61,
-	0x72, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64,
-	0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x20, 0x82, 0xd3, 0xe4,
-	0x93, 0x02, 0x1a, 0x12, 0x18, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
-	0x64, 0x68, 0x62, 0x2f, 0x71, 0x75, 0x65, 0x75, 0x65, 0x5f, 0x73, 0x65, 0x74, 0x12, 0x7a, 0x0a,
-	0x0c, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c, 0x61, 0x6e, 0x64, 0x12, 0x1f, 0x2e,
-	0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e,
-	0x53, 0x65, 0x74, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d,
-	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
-	0x6e, 0x53, 0x65, 0x74, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2a, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x24, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79,
-	0x22, 0x17, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62,
-	0x2f, 0x73, 0x65, 0x74, 0x5f, 0x6c, 0x61, 0x6e, 0x64, 0x12, 0x7a, 0x0a, 0x0c, 0x41, 0x64, 0x6d,
-	0x69, 0x6e, 0x53, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x70, 0x12, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x50,
-	0x72, 0x6f, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x61, 0x70, 0x69,
-	0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74,
-	0x50, 0x72, 0x6f, 0x70, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2a, 0x82, 0xd3, 0xe4, 0x93, 0x02,
-	0x24, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x17, 0x2f, 0x61,
-	0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74,
-	0x5f, 0x70, 0x72, 0x6f, 0x70, 0x12, 0x7a, 0x0a, 0x0c, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
-	0x74, 0x53, 0x65, 0x65, 0x64, 0x12, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
-	0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x65, 0x64, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
-	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x65, 0x64,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2a, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x24, 0x3a, 0x09, 0x73,
-	0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x17, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61,
-	0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x73, 0x65, 0x65,
-	0x64, 0x12, 0x87, 0x01, 0x0a, 0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x42, 0x75,
-	0x79, 0x4c, 0x61, 0x6e, 0x64, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
-	0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x42, 0x75, 0x79, 0x4c, 0x61,
-	0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x42,
-	0x75, 0x79, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2e, 0x82, 0xd3, 0xe4,
-	0x93, 0x02, 0x28, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x1b,
+	0x63, 0x61, 0x6e, 0x5f, 0x73, 0x65, 0x6c, 0x6c, 0x12, 0x85, 0x01, 0x0a, 0x13, 0x41, 0x64, 0x6d,
+	0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53, 0x65, 0x6c, 0x6c, 0x50, 0x72, 0x6f, 0x70,
+	0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53, 0x65, 0x6c, 0x6c, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
+	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x53, 0x65, 0x6c,
+	0x6c, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x28, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x22, 0x12, 0x20,
 	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73,
-	0x65, 0x74, 0x5f, 0x62, 0x75, 0x79, 0x5f, 0x6c, 0x61, 0x6e, 0x64, 0x12, 0x90, 0x01, 0x0a, 0x10,
-	0x53, 0x65, 0x74, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73,
-	0x12, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x65,
-	0x74, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
-	0x76, 0x31, 0x2e, 0x53, 0x65, 0x74, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61,
-	0x67, 0x65, 0x73, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x34, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2e,
-	0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x21, 0x2f, 0x61, 0x70,
+	0x65, 0x74, 0x5f, 0x63, 0x61, 0x6e, 0x5f, 0x73, 0x65, 0x6c, 0x6c, 0x5f, 0x70, 0x72, 0x6f, 0x70,
+	0x12, 0x89, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e,
+	0x50, 0x6c, 0x61, 0x79, 0x41, 0x64, 0x64, 0x12, 0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70,
+	0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e,
+	0x50, 0x6c, 0x61, 0x79, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x50, 0x6c, 0x61, 0x79, 0x41, 0x64, 0x64, 0x52, 0x65,
+	0x70, 0x6c, 0x79, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61, 0x70,
 	0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f,
-	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x12, 0x9c,
-	0x01, 0x0a, 0x13, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65,
-	0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x12, 0x26, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
-	0x2e, 0x76, 0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d,
-	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24,
-	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65,
-	0x74, 0x65, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x52,
-	0x65, 0x70, 0x6c, 0x79, 0x22, 0x37, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x31, 0x3a, 0x09, 0x73, 0x65,
-	0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x24, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64,
-	0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x5f, 0x61,
-	0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x12, 0x89, 0x01,
-	0x0a, 0x11, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x4c,
-	0x69, 0x73, 0x74, 0x12, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x4c, 0x69,
-	0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73,
-	0x61, 0x67, 0x65, 0x73, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2a, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x24, 0x12, 0x22, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69,
-	0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x6d, 0x65, 0x73, 0x73,
-	0x61, 0x67, 0x65, 0x73, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x42, 0x22, 0x0a, 0x0a, 0x61, 0x70, 0x69,
-	0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x50, 0x01, 0x5a, 0x12, 0x67, 0x61, 0x6d, 0x65, 0x2f,
-	0x61, 0x70, 0x69, 0x2f, 0x61, 0x70, 0x70, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x63, 0x61, 0x6e, 0x5f, 0x70, 0x6c, 0x61, 0x79, 0x5f, 0x61, 0x64, 0x64, 0x12, 0x89, 0x01, 0x0a,
+	0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x50, 0x6c, 0x61, 0x79,
+	0x53, 0x69, 0x78, 0x12, 0x25, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
+	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x50, 0x6c, 0x61, 0x79,
+	0x53, 0x69, 0x78, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74,
+	0x43, 0x61, 0x6e, 0x50, 0x6c, 0x61, 0x79, 0x53, 0x69, 0x78, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22,
+	0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64,
+	0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x63, 0x61, 0x6e, 0x5f,
+	0x70, 0x6c, 0x61, 0x79, 0x5f, 0x73, 0x69, 0x78, 0x12, 0x7c, 0x0a, 0x0f, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x52, 0x65, 0x6e, 0x74, 0x12, 0x22, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
+	0x74, 0x43, 0x61, 0x6e, 0x52, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d,
+	0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61, 0x6e, 0x52, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x70, 0x6c,
+	0x79, 0x22, 0x23, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d, 0x12, 0x1b, 0x2f, 0x61, 0x70, 0x69, 0x2f,
+	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x63, 0x61,
+	0x6e, 0x5f, 0x72, 0x65, 0x6e, 0x74, 0x12, 0x8c, 0x01, 0x0a, 0x13, 0x41, 0x64, 0x6d, 0x69, 0x6e,
+	0x53, 0x65, 0x74, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x4d, 0x61, 0x78, 0x12, 0x26,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x53, 0x65, 0x74, 0x57, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x4d, 0x61, 0x78, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
+	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x57, 0x69, 0x74, 0x68,
+	0x64, 0x72, 0x61, 0x77, 0x4d, 0x61, 0x78, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x27, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e,
+	0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x77, 0x69, 0x74, 0x68, 0x64, 0x72, 0x61,
+	0x77, 0x5f, 0x6d, 0x61, 0x78, 0x12, 0x7c, 0x0a, 0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
+	0x74, 0x43, 0x61, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61,
+	0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x61,
+	0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53,
+	0x65, 0x74, 0x43, 0x61, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x23,
+	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d, 0x12, 0x1b, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d,
+	0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x63, 0x61, 0x6e, 0x5f, 0x6c,
+	0x61, 0x6e, 0x64, 0x12, 0x6f, 0x0a, 0x0c, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c,
+	0x6f, 0x63, 0x6b, 0x12, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31,
+	0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c, 0x6f, 0x63, 0x6b, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
+	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c, 0x6f, 0x63, 0x6b, 0x52, 0x65,
+	0x70, 0x6c, 0x79, 0x22, 0x1f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x19, 0x12, 0x17, 0x2f, 0x61, 0x70,
+	0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f,
+	0x6c, 0x6f, 0x63, 0x6b, 0x12, 0x8d, 0x01, 0x0a, 0x13, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
+	0x74, 0x4f, 0x6e, 0x65, 0x54, 0x77, 0x6f, 0x54, 0x68, 0x72, 0x65, 0x65, 0x12, 0x26, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53,
+	0x65, 0x74, 0x4f, 0x6e, 0x65, 0x54, 0x77, 0x6f, 0x54, 0x68, 0x72, 0x65, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
+	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4f, 0x6e, 0x65, 0x54, 0x77, 0x6f,
+	0x54, 0x68, 0x72, 0x65, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x28, 0x82, 0xd3, 0xe4, 0x93,
+	0x02, 0x22, 0x12, 0x20, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64,
+	0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x6f, 0x6e, 0x65, 0x5f, 0x74, 0x77, 0x6f, 0x5f, 0x74,
+	0x68, 0x72, 0x65, 0x65, 0x12, 0x88, 0x01, 0x0a, 0x12, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
+	0x74, 0x4c, 0x6f, 0x63, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x25, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
+	0x74, 0x4c, 0x6f, 0x63, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x23, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c, 0x6f, 0x63, 0x6b, 0x52, 0x65, 0x77, 0x61,
+	0x72, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x20, 0x12,
+	0x1e, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f,
+	0x73, 0x65, 0x74, 0x5f, 0x6c, 0x6f, 0x63, 0x6b, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12,
+	0x6b, 0x0a, 0x0b, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x65, 0x74, 0x42, 0x6f, 0x78, 0x12, 0x1e,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x47, 0x65, 0x74, 0x42, 0x6f, 0x78, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x47, 0x65, 0x74, 0x42, 0x6f, 0x78, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x1e, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e,
+	0x5f, 0x64, 0x68, 0x62, 0x2f, 0x67, 0x65, 0x74, 0x5f, 0x62, 0x6f, 0x78, 0x12, 0x76, 0x0a, 0x0b,
+	0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x42, 0x6f, 0x78, 0x12, 0x1e, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
+	0x74, 0x42, 0x6f, 0x78, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65,
+	0x74, 0x42, 0x6f, 0x78, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x29, 0x82, 0xd3, 0xe4, 0x93, 0x02,
+	0x23, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x16, 0x2f, 0x61,
+	0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74,
+	0x5f, 0x62, 0x6f, 0x78, 0x12, 0x77, 0x0a, 0x0e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x65, 0x74,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x21, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70,
+	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x47, 0x65, 0x74, 0x43,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x21, 0x82, 0xd3, 0xe4, 0x93,
+	0x02, 0x1b, 0x12, 0x19, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64,
+	0x68, 0x62, 0x2f, 0x67, 0x65, 0x74, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x7b, 0x0a,
+	0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64,
+	0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
+	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x77, 0x61, 0x72,
+	0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x22, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1c, 0x12, 0x1a,
+	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x6c,
+	0x61, 0x6e, 0x64, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x82, 0x01, 0x0a, 0x0e, 0x41,
+	0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x21, 0x2e,
+	0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e,
+	0x53, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x70, 0x6c,
+	0x79, 0x22, 0x2c, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x26, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f,
+	0x62, 0x6f, 0x64, 0x79, 0x22, 0x19, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e,
+	0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12,
+	0x77, 0x0a, 0x0d, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x51, 0x75, 0x65, 0x75, 0x65,
+	0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
+	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x77, 0x61, 0x72,
+	0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x20, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1a, 0x12, 0x18,
+	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x71,
+	0x75, 0x65, 0x75, 0x65, 0x5f, 0x73, 0x65, 0x74, 0x12, 0x7a, 0x0a, 0x0c, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x53, 0x65, 0x74, 0x4c, 0x61, 0x6e, 0x64, 0x12, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61,
+	0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c, 0x61,
+	0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x4c,
+	0x61, 0x6e, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2a, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x24,
+	0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x17, 0x2f, 0x61, 0x70,
+	0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f,
+	0x6c, 0x61, 0x6e, 0x64, 0x12, 0x7a, 0x0a, 0x0c, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74,
+	0x50, 0x72, 0x6f, 0x70, 0x12, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
+	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x70, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
+	0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x70, 0x52,
+	0x65, 0x70, 0x6c, 0x79, 0x22, 0x2a, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x24, 0x3a, 0x09, 0x73, 0x65,
+	0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x17, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64,
+	0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x70, 0x72, 0x6f, 0x70,
+	0x12, 0x7a, 0x0a, 0x0c, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x65, 0x64,
+	0x12, 0x1f, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x1d, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41,
+	0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x53, 0x65, 0x65, 0x64, 0x52, 0x65, 0x70, 0x6c, 0x79,
+	0x22, 0x2a, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x24, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62,
+	0x6f, 0x64, 0x79, 0x22, 0x17, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
+	0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x73, 0x65, 0x65, 0x64, 0x12, 0x87, 0x01, 0x0a,
+	0x0f, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x42, 0x75, 0x79, 0x4c, 0x61, 0x6e, 0x64,
+	0x12, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x42, 0x75, 0x79, 0x4c, 0x61, 0x6e, 0x64, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
+	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x42, 0x75, 0x79, 0x4c, 0x61, 0x6e,
+	0x64, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x28, 0x3a, 0x09,
+	0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x1b, 0x2f, 0x61, 0x70, 0x69, 0x2f,
+	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x62, 0x75,
+	0x79, 0x5f, 0x6c, 0x61, 0x6e, 0x64, 0x12, 0x90, 0x01, 0x0a, 0x10, 0x53, 0x65, 0x74, 0x41, 0x64,
+	0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x12, 0x23, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x65, 0x74, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x21, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x65,
+	0x74, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x52, 0x65,
+	0x70, 0x6c, 0x79, 0x22, 0x34, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2e, 0x3a, 0x09, 0x73, 0x65, 0x6e,
+	0x64, 0x5f, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x21, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d,
+	0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62, 0x2f, 0x73, 0x65, 0x74, 0x5f, 0x61, 0x64, 0x6d, 0x69, 0x6e,
+	0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x12, 0x9c, 0x01, 0x0a, 0x13, 0x44, 0x65,
+	0x6c, 0x65, 0x74, 0x65, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x73, 0x12, 0x26, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x44,
+	0x65, 0x6c, 0x65, 0x74, 0x65, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x41, 0x64, 0x6d,
+	0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22,
+	0x37, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x31, 0x3a, 0x09, 0x73, 0x65, 0x6e, 0x64, 0x5f, 0x62, 0x6f,
+	0x64, 0x79, 0x22, 0x24, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64,
+	0x68, 0x62, 0x2f, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x5f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x12, 0x89, 0x01, 0x0a, 0x11, 0x41, 0x64, 0x6d,
+	0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x24,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69,
+	0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x76,
+	0x31, 0x2e, 0x41, 0x64, 0x6d, 0x69, 0x6e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2a, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x24,
+	0x12, 0x22, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x64, 0x68, 0x62,
+	0x2f, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x5f,
+	0x6c, 0x69, 0x73, 0x74, 0x42, 0x22, 0x0a, 0x0a, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x70, 0x70, 0x2e,
+	0x76, 0x31, 0x50, 0x01, 0x5a, 0x12, 0x67, 0x61, 0x6d, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61,
+	0x70, 0x70, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -17333,7 +17561,7 @@ func file_api_app_v1_app_proto_rawDescGZIP() []byte {
 	return file_api_app_v1_app_proto_rawDescData
 }
 
-var file_api_app_v1_app_proto_msgTypes = make([]protoimpl.MessageInfo, 252)
+var file_api_app_v1_app_proto_msgTypes = make([]protoimpl.MessageInfo, 255)
 var file_api_app_v1_app_proto_goTypes = []interface{}{
 	(*TestSignRequest)(nil),                     // 0: api.app.v1.TestSignRequest
 	(*TestSignReply)(nil),                       // 1: api.app.v1.TestSignReply
@@ -17421,435 +17649,441 @@ var file_api_app_v1_app_proto_goTypes = []interface{}{
 	(*SetLandReply)(nil),                        // 83: api.app.v1.SetLandReply
 	(*AdminLoginRequest)(nil),                   // 84: api.app.v1.AdminLoginRequest
 	(*AdminLoginReply)(nil),                     // 85: api.app.v1.AdminLoginReply
-	(*AdminUserListRequest)(nil),                // 86: api.app.v1.AdminUserListRequest
-	(*AdminUserListReply)(nil),                  // 87: api.app.v1.AdminUserListReply
-	(*AdminUserBuyRequest)(nil),                 // 88: api.app.v1.AdminUserBuyRequest
-	(*AdminUserBuyReply)(nil),                   // 89: api.app.v1.AdminUserBuyReply
-	(*AdminUserLandRequest)(nil),                // 90: api.app.v1.AdminUserLandRequest
-	(*AdminUserLandReply)(nil),                  // 91: api.app.v1.AdminUserLandReply
-	(*AdminSendLandListRequest)(nil),            // 92: api.app.v1.AdminSendLandListRequest
-	(*AdminSendLandListReply)(nil),              // 93: api.app.v1.AdminSendLandListReply
-	(*AdminUserBackListRequest)(nil),            // 94: api.app.v1.AdminUserBackListRequest
-	(*AdminUserBackListReply)(nil),              // 95: api.app.v1.AdminUserBackListReply
-	(*AdminSendListRequest)(nil),                // 96: api.app.v1.AdminSendListRequest
-	(*AdminSendListReply)(nil),                  // 97: api.app.v1.AdminSendListReply
-	(*AdminDepositRequest)(nil),                 // 98: api.app.v1.AdminDepositRequest
-	(*AdminDepositReply)(nil),                   // 99: api.app.v1.AdminDepositReply
-	(*AdminDepositUsdtRequest)(nil),             // 100: api.app.v1.AdminDepositUsdtRequest
-	(*AdminDepositUsdtReply)(nil),               // 101: api.app.v1.AdminDepositUsdtReply
-	(*AdminDepositUsdtTwoRequest)(nil),          // 102: api.app.v1.AdminDepositUsdtTwoRequest
-	(*AdminDepositUsdtTwoReply)(nil),            // 103: api.app.v1.AdminDepositUsdtTwoReply
-	(*AdminDailyRequest)(nil),                   // 104: api.app.v1.AdminDailyRequest
-	(*AdminDailyReply)(nil),                     // 105: api.app.v1.AdminDailyReply
-	(*AdminDailyRewardRequest)(nil),             // 106: api.app.v1.AdminDailyRewardRequest
-	(*AdminDailyRewardReply)(nil),               // 107: api.app.v1.AdminDailyRewardReply
-	(*AdminPriceChangeRequest)(nil),             // 108: api.app.v1.AdminPriceChangeRequest
-	(*AdminPriceChangeReply)(nil),               // 109: api.app.v1.AdminPriceChangeReply
-	(*AdminWithdrawRequest)(nil),                // 110: api.app.v1.AdminWithdrawRequest
-	(*AdminWithdrawReply)(nil),                  // 111: api.app.v1.AdminWithdrawReply
-	(*AdminWithdrawListRequest)(nil),            // 112: api.app.v1.AdminWithdrawListRequest
-	(*AdminWithdrawListReply)(nil),              // 113: api.app.v1.AdminWithdrawListReply
-	(*RecordListRequest)(nil),                   // 114: api.app.v1.RecordListRequest
-	(*RecordListReply)(nil),                     // 115: api.app.v1.RecordListReply
-	(*AdminRewardListTwoRequest)(nil),           // 116: api.app.v1.AdminRewardListTwoRequest
-	(*AdminRewardListTwoReply)(nil),             // 117: api.app.v1.AdminRewardListTwoReply
-	(*AdminRewardListRequest)(nil),              // 118: api.app.v1.AdminRewardListRequest
-	(*AdminRewardListReply)(nil),                // 119: api.app.v1.AdminRewardListReply
-	(*AdminLandConfigRequest)(nil),              // 120: api.app.v1.AdminLandConfigRequest
-	(*AdminLandConfigReply)(nil),                // 121: api.app.v1.AdminLandConfigReply
-	(*AdminLandConfigSetRequest)(nil),           // 122: api.app.v1.AdminLandConfigSetRequest
-	(*AdminLandConfigSetReply)(nil),             // 123: api.app.v1.AdminLandConfigSetReply
-	(*AdminSeedConfigRequest)(nil),              // 124: api.app.v1.AdminSeedConfigRequest
-	(*AdminSeedConfigReply)(nil),                // 125: api.app.v1.AdminSeedConfigReply
-	(*AdminMessagesListRequest)(nil),            // 126: api.app.v1.AdminMessagesListRequest
-	(*AdminMessagesListReply)(nil),              // 127: api.app.v1.AdminMessagesListReply
-	(*AdminSeedConfigSetRequest)(nil),           // 128: api.app.v1.AdminSeedConfigSetRequest
-	(*AdminSeedConfigSetReply)(nil),             // 129: api.app.v1.AdminSeedConfigSetReply
-	(*AdminPropConfigRequest)(nil),              // 130: api.app.v1.AdminPropConfigRequest
-	(*AdminPropConfigReply)(nil),                // 131: api.app.v1.AdminPropConfigReply
-	(*AdminPropConfigSetRequest)(nil),           // 132: api.app.v1.AdminPropConfigSetRequest
-	(*AdminPropConfigSetReply)(nil),             // 133: api.app.v1.AdminPropConfigSetReply
-	(*AdminUserRecommendRequest)(nil),           // 134: api.app.v1.AdminUserRecommendRequest
-	(*AdminUserRecommendReply)(nil),             // 135: api.app.v1.AdminUserRecommendReply
-	(*AdminSetAddressRequest)(nil),              // 136: api.app.v1.AdminSetAddressRequest
-	(*AdminSetAddressReply)(nil),                // 137: api.app.v1.AdminSetAddressReply
-	(*AdminSetGiwRequest)(nil),                  // 138: api.app.v1.AdminSetGiwRequest
-	(*AdminSetGiwReply)(nil),                    // 139: api.app.v1.AdminSetGiwReply
-	(*AdminSetGiwTwoRequest)(nil),               // 140: api.app.v1.AdminSetGiwTwoRequest
-	(*AdminSetGiwTwoReply)(nil),                 // 141: api.app.v1.AdminSetGiwTwoReply
-	(*AdminSetGitRequest)(nil),                  // 142: api.app.v1.AdminSetGitRequest
-	(*AdminSetGitReply)(nil),                    // 143: api.app.v1.AdminSetGitReply
-	(*AdminSetUsdtRequest)(nil),                 // 144: api.app.v1.AdminSetUsdtRequest
-	(*AdminSetUsdtReply)(nil),                   // 145: api.app.v1.AdminSetUsdtReply
-	(*AdminSetVipRequest)(nil),                  // 146: api.app.v1.AdminSetVipRequest
-	(*AdminSetVipReply)(nil),                    // 147: api.app.v1.AdminSetVipReply
-	(*AdminSetCanSellRequest)(nil),              // 148: api.app.v1.AdminSetCanSellRequest
-	(*AdminSetCanSellReply)(nil),                // 149: api.app.v1.AdminSetCanSellReply
-	(*AdminSetCanPlayAddRequest)(nil),           // 150: api.app.v1.AdminSetCanPlayAddRequest
-	(*AdminSetCanPlayAddReply)(nil),             // 151: api.app.v1.AdminSetCanPlayAddReply
-	(*AdminSetCanPlaySixRequest)(nil),           // 152: api.app.v1.AdminSetCanPlaySixRequest
-	(*AdminSetCanPlaySixReply)(nil),             // 153: api.app.v1.AdminSetCanPlaySixReply
-	(*AdminSetCanRentRequest)(nil),              // 154: api.app.v1.AdminSetCanRentRequest
-	(*AdminSetCanRentReply)(nil),                // 155: api.app.v1.AdminSetCanRentReply
-	(*AdminSetWithdrawMaxRequest)(nil),          // 156: api.app.v1.AdminSetWithdrawMaxRequest
-	(*AdminSetWithdrawMaxReply)(nil),            // 157: api.app.v1.AdminSetWithdrawMaxReply
-	(*AdminSetCanLandRequest)(nil),              // 158: api.app.v1.AdminSetCanLandRequest
-	(*AdminSetCanLandReply)(nil),                // 159: api.app.v1.AdminSetCanLandReply
-	(*AdminSetLockRequest)(nil),                 // 160: api.app.v1.AdminSetLockRequest
-	(*AdminSetLockReply)(nil),                   // 161: api.app.v1.AdminSetLockReply
-	(*AdminSetOneTwoThreeRequest)(nil),          // 162: api.app.v1.AdminSetOneTwoThreeRequest
-	(*AdminSetOneTwoThreeReply)(nil),            // 163: api.app.v1.AdminSetOneTwoThreeReply
-	(*AdminSetLockRewardRequest)(nil),           // 164: api.app.v1.AdminSetLockRewardRequest
-	(*AdminSetLockRewardReply)(nil),             // 165: api.app.v1.AdminSetLockRewardReply
-	(*AdminGetBoxRequest)(nil),                  // 166: api.app.v1.AdminGetBoxRequest
-	(*AdminGetBoxReply)(nil),                    // 167: api.app.v1.AdminGetBoxReply
-	(*AdminSetBoxRequest)(nil),                  // 168: api.app.v1.AdminSetBoxRequest
-	(*AdminSetBoxReply)(nil),                    // 169: api.app.v1.AdminSetBoxReply
-	(*AdminGetConfigRequest)(nil),               // 170: api.app.v1.AdminGetConfigRequest
-	(*AdminGetConfigReply)(nil),                 // 171: api.app.v1.AdminGetConfigReply
-	(*AdminLandRewardRequest)(nil),              // 172: api.app.v1.AdminLandRewardRequest
-	(*AdminLandRewardReply)(nil),                // 173: api.app.v1.AdminLandRewardReply
-	(*AdminSetConfigRequest)(nil),               // 174: api.app.v1.AdminSetConfigRequest
-	(*AdminSetConfigReply)(nil),                 // 175: api.app.v1.AdminSetConfigReply
-	(*AdminSetLandRequest)(nil),                 // 176: api.app.v1.AdminSetLandRequest
-	(*AdminSetLandReply)(nil),                   // 177: api.app.v1.AdminSetLandReply
-	(*AdminSetSeedRequest)(nil),                 // 178: api.app.v1.AdminSetSeedRequest
-	(*AdminSetSeedReply)(nil),                   // 179: api.app.v1.AdminSetSeedReply
-	(*AdminSetBuyLandRequest)(nil),              // 180: api.app.v1.AdminSetBuyLandRequest
-	(*AdminSetBuyLandReply)(nil),                // 181: api.app.v1.AdminSetBuyLandReply
-	(*SetAdminMessagesRequest)(nil),             // 182: api.app.v1.SetAdminMessagesRequest
-	(*SetAdminMessagesReply)(nil),               // 183: api.app.v1.SetAdminMessagesReply
-	(*DeleteAdminMessagesRequest)(nil),          // 184: api.app.v1.DeleteAdminMessagesRequest
-	(*DeleteAdminMessagesReply)(nil),            // 185: api.app.v1.DeleteAdminMessagesReply
-	(*AdminSetPropRequest)(nil),                 // 186: api.app.v1.AdminSetPropRequest
-	(*AdminSetPropReply)(nil),                   // 187: api.app.v1.AdminSetPropReply
-	(*EthAuthorizeRequest_SendBody)(nil),        // 188: api.app.v1.EthAuthorizeRequest.SendBody
-	(*UserRecommendReply_List)(nil),             // 189: api.app.v1.UserRecommendReply.List
-	(*UserRecommendLReply_List)(nil),            // 190: api.app.v1.UserRecommendLReply.List
-	(*UserLandReply_List)(nil),                  // 191: api.app.v1.UserLandReply.List
-	(*UserStakeGitRewardListReply_List)(nil),    // 192: api.app.v1.UserStakeGitRewardListReply.List
-	(*UserStakeGitStakeListReply_List)(nil),     // 193: api.app.v1.UserStakeGitStakeListReply.List
-	(*UserBoxListReply_List)(nil),               // 194: api.app.v1.UserBoxListReply.List
-	(*UserBackListReply_List)(nil),              // 195: api.app.v1.UserBackListReply.List
-	(*UserMarketSeedListReply_List)(nil),        // 196: api.app.v1.UserMarketSeedListReply.List
-	(*UserMarketLandListReply_List)(nil),        // 197: api.app.v1.UserMarketLandListReply.List
-	(*UserMarketPropListReply_List)(nil),        // 198: api.app.v1.UserMarketPropListReply.List
-	(*UserMarketRentLandListReply_List)(nil),    // 199: api.app.v1.UserMarketRentLandListReply.List
-	(*UserMyMarketListReply_List)(nil),          // 200: api.app.v1.UserMyMarketListReply.List
-	(*UserNoticeListReply_List)(nil),            // 201: api.app.v1.UserNoticeListReply.List
-	(*UserStakeRewardListReply_List)(nil),       // 202: api.app.v1.UserStakeRewardListReply.List
-	(*UserIndexListReply_List)(nil),             // 203: api.app.v1.UserIndexListReply.List
-	(*UserOrderListReply_List)(nil),             // 204: api.app.v1.UserOrderListReply.List
-	(*WithdrawRequest_SendBody)(nil),            // 205: api.app.v1.WithdrawRequest.SendBody
-	(*ExchangeRequest_SendBody)(nil),            // 206: api.app.v1.ExchangeRequest.SendBody
-	(*GetLandRequest_SendBody)(nil),             // 207: api.app.v1.GetLandRequest.SendBody
-	(*StakeGitRequest_SendBody)(nil),            // 208: api.app.v1.StakeGitRequest.SendBody
-	(*BuyBoxRequest_SendBody)(nil),              // 209: api.app.v1.BuyBoxRequest.SendBody
-	(*OpenBoxRequest_SendBody)(nil),             // 210: api.app.v1.OpenBoxRequest.SendBody
-	(*SellRequest_SendBody)(nil),                // 211: api.app.v1.SellRequest.SendBody
-	(*BuyRequest_SendBody)(nil),                 // 212: api.app.v1.BuyRequest.SendBody
-	(*RentLandRequest_SendBody)(nil),            // 213: api.app.v1.RentLandRequest.SendBody
-	(*LandAddOutRateRequest_SendBody)(nil),      // 214: api.app.v1.LandAddOutRateRequest.SendBody
-	(*StakeGetRequest_SendBody)(nil),            // 215: api.app.v1.StakeGetRequest.SendBody
-	(*StakeGetPlayRequest_SendBody)(nil),        // 216: api.app.v1.StakeGetPlayRequest.SendBody
-	(*LandPlayRequest_SendBody)(nil),            // 217: api.app.v1.LandPlayRequest.SendBody
-	(*LandPlayOneRequest_SendBody)(nil),         // 218: api.app.v1.LandPlayOneRequest.SendBody
-	(*LandPlayTwoRequest_SendBody)(nil),         // 219: api.app.v1.LandPlayTwoRequest.SendBody
-	(*LandPlayThreeRequest_SendBody)(nil),       // 220: api.app.v1.LandPlayThreeRequest.SendBody
-	(*LandPlayFourRequest_SendBody)(nil),        // 221: api.app.v1.LandPlayFourRequest.SendBody
-	(*LandPlayFiveRequest_SendBody)(nil),        // 222: api.app.v1.LandPlayFiveRequest.SendBody
-	(*LandPlaySixRequest_SendBody)(nil),         // 223: api.app.v1.LandPlaySixRequest.SendBody
-	(*LandPlaySevenRequest_SendBody)(nil),       // 224: api.app.v1.LandPlaySevenRequest.SendBody
-	(*AdminLoginRequest_SendBody)(nil),          // 225: api.app.v1.AdminLoginRequest.SendBody
-	(*AdminUserListReply_List)(nil),             // 226: api.app.v1.AdminUserListReply.List
-	(*AdminUserLandReply_List)(nil),             // 227: api.app.v1.AdminUserLandReply.List
-	(*AdminSendLandListReply_List)(nil),         // 228: api.app.v1.AdminSendLandListReply.List
-	(*AdminUserBackListReply_List)(nil),         // 229: api.app.v1.AdminUserBackListReply.List
-	(*AdminSendListReply_List)(nil),             // 230: api.app.v1.AdminSendListReply.List
-	(*AdminWithdrawListReply_List)(nil),         // 231: api.app.v1.AdminWithdrawListReply.List
-	(*RecordListReply_List)(nil),                // 232: api.app.v1.RecordListReply.List
-	(*AdminRewardListTwoReply_List)(nil),        // 233: api.app.v1.AdminRewardListTwoReply.List
-	(*AdminRewardListReply_List)(nil),           // 234: api.app.v1.AdminRewardListReply.List
-	(*AdminLandConfigReply_List)(nil),           // 235: api.app.v1.AdminLandConfigReply.List
-	(*AdminLandConfigSetRequest_SendBody)(nil),  // 236: api.app.v1.AdminLandConfigSetRequest.SendBody
-	(*AdminSeedConfigReply_List)(nil),           // 237: api.app.v1.AdminSeedConfigReply.List
-	(*AdminMessagesListReply_List)(nil),         // 238: api.app.v1.AdminMessagesListReply.List
-	(*AdminSeedConfigSetRequest_SendBody)(nil),  // 239: api.app.v1.AdminSeedConfigSetRequest.SendBody
-	(*AdminPropConfigReply_List)(nil),           // 240: api.app.v1.AdminPropConfigReply.List
-	(*AdminPropConfigSetRequest_SendBody)(nil),  // 241: api.app.v1.AdminPropConfigSetRequest.SendBody
-	(*AdminUserRecommendReply_List)(nil),        // 242: api.app.v1.AdminUserRecommendReply.List
-	(*AdminSetBoxRequest_SendBody)(nil),         // 243: api.app.v1.AdminSetBoxRequest.SendBody
-	(*AdminGetConfigReply_List)(nil),            // 244: api.app.v1.AdminGetConfigReply.List
-	(*AdminSetConfigRequest_SendBody)(nil),      // 245: api.app.v1.AdminSetConfigRequest.SendBody
-	(*AdminSetLandRequest_SendBody)(nil),        // 246: api.app.v1.AdminSetLandRequest.SendBody
-	(*AdminSetSeedRequest_SendBody)(nil),        // 247: api.app.v1.AdminSetSeedRequest.SendBody
-	(*AdminSetBuyLandRequest_SendBody)(nil),     // 248: api.app.v1.AdminSetBuyLandRequest.SendBody
-	(*SetAdminMessagesRequest_SendBody)(nil),    // 249: api.app.v1.SetAdminMessagesRequest.SendBody
-	(*DeleteAdminMessagesRequest_SendBody)(nil), // 250: api.app.v1.DeleteAdminMessagesRequest.SendBody
-	(*AdminSetPropRequest_SendBody)(nil),        // 251: api.app.v1.AdminSetPropRequest.SendBody
+	(*AdminUserStakeListRequest)(nil),           // 86: api.app.v1.AdminUserStakeListRequest
+	(*AdminUserStakeListReply)(nil),             // 87: api.app.v1.AdminUserStakeListReply
+	(*AdminUserListRequest)(nil),                // 88: api.app.v1.AdminUserListRequest
+	(*AdminUserListReply)(nil),                  // 89: api.app.v1.AdminUserListReply
+	(*AdminUserBuyRequest)(nil),                 // 90: api.app.v1.AdminUserBuyRequest
+	(*AdminUserBuyReply)(nil),                   // 91: api.app.v1.AdminUserBuyReply
+	(*AdminUserLandRequest)(nil),                // 92: api.app.v1.AdminUserLandRequest
+	(*AdminUserLandReply)(nil),                  // 93: api.app.v1.AdminUserLandReply
+	(*AdminSendLandListRequest)(nil),            // 94: api.app.v1.AdminSendLandListRequest
+	(*AdminSendLandListReply)(nil),              // 95: api.app.v1.AdminSendLandListReply
+	(*AdminUserBackListRequest)(nil),            // 96: api.app.v1.AdminUserBackListRequest
+	(*AdminUserBackListReply)(nil),              // 97: api.app.v1.AdminUserBackListReply
+	(*AdminSendListRequest)(nil),                // 98: api.app.v1.AdminSendListRequest
+	(*AdminSendListReply)(nil),                  // 99: api.app.v1.AdminSendListReply
+	(*AdminDepositRequest)(nil),                 // 100: api.app.v1.AdminDepositRequest
+	(*AdminDepositReply)(nil),                   // 101: api.app.v1.AdminDepositReply
+	(*AdminDepositUsdtRequest)(nil),             // 102: api.app.v1.AdminDepositUsdtRequest
+	(*AdminDepositUsdtReply)(nil),               // 103: api.app.v1.AdminDepositUsdtReply
+	(*AdminDepositUsdtTwoRequest)(nil),          // 104: api.app.v1.AdminDepositUsdtTwoRequest
+	(*AdminDepositUsdtTwoReply)(nil),            // 105: api.app.v1.AdminDepositUsdtTwoReply
+	(*AdminDailyRequest)(nil),                   // 106: api.app.v1.AdminDailyRequest
+	(*AdminDailyReply)(nil),                     // 107: api.app.v1.AdminDailyReply
+	(*AdminDailyRewardRequest)(nil),             // 108: api.app.v1.AdminDailyRewardRequest
+	(*AdminDailyRewardReply)(nil),               // 109: api.app.v1.AdminDailyRewardReply
+	(*AdminPriceChangeRequest)(nil),             // 110: api.app.v1.AdminPriceChangeRequest
+	(*AdminPriceChangeReply)(nil),               // 111: api.app.v1.AdminPriceChangeReply
+	(*AdminWithdrawRequest)(nil),                // 112: api.app.v1.AdminWithdrawRequest
+	(*AdminWithdrawReply)(nil),                  // 113: api.app.v1.AdminWithdrawReply
+	(*AdminWithdrawListRequest)(nil),            // 114: api.app.v1.AdminWithdrawListRequest
+	(*AdminWithdrawListReply)(nil),              // 115: api.app.v1.AdminWithdrawListReply
+	(*RecordListRequest)(nil),                   // 116: api.app.v1.RecordListRequest
+	(*RecordListReply)(nil),                     // 117: api.app.v1.RecordListReply
+	(*AdminRewardListTwoRequest)(nil),           // 118: api.app.v1.AdminRewardListTwoRequest
+	(*AdminRewardListTwoReply)(nil),             // 119: api.app.v1.AdminRewardListTwoReply
+	(*AdminRewardListRequest)(nil),              // 120: api.app.v1.AdminRewardListRequest
+	(*AdminRewardListReply)(nil),                // 121: api.app.v1.AdminRewardListReply
+	(*AdminLandConfigRequest)(nil),              // 122: api.app.v1.AdminLandConfigRequest
+	(*AdminLandConfigReply)(nil),                // 123: api.app.v1.AdminLandConfigReply
+	(*AdminLandConfigSetRequest)(nil),           // 124: api.app.v1.AdminLandConfigSetRequest
+	(*AdminLandConfigSetReply)(nil),             // 125: api.app.v1.AdminLandConfigSetReply
+	(*AdminSeedConfigRequest)(nil),              // 126: api.app.v1.AdminSeedConfigRequest
+	(*AdminSeedConfigReply)(nil),                // 127: api.app.v1.AdminSeedConfigReply
+	(*AdminMessagesListRequest)(nil),            // 128: api.app.v1.AdminMessagesListRequest
+	(*AdminMessagesListReply)(nil),              // 129: api.app.v1.AdminMessagesListReply
+	(*AdminSeedConfigSetRequest)(nil),           // 130: api.app.v1.AdminSeedConfigSetRequest
+	(*AdminSeedConfigSetReply)(nil),             // 131: api.app.v1.AdminSeedConfigSetReply
+	(*AdminPropConfigRequest)(nil),              // 132: api.app.v1.AdminPropConfigRequest
+	(*AdminPropConfigReply)(nil),                // 133: api.app.v1.AdminPropConfigReply
+	(*AdminPropConfigSetRequest)(nil),           // 134: api.app.v1.AdminPropConfigSetRequest
+	(*AdminPropConfigSetReply)(nil),             // 135: api.app.v1.AdminPropConfigSetReply
+	(*AdminUserRecommendRequest)(nil),           // 136: api.app.v1.AdminUserRecommendRequest
+	(*AdminUserRecommendReply)(nil),             // 137: api.app.v1.AdminUserRecommendReply
+	(*AdminSetAddressRequest)(nil),              // 138: api.app.v1.AdminSetAddressRequest
+	(*AdminSetAddressReply)(nil),                // 139: api.app.v1.AdminSetAddressReply
+	(*AdminSetGiwRequest)(nil),                  // 140: api.app.v1.AdminSetGiwRequest
+	(*AdminSetGiwReply)(nil),                    // 141: api.app.v1.AdminSetGiwReply
+	(*AdminSetGiwTwoRequest)(nil),               // 142: api.app.v1.AdminSetGiwTwoRequest
+	(*AdminSetGiwTwoReply)(nil),                 // 143: api.app.v1.AdminSetGiwTwoReply
+	(*AdminSetGitRequest)(nil),                  // 144: api.app.v1.AdminSetGitRequest
+	(*AdminSetGitReply)(nil),                    // 145: api.app.v1.AdminSetGitReply
+	(*AdminSetUsdtRequest)(nil),                 // 146: api.app.v1.AdminSetUsdtRequest
+	(*AdminSetUsdtReply)(nil),                   // 147: api.app.v1.AdminSetUsdtReply
+	(*AdminSetVipRequest)(nil),                  // 148: api.app.v1.AdminSetVipRequest
+	(*AdminSetVipReply)(nil),                    // 149: api.app.v1.AdminSetVipReply
+	(*AdminSetCanSellRequest)(nil),              // 150: api.app.v1.AdminSetCanSellRequest
+	(*AdminSetCanSellReply)(nil),                // 151: api.app.v1.AdminSetCanSellReply
+	(*AdminSetCanPlayAddRequest)(nil),           // 152: api.app.v1.AdminSetCanPlayAddRequest
+	(*AdminSetCanPlayAddReply)(nil),             // 153: api.app.v1.AdminSetCanPlayAddReply
+	(*AdminSetCanPlaySixRequest)(nil),           // 154: api.app.v1.AdminSetCanPlaySixRequest
+	(*AdminSetCanPlaySixReply)(nil),             // 155: api.app.v1.AdminSetCanPlaySixReply
+	(*AdminSetCanRentRequest)(nil),              // 156: api.app.v1.AdminSetCanRentRequest
+	(*AdminSetCanRentReply)(nil),                // 157: api.app.v1.AdminSetCanRentReply
+	(*AdminSetWithdrawMaxRequest)(nil),          // 158: api.app.v1.AdminSetWithdrawMaxRequest
+	(*AdminSetWithdrawMaxReply)(nil),            // 159: api.app.v1.AdminSetWithdrawMaxReply
+	(*AdminSetCanLandRequest)(nil),              // 160: api.app.v1.AdminSetCanLandRequest
+	(*AdminSetCanLandReply)(nil),                // 161: api.app.v1.AdminSetCanLandReply
+	(*AdminSetLockRequest)(nil),                 // 162: api.app.v1.AdminSetLockRequest
+	(*AdminSetLockReply)(nil),                   // 163: api.app.v1.AdminSetLockReply
+	(*AdminSetOneTwoThreeRequest)(nil),          // 164: api.app.v1.AdminSetOneTwoThreeRequest
+	(*AdminSetOneTwoThreeReply)(nil),            // 165: api.app.v1.AdminSetOneTwoThreeReply
+	(*AdminSetLockRewardRequest)(nil),           // 166: api.app.v1.AdminSetLockRewardRequest
+	(*AdminSetLockRewardReply)(nil),             // 167: api.app.v1.AdminSetLockRewardReply
+	(*AdminGetBoxRequest)(nil),                  // 168: api.app.v1.AdminGetBoxRequest
+	(*AdminGetBoxReply)(nil),                    // 169: api.app.v1.AdminGetBoxReply
+	(*AdminSetBoxRequest)(nil),                  // 170: api.app.v1.AdminSetBoxRequest
+	(*AdminSetBoxReply)(nil),                    // 171: api.app.v1.AdminSetBoxReply
+	(*AdminGetConfigRequest)(nil),               // 172: api.app.v1.AdminGetConfigRequest
+	(*AdminGetConfigReply)(nil),                 // 173: api.app.v1.AdminGetConfigReply
+	(*AdminLandRewardRequest)(nil),              // 174: api.app.v1.AdminLandRewardRequest
+	(*AdminLandRewardReply)(nil),                // 175: api.app.v1.AdminLandRewardReply
+	(*AdminSetConfigRequest)(nil),               // 176: api.app.v1.AdminSetConfigRequest
+	(*AdminSetConfigReply)(nil),                 // 177: api.app.v1.AdminSetConfigReply
+	(*AdminSetLandRequest)(nil),                 // 178: api.app.v1.AdminSetLandRequest
+	(*AdminSetLandReply)(nil),                   // 179: api.app.v1.AdminSetLandReply
+	(*AdminSetSeedRequest)(nil),                 // 180: api.app.v1.AdminSetSeedRequest
+	(*AdminSetSeedReply)(nil),                   // 181: api.app.v1.AdminSetSeedReply
+	(*AdminSetBuyLandRequest)(nil),              // 182: api.app.v1.AdminSetBuyLandRequest
+	(*AdminSetBuyLandReply)(nil),                // 183: api.app.v1.AdminSetBuyLandReply
+	(*SetAdminMessagesRequest)(nil),             // 184: api.app.v1.SetAdminMessagesRequest
+	(*SetAdminMessagesReply)(nil),               // 185: api.app.v1.SetAdminMessagesReply
+	(*DeleteAdminMessagesRequest)(nil),          // 186: api.app.v1.DeleteAdminMessagesRequest
+	(*DeleteAdminMessagesReply)(nil),            // 187: api.app.v1.DeleteAdminMessagesReply
+	(*AdminSetPropRequest)(nil),                 // 188: api.app.v1.AdminSetPropRequest
+	(*AdminSetPropReply)(nil),                   // 189: api.app.v1.AdminSetPropReply
+	(*EthAuthorizeRequest_SendBody)(nil),        // 190: api.app.v1.EthAuthorizeRequest.SendBody
+	(*UserRecommendReply_List)(nil),             // 191: api.app.v1.UserRecommendReply.List
+	(*UserRecommendLReply_List)(nil),            // 192: api.app.v1.UserRecommendLReply.List
+	(*UserLandReply_List)(nil),                  // 193: api.app.v1.UserLandReply.List
+	(*UserStakeGitRewardListReply_List)(nil),    // 194: api.app.v1.UserStakeGitRewardListReply.List
+	(*UserStakeGitStakeListReply_List)(nil),     // 195: api.app.v1.UserStakeGitStakeListReply.List
+	(*UserBoxListReply_List)(nil),               // 196: api.app.v1.UserBoxListReply.List
+	(*UserBackListReply_List)(nil),              // 197: api.app.v1.UserBackListReply.List
+	(*UserMarketSeedListReply_List)(nil),        // 198: api.app.v1.UserMarketSeedListReply.List
+	(*UserMarketLandListReply_List)(nil),        // 199: api.app.v1.UserMarketLandListReply.List
+	(*UserMarketPropListReply_List)(nil),        // 200: api.app.v1.UserMarketPropListReply.List
+	(*UserMarketRentLandListReply_List)(nil),    // 201: api.app.v1.UserMarketRentLandListReply.List
+	(*UserMyMarketListReply_List)(nil),          // 202: api.app.v1.UserMyMarketListReply.List
+	(*UserNoticeListReply_List)(nil),            // 203: api.app.v1.UserNoticeListReply.List
+	(*UserStakeRewardListReply_List)(nil),       // 204: api.app.v1.UserStakeRewardListReply.List
+	(*UserIndexListReply_List)(nil),             // 205: api.app.v1.UserIndexListReply.List
+	(*UserOrderListReply_List)(nil),             // 206: api.app.v1.UserOrderListReply.List
+	(*WithdrawRequest_SendBody)(nil),            // 207: api.app.v1.WithdrawRequest.SendBody
+	(*ExchangeRequest_SendBody)(nil),            // 208: api.app.v1.ExchangeRequest.SendBody
+	(*GetLandRequest_SendBody)(nil),             // 209: api.app.v1.GetLandRequest.SendBody
+	(*StakeGitRequest_SendBody)(nil),            // 210: api.app.v1.StakeGitRequest.SendBody
+	(*BuyBoxRequest_SendBody)(nil),              // 211: api.app.v1.BuyBoxRequest.SendBody
+	(*OpenBoxRequest_SendBody)(nil),             // 212: api.app.v1.OpenBoxRequest.SendBody
+	(*SellRequest_SendBody)(nil),                // 213: api.app.v1.SellRequest.SendBody
+	(*BuyRequest_SendBody)(nil),                 // 214: api.app.v1.BuyRequest.SendBody
+	(*RentLandRequest_SendBody)(nil),            // 215: api.app.v1.RentLandRequest.SendBody
+	(*LandAddOutRateRequest_SendBody)(nil),      // 216: api.app.v1.LandAddOutRateRequest.SendBody
+	(*StakeGetRequest_SendBody)(nil),            // 217: api.app.v1.StakeGetRequest.SendBody
+	(*StakeGetPlayRequest_SendBody)(nil),        // 218: api.app.v1.StakeGetPlayRequest.SendBody
+	(*LandPlayRequest_SendBody)(nil),            // 219: api.app.v1.LandPlayRequest.SendBody
+	(*LandPlayOneRequest_SendBody)(nil),         // 220: api.app.v1.LandPlayOneRequest.SendBody
+	(*LandPlayTwoRequest_SendBody)(nil),         // 221: api.app.v1.LandPlayTwoRequest.SendBody
+	(*LandPlayThreeRequest_SendBody)(nil),       // 222: api.app.v1.LandPlayThreeRequest.SendBody
+	(*LandPlayFourRequest_SendBody)(nil),        // 223: api.app.v1.LandPlayFourRequest.SendBody
+	(*LandPlayFiveRequest_SendBody)(nil),        // 224: api.app.v1.LandPlayFiveRequest.SendBody
+	(*LandPlaySixRequest_SendBody)(nil),         // 225: api.app.v1.LandPlaySixRequest.SendBody
+	(*LandPlaySevenRequest_SendBody)(nil),       // 226: api.app.v1.LandPlaySevenRequest.SendBody
+	(*AdminLoginRequest_SendBody)(nil),          // 227: api.app.v1.AdminLoginRequest.SendBody
+	(*AdminUserStakeListReply_ListStake)(nil),   // 228: api.app.v1.AdminUserStakeListReply.ListStake
+	(*AdminUserListReply_List)(nil),             // 229: api.app.v1.AdminUserListReply.List
+	(*AdminUserLandReply_List)(nil),             // 230: api.app.v1.AdminUserLandReply.List
+	(*AdminSendLandListReply_List)(nil),         // 231: api.app.v1.AdminSendLandListReply.List
+	(*AdminUserBackListReply_List)(nil),         // 232: api.app.v1.AdminUserBackListReply.List
+	(*AdminSendListReply_List)(nil),             // 233: api.app.v1.AdminSendListReply.List
+	(*AdminWithdrawListReply_List)(nil),         // 234: api.app.v1.AdminWithdrawListReply.List
+	(*RecordListReply_List)(nil),                // 235: api.app.v1.RecordListReply.List
+	(*AdminRewardListTwoReply_List)(nil),        // 236: api.app.v1.AdminRewardListTwoReply.List
+	(*AdminRewardListReply_List)(nil),           // 237: api.app.v1.AdminRewardListReply.List
+	(*AdminLandConfigReply_List)(nil),           // 238: api.app.v1.AdminLandConfigReply.List
+	(*AdminLandConfigSetRequest_SendBody)(nil),  // 239: api.app.v1.AdminLandConfigSetRequest.SendBody
+	(*AdminSeedConfigReply_List)(nil),           // 240: api.app.v1.AdminSeedConfigReply.List
+	(*AdminMessagesListReply_List)(nil),         // 241: api.app.v1.AdminMessagesListReply.List
+	(*AdminSeedConfigSetRequest_SendBody)(nil),  // 242: api.app.v1.AdminSeedConfigSetRequest.SendBody
+	(*AdminPropConfigReply_List)(nil),           // 243: api.app.v1.AdminPropConfigReply.List
+	(*AdminPropConfigSetRequest_SendBody)(nil),  // 244: api.app.v1.AdminPropConfigSetRequest.SendBody
+	(*AdminUserRecommendReply_List)(nil),        // 245: api.app.v1.AdminUserRecommendReply.List
+	(*AdminSetBoxRequest_SendBody)(nil),         // 246: api.app.v1.AdminSetBoxRequest.SendBody
+	(*AdminGetConfigReply_List)(nil),            // 247: api.app.v1.AdminGetConfigReply.List
+	(*AdminSetConfigRequest_SendBody)(nil),      // 248: api.app.v1.AdminSetConfigRequest.SendBody
+	(*AdminSetLandRequest_SendBody)(nil),        // 249: api.app.v1.AdminSetLandRequest.SendBody
+	(*AdminSetSeedRequest_SendBody)(nil),        // 250: api.app.v1.AdminSetSeedRequest.SendBody
+	(*AdminSetBuyLandRequest_SendBody)(nil),     // 251: api.app.v1.AdminSetBuyLandRequest.SendBody
+	(*SetAdminMessagesRequest_SendBody)(nil),    // 252: api.app.v1.SetAdminMessagesRequest.SendBody
+	(*DeleteAdminMessagesRequest_SendBody)(nil), // 253: api.app.v1.DeleteAdminMessagesRequest.SendBody
+	(*AdminSetPropRequest_SendBody)(nil),        // 254: api.app.v1.AdminSetPropRequest.SendBody
 }
 var file_api_app_v1_app_proto_depIdxs = []int32{
-	188, // 0: api.app.v1.EthAuthorizeRequest.send_body:type_name -> api.app.v1.EthAuthorizeRequest.SendBody
-	189, // 1: api.app.v1.UserRecommendReply.list:type_name -> api.app.v1.UserRecommendReply.List
-	190, // 2: api.app.v1.UserRecommendLReply.list:type_name -> api.app.v1.UserRecommendLReply.List
-	191, // 3: api.app.v1.UserLandReply.list:type_name -> api.app.v1.UserLandReply.List
-	192, // 4: api.app.v1.UserStakeGitRewardListReply.list:type_name -> api.app.v1.UserStakeGitRewardListReply.List
-	193, // 5: api.app.v1.UserStakeGitStakeListReply.list:type_name -> api.app.v1.UserStakeGitStakeListReply.List
-	194, // 6: api.app.v1.UserBoxListReply.list:type_name -> api.app.v1.UserBoxListReply.List
-	195, // 7: api.app.v1.UserBackListReply.list:type_name -> api.app.v1.UserBackListReply.List
-	196, // 8: api.app.v1.UserMarketSeedListReply.list:type_name -> api.app.v1.UserMarketSeedListReply.List
-	197, // 9: api.app.v1.UserMarketLandListReply.list:type_name -> api.app.v1.UserMarketLandListReply.List
-	198, // 10: api.app.v1.UserMarketPropListReply.list:type_name -> api.app.v1.UserMarketPropListReply.List
-	199, // 11: api.app.v1.UserMarketRentLandListReply.list:type_name -> api.app.v1.UserMarketRentLandListReply.List
-	200, // 12: api.app.v1.UserMyMarketListReply.list:type_name -> api.app.v1.UserMyMarketListReply.List
-	201, // 13: api.app.v1.UserNoticeListReply.list:type_name -> api.app.v1.UserNoticeListReply.List
-	202, // 14: api.app.v1.UserStakeRewardListReply.list:type_name -> api.app.v1.UserStakeRewardListReply.List
-	203, // 15: api.app.v1.UserIndexListReply.list:type_name -> api.app.v1.UserIndexListReply.List
-	204, // 16: api.app.v1.UserOrderListReply.list:type_name -> api.app.v1.UserOrderListReply.List
-	205, // 17: api.app.v1.WithdrawRequest.send_body:type_name -> api.app.v1.WithdrawRequest.SendBody
-	206, // 18: api.app.v1.ExchangeRequest.send_body:type_name -> api.app.v1.ExchangeRequest.SendBody
-	207, // 19: api.app.v1.GetLandRequest.send_body:type_name -> api.app.v1.GetLandRequest.SendBody
-	208, // 20: api.app.v1.StakeGitRequest.send_body:type_name -> api.app.v1.StakeGitRequest.SendBody
-	209, // 21: api.app.v1.BuyBoxRequest.send_body:type_name -> api.app.v1.BuyBoxRequest.SendBody
-	210, // 22: api.app.v1.OpenBoxRequest.send_body:type_name -> api.app.v1.OpenBoxRequest.SendBody
-	211, // 23: api.app.v1.SellRequest.send_body:type_name -> api.app.v1.SellRequest.SendBody
-	212, // 24: api.app.v1.BuyRequest.send_body:type_name -> api.app.v1.BuyRequest.SendBody
-	213, // 25: api.app.v1.RentLandRequest.send_body:type_name -> api.app.v1.RentLandRequest.SendBody
-	214, // 26: api.app.v1.LandAddOutRateRequest.send_body:type_name -> api.app.v1.LandAddOutRateRequest.SendBody
-	215, // 27: api.app.v1.StakeGetRequest.send_body:type_name -> api.app.v1.StakeGetRequest.SendBody
-	216, // 28: api.app.v1.StakeGetPlayRequest.send_body:type_name -> api.app.v1.StakeGetPlayRequest.SendBody
-	217, // 29: api.app.v1.LandPlayRequest.send_body:type_name -> api.app.v1.LandPlayRequest.SendBody
-	218, // 30: api.app.v1.LandPlayOneRequest.send_body:type_name -> api.app.v1.LandPlayOneRequest.SendBody
-	219, // 31: api.app.v1.LandPlayTwoRequest.send_body:type_name -> api.app.v1.LandPlayTwoRequest.SendBody
-	220, // 32: api.app.v1.LandPlayThreeRequest.send_body:type_name -> api.app.v1.LandPlayThreeRequest.SendBody
-	221, // 33: api.app.v1.LandPlayFourRequest.send_body:type_name -> api.app.v1.LandPlayFourRequest.SendBody
-	222, // 34: api.app.v1.LandPlayFiveRequest.send_body:type_name -> api.app.v1.LandPlayFiveRequest.SendBody
-	223, // 35: api.app.v1.LandPlaySixRequest.send_body:type_name -> api.app.v1.LandPlaySixRequest.SendBody
-	224, // 36: api.app.v1.LandPlaySevenRequest.send_body:type_name -> api.app.v1.LandPlaySevenRequest.SendBody
-	225, // 37: api.app.v1.AdminLoginRequest.send_body:type_name -> api.app.v1.AdminLoginRequest.SendBody
-	226, // 38: api.app.v1.AdminUserListReply.users:type_name -> api.app.v1.AdminUserListReply.List
-	227, // 39: api.app.v1.AdminUserLandReply.list:type_name -> api.app.v1.AdminUserLandReply.List
-	228, // 40: api.app.v1.AdminSendLandListReply.list:type_name -> api.app.v1.AdminSendLandListReply.List
-	229, // 41: api.app.v1.AdminUserBackListReply.list:type_name -> api.app.v1.AdminUserBackListReply.List
-	230, // 42: api.app.v1.AdminSendListReply.list:type_name -> api.app.v1.AdminSendListReply.List
-	231, // 43: api.app.v1.AdminWithdrawListReply.withdraw:type_name -> api.app.v1.AdminWithdrawListReply.List
-	232, // 44: api.app.v1.RecordListReply.recordList:type_name -> api.app.v1.RecordListReply.List
-	233, // 45: api.app.v1.AdminRewardListTwoReply.list:type_name -> api.app.v1.AdminRewardListTwoReply.List
-	234, // 46: api.app.v1.AdminRewardListReply.list:type_name -> api.app.v1.AdminRewardListReply.List
-	235, // 47: api.app.v1.AdminLandConfigReply.recordList:type_name -> api.app.v1.AdminLandConfigReply.List
-	236, // 48: api.app.v1.AdminLandConfigSetRequest.send_body:type_name -> api.app.v1.AdminLandConfigSetRequest.SendBody
-	237, // 49: api.app.v1.AdminSeedConfigReply.recordList:type_name -> api.app.v1.AdminSeedConfigReply.List
-	238, // 50: api.app.v1.AdminMessagesListReply.recordList:type_name -> api.app.v1.AdminMessagesListReply.List
-	239, // 51: api.app.v1.AdminSeedConfigSetRequest.send_body:type_name -> api.app.v1.AdminSeedConfigSetRequest.SendBody
-	240, // 52: api.app.v1.AdminPropConfigReply.recordList:type_name -> api.app.v1.AdminPropConfigReply.List
-	241, // 53: api.app.v1.AdminPropConfigSetRequest.send_body:type_name -> api.app.v1.AdminPropConfigSetRequest.SendBody
-	242, // 54: api.app.v1.AdminUserRecommendReply.users:type_name -> api.app.v1.AdminUserRecommendReply.List
-	243, // 55: api.app.v1.AdminSetBoxRequest.send_body:type_name -> api.app.v1.AdminSetBoxRequest.SendBody
-	244, // 56: api.app.v1.AdminGetConfigReply.list:type_name -> api.app.v1.AdminGetConfigReply.List
-	245, // 57: api.app.v1.AdminSetConfigRequest.send_body:type_name -> api.app.v1.AdminSetConfigRequest.SendBody
-	246, // 58: api.app.v1.AdminSetLandRequest.send_body:type_name -> api.app.v1.AdminSetLandRequest.SendBody
-	247, // 59: api.app.v1.AdminSetSeedRequest.send_body:type_name -> api.app.v1.AdminSetSeedRequest.SendBody
-	248, // 60: api.app.v1.AdminSetBuyLandRequest.send_body:type_name -> api.app.v1.AdminSetBuyLandRequest.SendBody
-	249, // 61: api.app.v1.SetAdminMessagesRequest.send_body:type_name -> api.app.v1.SetAdminMessagesRequest.SendBody
-	250, // 62: api.app.v1.DeleteAdminMessagesRequest.send_body:type_name -> api.app.v1.DeleteAdminMessagesRequest.SendBody
-	251, // 63: api.app.v1.AdminSetPropRequest.send_body:type_name -> api.app.v1.AdminSetPropRequest.SendBody
-	0,   // 64: api.app.v1.App.TestSign:input_type -> api.app.v1.TestSignRequest
-	2,   // 65: api.app.v1.App.EthAuthorize:input_type -> api.app.v1.EthAuthorizeRequest
-	4,   // 66: api.app.v1.App.UserInfo:input_type -> api.app.v1.UserInfoRequest
-	6,   // 67: api.app.v1.App.UserRecommend:input_type -> api.app.v1.UserRecommendRequest
-	8,   // 68: api.app.v1.App.UserRecommendL:input_type -> api.app.v1.UserRecommendLRequest
-	10,  // 69: api.app.v1.App.UserLand:input_type -> api.app.v1.UserLandRequest
-	12,  // 70: api.app.v1.App.UserStakeGitRewardList:input_type -> api.app.v1.UserStakeGitRewardListRequest
-	14,  // 71: api.app.v1.App.UserStakeGitStakeList:input_type -> api.app.v1.UserStakeGitStakeListRequest
-	16,  // 72: api.app.v1.App.UserBoxList:input_type -> api.app.v1.UserBoxListRequest
-	18,  // 73: api.app.v1.App.UserBackList:input_type -> api.app.v1.UserBackListRequest
-	20,  // 74: api.app.v1.App.UserMarketSeedList:input_type -> api.app.v1.UserMarketSeedListRequest
-	22,  // 75: api.app.v1.App.UserMarketLandList:input_type -> api.app.v1.UserMarketLandListRequest
-	24,  // 76: api.app.v1.App.UserMarketPropList:input_type -> api.app.v1.UserMarketPropListRequest
-	26,  // 77: api.app.v1.App.UserMarketRentLandList:input_type -> api.app.v1.UserMarketRentLandListRequest
-	28,  // 78: api.app.v1.App.UserMyMarketList:input_type -> api.app.v1.UserMyMarketListRequest
-	30,  // 79: api.app.v1.App.UserNoticeList:input_type -> api.app.v1.UserNoticeListRequest
-	32,  // 80: api.app.v1.App.UserStakeRewardList:input_type -> api.app.v1.UserStakeRewardListRequest
-	34,  // 81: api.app.v1.App.UserIndexList:input_type -> api.app.v1.UserIndexListRequest
-	36,  // 82: api.app.v1.App.UserOrderList:input_type -> api.app.v1.UserOrderListRequest
-	38,  // 83: api.app.v1.App.Withdraw:input_type -> api.app.v1.WithdrawRequest
-	40,  // 84: api.app.v1.App.Exchange:input_type -> api.app.v1.ExchangeRequest
-	42,  // 85: api.app.v1.App.GetLand:input_type -> api.app.v1.GetLandRequest
-	44,  // 86: api.app.v1.App.StakeGit:input_type -> api.app.v1.StakeGitRequest
-	46,  // 87: api.app.v1.App.BuyBox:input_type -> api.app.v1.BuyBoxRequest
-	48,  // 88: api.app.v1.App.OpenBox:input_type -> api.app.v1.OpenBoxRequest
-	50,  // 89: api.app.v1.App.Sell:input_type -> api.app.v1.SellRequest
-	52,  // 90: api.app.v1.App.Buy:input_type -> api.app.v1.BuyRequest
-	54,  // 91: api.app.v1.App.RentLand:input_type -> api.app.v1.RentLandRequest
-	56,  // 92: api.app.v1.App.LandAddOutRate:input_type -> api.app.v1.LandAddOutRateRequest
-	58,  // 93: api.app.v1.App.StakeGet:input_type -> api.app.v1.StakeGetRequest
-	60,  // 94: api.app.v1.App.StakeGetPlay:input_type -> api.app.v1.StakeGetPlayRequest
-	62,  // 95: api.app.v1.App.LandPlay:input_type -> api.app.v1.LandPlayRequest
-	64,  // 96: api.app.v1.App.LandPlayOne:input_type -> api.app.v1.LandPlayOneRequest
-	66,  // 97: api.app.v1.App.LandPlayTwo:input_type -> api.app.v1.LandPlayTwoRequest
-	68,  // 98: api.app.v1.App.LandPlayThree:input_type -> api.app.v1.LandPlayThreeRequest
-	70,  // 99: api.app.v1.App.LandPlayFour:input_type -> api.app.v1.LandPlayFourRequest
-	72,  // 100: api.app.v1.App.LandPlayFive:input_type -> api.app.v1.LandPlayFiveRequest
-	74,  // 101: api.app.v1.App.LandPlaySix:input_type -> api.app.v1.LandPlaySixRequest
-	76,  // 102: api.app.v1.App.LandPlaySeven:input_type -> api.app.v1.LandPlaySevenRequest
-	78,  // 103: api.app.v1.App.SetGiw:input_type -> api.app.v1.SetGiwRequest
-	80,  // 104: api.app.v1.App.SetGit:input_type -> api.app.v1.SetGitRequest
-	82,  // 105: api.app.v1.App.SetLand:input_type -> api.app.v1.SetLandRequest
-	84,  // 106: api.app.v1.App.AdminLogin:input_type -> api.app.v1.AdminLoginRequest
-	86,  // 107: api.app.v1.App.AdminUserList:input_type -> api.app.v1.AdminUserListRequest
-	88,  // 108: api.app.v1.App.AdminUserBuy:input_type -> api.app.v1.AdminUserBuyRequest
-	90,  // 109: api.app.v1.App.AdminUserLand:input_type -> api.app.v1.AdminUserLandRequest
-	116, // 110: api.app.v1.App.AdminRewardListTwo:input_type -> api.app.v1.AdminRewardListTwoRequest
-	118, // 111: api.app.v1.App.AdminRewardList:input_type -> api.app.v1.AdminRewardListRequest
-	94,  // 112: api.app.v1.App.AdminUserBackList:input_type -> api.app.v1.AdminUserBackListRequest
-	96,  // 113: api.app.v1.App.AdminUserSendList:input_type -> api.app.v1.AdminSendListRequest
-	92,  // 114: api.app.v1.App.AdminUserSendLandList:input_type -> api.app.v1.AdminSendLandListRequest
-	134, // 115: api.app.v1.App.AdminUserRecommend:input_type -> api.app.v1.AdminUserRecommendRequest
-	98,  // 116: api.app.v1.App.AdminDeposit:input_type -> api.app.v1.AdminDepositRequest
-	100, // 117: api.app.v1.App.AdminDepositUsdt:input_type -> api.app.v1.AdminDepositUsdtRequest
-	102, // 118: api.app.v1.App.AdminDepositUsdtTwo:input_type -> api.app.v1.AdminDepositUsdtTwoRequest
-	110, // 119: api.app.v1.App.AdminWithdraw:input_type -> api.app.v1.AdminWithdrawRequest
-	104, // 120: api.app.v1.App.AdminDaily:input_type -> api.app.v1.AdminDailyRequest
-	106, // 121: api.app.v1.App.AdminDailyReward:input_type -> api.app.v1.AdminDailyRewardRequest
-	108, // 122: api.app.v1.App.AdminPriceChange:input_type -> api.app.v1.AdminPriceChangeRequest
-	112, // 123: api.app.v1.App.AdminWithdrawList:input_type -> api.app.v1.AdminWithdrawListRequest
-	114, // 124: api.app.v1.App.AdminRecordList:input_type -> api.app.v1.RecordListRequest
-	120, // 125: api.app.v1.App.AdminLandConfigList:input_type -> api.app.v1.AdminLandConfigRequest
-	122, // 126: api.app.v1.App.AdminLandConfigSet:input_type -> api.app.v1.AdminLandConfigSetRequest
-	124, // 127: api.app.v1.App.AdminSeedConfigList:input_type -> api.app.v1.AdminSeedConfigRequest
-	128, // 128: api.app.v1.App.AdminSeedConfigSet:input_type -> api.app.v1.AdminSeedConfigSetRequest
-	130, // 129: api.app.v1.App.AdminPropConfigList:input_type -> api.app.v1.AdminPropConfigRequest
-	132, // 130: api.app.v1.App.AdminPropConfigSet:input_type -> api.app.v1.AdminPropConfigSetRequest
-	138, // 131: api.app.v1.App.AdminSetGiw:input_type -> api.app.v1.AdminSetGiwRequest
-	136, // 132: api.app.v1.App.AdminSetAddress:input_type -> api.app.v1.AdminSetAddressRequest
-	140, // 133: api.app.v1.App.AdminSetGiwTwo:input_type -> api.app.v1.AdminSetGiwTwoRequest
-	142, // 134: api.app.v1.App.AdminSetGit:input_type -> api.app.v1.AdminSetGitRequest
-	144, // 135: api.app.v1.App.AdminSetUsdt:input_type -> api.app.v1.AdminSetUsdtRequest
-	146, // 136: api.app.v1.App.AdminSetVip:input_type -> api.app.v1.AdminSetVipRequest
-	148, // 137: api.app.v1.App.AdminSetCanSell:input_type -> api.app.v1.AdminSetCanSellRequest
-	148, // 138: api.app.v1.App.AdminSetCanSellProp:input_type -> api.app.v1.AdminSetCanSellRequest
-	150, // 139: api.app.v1.App.AdminSetCanPlayAdd:input_type -> api.app.v1.AdminSetCanPlayAddRequest
-	152, // 140: api.app.v1.App.AdminSetCanPlaySix:input_type -> api.app.v1.AdminSetCanPlaySixRequest
-	154, // 141: api.app.v1.App.AdminSetCanRent:input_type -> api.app.v1.AdminSetCanRentRequest
-	156, // 142: api.app.v1.App.AdminSetWithdrawMax:input_type -> api.app.v1.AdminSetWithdrawMaxRequest
-	158, // 143: api.app.v1.App.AdminSetCanLand:input_type -> api.app.v1.AdminSetCanLandRequest
-	160, // 144: api.app.v1.App.AdminSetLock:input_type -> api.app.v1.AdminSetLockRequest
-	162, // 145: api.app.v1.App.AdminSetOneTwoThree:input_type -> api.app.v1.AdminSetOneTwoThreeRequest
-	164, // 146: api.app.v1.App.AdminSetLockReward:input_type -> api.app.v1.AdminSetLockRewardRequest
-	166, // 147: api.app.v1.App.AdminGetBox:input_type -> api.app.v1.AdminGetBoxRequest
-	168, // 148: api.app.v1.App.AdminSetBox:input_type -> api.app.v1.AdminSetBoxRequest
-	170, // 149: api.app.v1.App.AdminGetConfig:input_type -> api.app.v1.AdminGetConfigRequest
-	172, // 150: api.app.v1.App.AdminLandReward:input_type -> api.app.v1.AdminLandRewardRequest
-	174, // 151: api.app.v1.App.AdminSetConfig:input_type -> api.app.v1.AdminSetConfigRequest
-	172, // 152: api.app.v1.App.AdminSetQueue:input_type -> api.app.v1.AdminLandRewardRequest
-	176, // 153: api.app.v1.App.AdminSetLand:input_type -> api.app.v1.AdminSetLandRequest
-	186, // 154: api.app.v1.App.AdminSetProp:input_type -> api.app.v1.AdminSetPropRequest
-	178, // 155: api.app.v1.App.AdminSetSeed:input_type -> api.app.v1.AdminSetSeedRequest
-	180, // 156: api.app.v1.App.AdminSetBuyLand:input_type -> api.app.v1.AdminSetBuyLandRequest
-	182, // 157: api.app.v1.App.SetAdminMessages:input_type -> api.app.v1.SetAdminMessagesRequest
-	184, // 158: api.app.v1.App.DeleteAdminMessages:input_type -> api.app.v1.DeleteAdminMessagesRequest
-	126, // 159: api.app.v1.App.AdminMessagesList:input_type -> api.app.v1.AdminMessagesListRequest
-	1,   // 160: api.app.v1.App.TestSign:output_type -> api.app.v1.TestSignReply
-	3,   // 161: api.app.v1.App.EthAuthorize:output_type -> api.app.v1.EthAuthorizeReply
-	5,   // 162: api.app.v1.App.UserInfo:output_type -> api.app.v1.UserInfoReply
-	7,   // 163: api.app.v1.App.UserRecommend:output_type -> api.app.v1.UserRecommendReply
-	9,   // 164: api.app.v1.App.UserRecommendL:output_type -> api.app.v1.UserRecommendLReply
-	11,  // 165: api.app.v1.App.UserLand:output_type -> api.app.v1.UserLandReply
-	13,  // 166: api.app.v1.App.UserStakeGitRewardList:output_type -> api.app.v1.UserStakeGitRewardListReply
-	15,  // 167: api.app.v1.App.UserStakeGitStakeList:output_type -> api.app.v1.UserStakeGitStakeListReply
-	17,  // 168: api.app.v1.App.UserBoxList:output_type -> api.app.v1.UserBoxListReply
-	19,  // 169: api.app.v1.App.UserBackList:output_type -> api.app.v1.UserBackListReply
-	21,  // 170: api.app.v1.App.UserMarketSeedList:output_type -> api.app.v1.UserMarketSeedListReply
-	23,  // 171: api.app.v1.App.UserMarketLandList:output_type -> api.app.v1.UserMarketLandListReply
-	25,  // 172: api.app.v1.App.UserMarketPropList:output_type -> api.app.v1.UserMarketPropListReply
-	27,  // 173: api.app.v1.App.UserMarketRentLandList:output_type -> api.app.v1.UserMarketRentLandListReply
-	29,  // 174: api.app.v1.App.UserMyMarketList:output_type -> api.app.v1.UserMyMarketListReply
-	31,  // 175: api.app.v1.App.UserNoticeList:output_type -> api.app.v1.UserNoticeListReply
-	33,  // 176: api.app.v1.App.UserStakeRewardList:output_type -> api.app.v1.UserStakeRewardListReply
-	35,  // 177: api.app.v1.App.UserIndexList:output_type -> api.app.v1.UserIndexListReply
-	37,  // 178: api.app.v1.App.UserOrderList:output_type -> api.app.v1.UserOrderListReply
-	39,  // 179: api.app.v1.App.Withdraw:output_type -> api.app.v1.WithdrawReply
-	41,  // 180: api.app.v1.App.Exchange:output_type -> api.app.v1.ExchangeReply
-	43,  // 181: api.app.v1.App.GetLand:output_type -> api.app.v1.GetLandReply
-	45,  // 182: api.app.v1.App.StakeGit:output_type -> api.app.v1.StakeGitReply
-	47,  // 183: api.app.v1.App.BuyBox:output_type -> api.app.v1.BuyBoxReply
-	49,  // 184: api.app.v1.App.OpenBox:output_type -> api.app.v1.OpenBoxReply
-	51,  // 185: api.app.v1.App.Sell:output_type -> api.app.v1.SellReply
-	53,  // 186: api.app.v1.App.Buy:output_type -> api.app.v1.BuyReply
-	55,  // 187: api.app.v1.App.RentLand:output_type -> api.app.v1.RentLandReply
-	57,  // 188: api.app.v1.App.LandAddOutRate:output_type -> api.app.v1.LandAddOutRateReply
-	59,  // 189: api.app.v1.App.StakeGet:output_type -> api.app.v1.StakeGetReply
-	61,  // 190: api.app.v1.App.StakeGetPlay:output_type -> api.app.v1.StakeGetPlayReply
-	63,  // 191: api.app.v1.App.LandPlay:output_type -> api.app.v1.LandPlayReply
-	65,  // 192: api.app.v1.App.LandPlayOne:output_type -> api.app.v1.LandPlayOneReply
-	67,  // 193: api.app.v1.App.LandPlayTwo:output_type -> api.app.v1.LandPlayTwoReply
-	69,  // 194: api.app.v1.App.LandPlayThree:output_type -> api.app.v1.LandPlayThreeReply
-	71,  // 195: api.app.v1.App.LandPlayFour:output_type -> api.app.v1.LandPlayFourReply
-	73,  // 196: api.app.v1.App.LandPlayFive:output_type -> api.app.v1.LandPlayFiveReply
-	75,  // 197: api.app.v1.App.LandPlaySix:output_type -> api.app.v1.LandPlaySixReply
-	77,  // 198: api.app.v1.App.LandPlaySeven:output_type -> api.app.v1.LandPlaySevenReply
-	79,  // 199: api.app.v1.App.SetGiw:output_type -> api.app.v1.SetGiwReply
-	81,  // 200: api.app.v1.App.SetGit:output_type -> api.app.v1.SetGitReply
-	83,  // 201: api.app.v1.App.SetLand:output_type -> api.app.v1.SetLandReply
-	85,  // 202: api.app.v1.App.AdminLogin:output_type -> api.app.v1.AdminLoginReply
-	87,  // 203: api.app.v1.App.AdminUserList:output_type -> api.app.v1.AdminUserListReply
-	89,  // 204: api.app.v1.App.AdminUserBuy:output_type -> api.app.v1.AdminUserBuyReply
-	91,  // 205: api.app.v1.App.AdminUserLand:output_type -> api.app.v1.AdminUserLandReply
-	117, // 206: api.app.v1.App.AdminRewardListTwo:output_type -> api.app.v1.AdminRewardListTwoReply
-	119, // 207: api.app.v1.App.AdminRewardList:output_type -> api.app.v1.AdminRewardListReply
-	95,  // 208: api.app.v1.App.AdminUserBackList:output_type -> api.app.v1.AdminUserBackListReply
-	97,  // 209: api.app.v1.App.AdminUserSendList:output_type -> api.app.v1.AdminSendListReply
-	93,  // 210: api.app.v1.App.AdminUserSendLandList:output_type -> api.app.v1.AdminSendLandListReply
-	135, // 211: api.app.v1.App.AdminUserRecommend:output_type -> api.app.v1.AdminUserRecommendReply
-	99,  // 212: api.app.v1.App.AdminDeposit:output_type -> api.app.v1.AdminDepositReply
-	101, // 213: api.app.v1.App.AdminDepositUsdt:output_type -> api.app.v1.AdminDepositUsdtReply
-	103, // 214: api.app.v1.App.AdminDepositUsdtTwo:output_type -> api.app.v1.AdminDepositUsdtTwoReply
-	111, // 215: api.app.v1.App.AdminWithdraw:output_type -> api.app.v1.AdminWithdrawReply
-	105, // 216: api.app.v1.App.AdminDaily:output_type -> api.app.v1.AdminDailyReply
-	107, // 217: api.app.v1.App.AdminDailyReward:output_type -> api.app.v1.AdminDailyRewardReply
-	109, // 218: api.app.v1.App.AdminPriceChange:output_type -> api.app.v1.AdminPriceChangeReply
-	113, // 219: api.app.v1.App.AdminWithdrawList:output_type -> api.app.v1.AdminWithdrawListReply
-	115, // 220: api.app.v1.App.AdminRecordList:output_type -> api.app.v1.RecordListReply
-	121, // 221: api.app.v1.App.AdminLandConfigList:output_type -> api.app.v1.AdminLandConfigReply
-	123, // 222: api.app.v1.App.AdminLandConfigSet:output_type -> api.app.v1.AdminLandConfigSetReply
-	125, // 223: api.app.v1.App.AdminSeedConfigList:output_type -> api.app.v1.AdminSeedConfigReply
-	129, // 224: api.app.v1.App.AdminSeedConfigSet:output_type -> api.app.v1.AdminSeedConfigSetReply
-	131, // 225: api.app.v1.App.AdminPropConfigList:output_type -> api.app.v1.AdminPropConfigReply
-	133, // 226: api.app.v1.App.AdminPropConfigSet:output_type -> api.app.v1.AdminPropConfigSetReply
-	139, // 227: api.app.v1.App.AdminSetGiw:output_type -> api.app.v1.AdminSetGiwReply
-	137, // 228: api.app.v1.App.AdminSetAddress:output_type -> api.app.v1.AdminSetAddressReply
-	141, // 229: api.app.v1.App.AdminSetGiwTwo:output_type -> api.app.v1.AdminSetGiwTwoReply
-	143, // 230: api.app.v1.App.AdminSetGit:output_type -> api.app.v1.AdminSetGitReply
-	145, // 231: api.app.v1.App.AdminSetUsdt:output_type -> api.app.v1.AdminSetUsdtReply
-	147, // 232: api.app.v1.App.AdminSetVip:output_type -> api.app.v1.AdminSetVipReply
-	149, // 233: api.app.v1.App.AdminSetCanSell:output_type -> api.app.v1.AdminSetCanSellReply
-	149, // 234: api.app.v1.App.AdminSetCanSellProp:output_type -> api.app.v1.AdminSetCanSellReply
-	151, // 235: api.app.v1.App.AdminSetCanPlayAdd:output_type -> api.app.v1.AdminSetCanPlayAddReply
-	153, // 236: api.app.v1.App.AdminSetCanPlaySix:output_type -> api.app.v1.AdminSetCanPlaySixReply
-	155, // 237: api.app.v1.App.AdminSetCanRent:output_type -> api.app.v1.AdminSetCanRentReply
-	157, // 238: api.app.v1.App.AdminSetWithdrawMax:output_type -> api.app.v1.AdminSetWithdrawMaxReply
-	159, // 239: api.app.v1.App.AdminSetCanLand:output_type -> api.app.v1.AdminSetCanLandReply
-	161, // 240: api.app.v1.App.AdminSetLock:output_type -> api.app.v1.AdminSetLockReply
-	163, // 241: api.app.v1.App.AdminSetOneTwoThree:output_type -> api.app.v1.AdminSetOneTwoThreeReply
-	165, // 242: api.app.v1.App.AdminSetLockReward:output_type -> api.app.v1.AdminSetLockRewardReply
-	167, // 243: api.app.v1.App.AdminGetBox:output_type -> api.app.v1.AdminGetBoxReply
-	169, // 244: api.app.v1.App.AdminSetBox:output_type -> api.app.v1.AdminSetBoxReply
-	171, // 245: api.app.v1.App.AdminGetConfig:output_type -> api.app.v1.AdminGetConfigReply
-	173, // 246: api.app.v1.App.AdminLandReward:output_type -> api.app.v1.AdminLandRewardReply
-	175, // 247: api.app.v1.App.AdminSetConfig:output_type -> api.app.v1.AdminSetConfigReply
-	173, // 248: api.app.v1.App.AdminSetQueue:output_type -> api.app.v1.AdminLandRewardReply
-	177, // 249: api.app.v1.App.AdminSetLand:output_type -> api.app.v1.AdminSetLandReply
-	187, // 250: api.app.v1.App.AdminSetProp:output_type -> api.app.v1.AdminSetPropReply
-	179, // 251: api.app.v1.App.AdminSetSeed:output_type -> api.app.v1.AdminSetSeedReply
-	181, // 252: api.app.v1.App.AdminSetBuyLand:output_type -> api.app.v1.AdminSetBuyLandReply
-	183, // 253: api.app.v1.App.SetAdminMessages:output_type -> api.app.v1.SetAdminMessagesReply
-	185, // 254: api.app.v1.App.DeleteAdminMessages:output_type -> api.app.v1.DeleteAdminMessagesReply
-	127, // 255: api.app.v1.App.AdminMessagesList:output_type -> api.app.v1.AdminMessagesListReply
-	160, // [160:256] is the sub-list for method output_type
-	64,  // [64:160] is the sub-list for method input_type
-	64,  // [64:64] is the sub-list for extension type_name
-	64,  // [64:64] is the sub-list for extension extendee
-	0,   // [0:64] is the sub-list for field type_name
+	190, // 0: api.app.v1.EthAuthorizeRequest.send_body:type_name -> api.app.v1.EthAuthorizeRequest.SendBody
+	191, // 1: api.app.v1.UserRecommendReply.list:type_name -> api.app.v1.UserRecommendReply.List
+	192, // 2: api.app.v1.UserRecommendLReply.list:type_name -> api.app.v1.UserRecommendLReply.List
+	193, // 3: api.app.v1.UserLandReply.list:type_name -> api.app.v1.UserLandReply.List
+	194, // 4: api.app.v1.UserStakeGitRewardListReply.list:type_name -> api.app.v1.UserStakeGitRewardListReply.List
+	195, // 5: api.app.v1.UserStakeGitStakeListReply.list:type_name -> api.app.v1.UserStakeGitStakeListReply.List
+	196, // 6: api.app.v1.UserBoxListReply.list:type_name -> api.app.v1.UserBoxListReply.List
+	197, // 7: api.app.v1.UserBackListReply.list:type_name -> api.app.v1.UserBackListReply.List
+	198, // 8: api.app.v1.UserMarketSeedListReply.list:type_name -> api.app.v1.UserMarketSeedListReply.List
+	199, // 9: api.app.v1.UserMarketLandListReply.list:type_name -> api.app.v1.UserMarketLandListReply.List
+	200, // 10: api.app.v1.UserMarketPropListReply.list:type_name -> api.app.v1.UserMarketPropListReply.List
+	201, // 11: api.app.v1.UserMarketRentLandListReply.list:type_name -> api.app.v1.UserMarketRentLandListReply.List
+	202, // 12: api.app.v1.UserMyMarketListReply.list:type_name -> api.app.v1.UserMyMarketListReply.List
+	203, // 13: api.app.v1.UserNoticeListReply.list:type_name -> api.app.v1.UserNoticeListReply.List
+	204, // 14: api.app.v1.UserStakeRewardListReply.list:type_name -> api.app.v1.UserStakeRewardListReply.List
+	205, // 15: api.app.v1.UserIndexListReply.list:type_name -> api.app.v1.UserIndexListReply.List
+	206, // 16: api.app.v1.UserOrderListReply.list:type_name -> api.app.v1.UserOrderListReply.List
+	207, // 17: api.app.v1.WithdrawRequest.send_body:type_name -> api.app.v1.WithdrawRequest.SendBody
+	208, // 18: api.app.v1.ExchangeRequest.send_body:type_name -> api.app.v1.ExchangeRequest.SendBody
+	209, // 19: api.app.v1.GetLandRequest.send_body:type_name -> api.app.v1.GetLandRequest.SendBody
+	210, // 20: api.app.v1.StakeGitRequest.send_body:type_name -> api.app.v1.StakeGitRequest.SendBody
+	211, // 21: api.app.v1.BuyBoxRequest.send_body:type_name -> api.app.v1.BuyBoxRequest.SendBody
+	212, // 22: api.app.v1.OpenBoxRequest.send_body:type_name -> api.app.v1.OpenBoxRequest.SendBody
+	213, // 23: api.app.v1.SellRequest.send_body:type_name -> api.app.v1.SellRequest.SendBody
+	214, // 24: api.app.v1.BuyRequest.send_body:type_name -> api.app.v1.BuyRequest.SendBody
+	215, // 25: api.app.v1.RentLandRequest.send_body:type_name -> api.app.v1.RentLandRequest.SendBody
+	216, // 26: api.app.v1.LandAddOutRateRequest.send_body:type_name -> api.app.v1.LandAddOutRateRequest.SendBody
+	217, // 27: api.app.v1.StakeGetRequest.send_body:type_name -> api.app.v1.StakeGetRequest.SendBody
+	218, // 28: api.app.v1.StakeGetPlayRequest.send_body:type_name -> api.app.v1.StakeGetPlayRequest.SendBody
+	219, // 29: api.app.v1.LandPlayRequest.send_body:type_name -> api.app.v1.LandPlayRequest.SendBody
+	220, // 30: api.app.v1.LandPlayOneRequest.send_body:type_name -> api.app.v1.LandPlayOneRequest.SendBody
+	221, // 31: api.app.v1.LandPlayTwoRequest.send_body:type_name -> api.app.v1.LandPlayTwoRequest.SendBody
+	222, // 32: api.app.v1.LandPlayThreeRequest.send_body:type_name -> api.app.v1.LandPlayThreeRequest.SendBody
+	223, // 33: api.app.v1.LandPlayFourRequest.send_body:type_name -> api.app.v1.LandPlayFourRequest.SendBody
+	224, // 34: api.app.v1.LandPlayFiveRequest.send_body:type_name -> api.app.v1.LandPlayFiveRequest.SendBody
+	225, // 35: api.app.v1.LandPlaySixRequest.send_body:type_name -> api.app.v1.LandPlaySixRequest.SendBody
+	226, // 36: api.app.v1.LandPlaySevenRequest.send_body:type_name -> api.app.v1.LandPlaySevenRequest.SendBody
+	227, // 37: api.app.v1.AdminLoginRequest.send_body:type_name -> api.app.v1.AdminLoginRequest.SendBody
+	228, // 38: api.app.v1.AdminUserStakeListReply.stakeList:type_name -> api.app.v1.AdminUserStakeListReply.ListStake
+	229, // 39: api.app.v1.AdminUserListReply.users:type_name -> api.app.v1.AdminUserListReply.List
+	230, // 40: api.app.v1.AdminUserLandReply.list:type_name -> api.app.v1.AdminUserLandReply.List
+	231, // 41: api.app.v1.AdminSendLandListReply.list:type_name -> api.app.v1.AdminSendLandListReply.List
+	232, // 42: api.app.v1.AdminUserBackListReply.list:type_name -> api.app.v1.AdminUserBackListReply.List
+	233, // 43: api.app.v1.AdminSendListReply.list:type_name -> api.app.v1.AdminSendListReply.List
+	234, // 44: api.app.v1.AdminWithdrawListReply.withdraw:type_name -> api.app.v1.AdminWithdrawListReply.List
+	235, // 45: api.app.v1.RecordListReply.recordList:type_name -> api.app.v1.RecordListReply.List
+	236, // 46: api.app.v1.AdminRewardListTwoReply.list:type_name -> api.app.v1.AdminRewardListTwoReply.List
+	237, // 47: api.app.v1.AdminRewardListReply.list:type_name -> api.app.v1.AdminRewardListReply.List
+	238, // 48: api.app.v1.AdminLandConfigReply.recordList:type_name -> api.app.v1.AdminLandConfigReply.List
+	239, // 49: api.app.v1.AdminLandConfigSetRequest.send_body:type_name -> api.app.v1.AdminLandConfigSetRequest.SendBody
+	240, // 50: api.app.v1.AdminSeedConfigReply.recordList:type_name -> api.app.v1.AdminSeedConfigReply.List
+	241, // 51: api.app.v1.AdminMessagesListReply.recordList:type_name -> api.app.v1.AdminMessagesListReply.List
+	242, // 52: api.app.v1.AdminSeedConfigSetRequest.send_body:type_name -> api.app.v1.AdminSeedConfigSetRequest.SendBody
+	243, // 53: api.app.v1.AdminPropConfigReply.recordList:type_name -> api.app.v1.AdminPropConfigReply.List
+	244, // 54: api.app.v1.AdminPropConfigSetRequest.send_body:type_name -> api.app.v1.AdminPropConfigSetRequest.SendBody
+	245, // 55: api.app.v1.AdminUserRecommendReply.users:type_name -> api.app.v1.AdminUserRecommendReply.List
+	246, // 56: api.app.v1.AdminSetBoxRequest.send_body:type_name -> api.app.v1.AdminSetBoxRequest.SendBody
+	247, // 57: api.app.v1.AdminGetConfigReply.list:type_name -> api.app.v1.AdminGetConfigReply.List
+	248, // 58: api.app.v1.AdminSetConfigRequest.send_body:type_name -> api.app.v1.AdminSetConfigRequest.SendBody
+	249, // 59: api.app.v1.AdminSetLandRequest.send_body:type_name -> api.app.v1.AdminSetLandRequest.SendBody
+	250, // 60: api.app.v1.AdminSetSeedRequest.send_body:type_name -> api.app.v1.AdminSetSeedRequest.SendBody
+	251, // 61: api.app.v1.AdminSetBuyLandRequest.send_body:type_name -> api.app.v1.AdminSetBuyLandRequest.SendBody
+	252, // 62: api.app.v1.SetAdminMessagesRequest.send_body:type_name -> api.app.v1.SetAdminMessagesRequest.SendBody
+	253, // 63: api.app.v1.DeleteAdminMessagesRequest.send_body:type_name -> api.app.v1.DeleteAdminMessagesRequest.SendBody
+	254, // 64: api.app.v1.AdminSetPropRequest.send_body:type_name -> api.app.v1.AdminSetPropRequest.SendBody
+	0,   // 65: api.app.v1.App.TestSign:input_type -> api.app.v1.TestSignRequest
+	2,   // 66: api.app.v1.App.EthAuthorize:input_type -> api.app.v1.EthAuthorizeRequest
+	4,   // 67: api.app.v1.App.UserInfo:input_type -> api.app.v1.UserInfoRequest
+	6,   // 68: api.app.v1.App.UserRecommend:input_type -> api.app.v1.UserRecommendRequest
+	8,   // 69: api.app.v1.App.UserRecommendL:input_type -> api.app.v1.UserRecommendLRequest
+	10,  // 70: api.app.v1.App.UserLand:input_type -> api.app.v1.UserLandRequest
+	12,  // 71: api.app.v1.App.UserStakeGitRewardList:input_type -> api.app.v1.UserStakeGitRewardListRequest
+	14,  // 72: api.app.v1.App.UserStakeGitStakeList:input_type -> api.app.v1.UserStakeGitStakeListRequest
+	16,  // 73: api.app.v1.App.UserBoxList:input_type -> api.app.v1.UserBoxListRequest
+	18,  // 74: api.app.v1.App.UserBackList:input_type -> api.app.v1.UserBackListRequest
+	20,  // 75: api.app.v1.App.UserMarketSeedList:input_type -> api.app.v1.UserMarketSeedListRequest
+	22,  // 76: api.app.v1.App.UserMarketLandList:input_type -> api.app.v1.UserMarketLandListRequest
+	24,  // 77: api.app.v1.App.UserMarketPropList:input_type -> api.app.v1.UserMarketPropListRequest
+	26,  // 78: api.app.v1.App.UserMarketRentLandList:input_type -> api.app.v1.UserMarketRentLandListRequest
+	28,  // 79: api.app.v1.App.UserMyMarketList:input_type -> api.app.v1.UserMyMarketListRequest
+	30,  // 80: api.app.v1.App.UserNoticeList:input_type -> api.app.v1.UserNoticeListRequest
+	32,  // 81: api.app.v1.App.UserStakeRewardList:input_type -> api.app.v1.UserStakeRewardListRequest
+	34,  // 82: api.app.v1.App.UserIndexList:input_type -> api.app.v1.UserIndexListRequest
+	36,  // 83: api.app.v1.App.UserOrderList:input_type -> api.app.v1.UserOrderListRequest
+	38,  // 84: api.app.v1.App.Withdraw:input_type -> api.app.v1.WithdrawRequest
+	40,  // 85: api.app.v1.App.Exchange:input_type -> api.app.v1.ExchangeRequest
+	42,  // 86: api.app.v1.App.GetLand:input_type -> api.app.v1.GetLandRequest
+	44,  // 87: api.app.v1.App.StakeGit:input_type -> api.app.v1.StakeGitRequest
+	46,  // 88: api.app.v1.App.BuyBox:input_type -> api.app.v1.BuyBoxRequest
+	48,  // 89: api.app.v1.App.OpenBox:input_type -> api.app.v1.OpenBoxRequest
+	50,  // 90: api.app.v1.App.Sell:input_type -> api.app.v1.SellRequest
+	52,  // 91: api.app.v1.App.Buy:input_type -> api.app.v1.BuyRequest
+	54,  // 92: api.app.v1.App.RentLand:input_type -> api.app.v1.RentLandRequest
+	56,  // 93: api.app.v1.App.LandAddOutRate:input_type -> api.app.v1.LandAddOutRateRequest
+	58,  // 94: api.app.v1.App.StakeGet:input_type -> api.app.v1.StakeGetRequest
+	60,  // 95: api.app.v1.App.StakeGetPlay:input_type -> api.app.v1.StakeGetPlayRequest
+	62,  // 96: api.app.v1.App.LandPlay:input_type -> api.app.v1.LandPlayRequest
+	64,  // 97: api.app.v1.App.LandPlayOne:input_type -> api.app.v1.LandPlayOneRequest
+	66,  // 98: api.app.v1.App.LandPlayTwo:input_type -> api.app.v1.LandPlayTwoRequest
+	68,  // 99: api.app.v1.App.LandPlayThree:input_type -> api.app.v1.LandPlayThreeRequest
+	70,  // 100: api.app.v1.App.LandPlayFour:input_type -> api.app.v1.LandPlayFourRequest
+	72,  // 101: api.app.v1.App.LandPlayFive:input_type -> api.app.v1.LandPlayFiveRequest
+	74,  // 102: api.app.v1.App.LandPlaySix:input_type -> api.app.v1.LandPlaySixRequest
+	76,  // 103: api.app.v1.App.LandPlaySeven:input_type -> api.app.v1.LandPlaySevenRequest
+	78,  // 104: api.app.v1.App.SetGiw:input_type -> api.app.v1.SetGiwRequest
+	80,  // 105: api.app.v1.App.SetGit:input_type -> api.app.v1.SetGitRequest
+	82,  // 106: api.app.v1.App.SetLand:input_type -> api.app.v1.SetLandRequest
+	84,  // 107: api.app.v1.App.AdminLogin:input_type -> api.app.v1.AdminLoginRequest
+	88,  // 108: api.app.v1.App.AdminUserList:input_type -> api.app.v1.AdminUserListRequest
+	86,  // 109: api.app.v1.App.AdminUserStakeList:input_type -> api.app.v1.AdminUserStakeListRequest
+	90,  // 110: api.app.v1.App.AdminUserBuy:input_type -> api.app.v1.AdminUserBuyRequest
+	92,  // 111: api.app.v1.App.AdminUserLand:input_type -> api.app.v1.AdminUserLandRequest
+	118, // 112: api.app.v1.App.AdminRewardListTwo:input_type -> api.app.v1.AdminRewardListTwoRequest
+	120, // 113: api.app.v1.App.AdminRewardList:input_type -> api.app.v1.AdminRewardListRequest
+	96,  // 114: api.app.v1.App.AdminUserBackList:input_type -> api.app.v1.AdminUserBackListRequest
+	98,  // 115: api.app.v1.App.AdminUserSendList:input_type -> api.app.v1.AdminSendListRequest
+	94,  // 116: api.app.v1.App.AdminUserSendLandList:input_type -> api.app.v1.AdminSendLandListRequest
+	136, // 117: api.app.v1.App.AdminUserRecommend:input_type -> api.app.v1.AdminUserRecommendRequest
+	100, // 118: api.app.v1.App.AdminDeposit:input_type -> api.app.v1.AdminDepositRequest
+	102, // 119: api.app.v1.App.AdminDepositUsdt:input_type -> api.app.v1.AdminDepositUsdtRequest
+	104, // 120: api.app.v1.App.AdminDepositUsdtTwo:input_type -> api.app.v1.AdminDepositUsdtTwoRequest
+	112, // 121: api.app.v1.App.AdminWithdraw:input_type -> api.app.v1.AdminWithdrawRequest
+	106, // 122: api.app.v1.App.AdminDaily:input_type -> api.app.v1.AdminDailyRequest
+	108, // 123: api.app.v1.App.AdminDailyReward:input_type -> api.app.v1.AdminDailyRewardRequest
+	110, // 124: api.app.v1.App.AdminPriceChange:input_type -> api.app.v1.AdminPriceChangeRequest
+	114, // 125: api.app.v1.App.AdminWithdrawList:input_type -> api.app.v1.AdminWithdrawListRequest
+	116, // 126: api.app.v1.App.AdminRecordList:input_type -> api.app.v1.RecordListRequest
+	122, // 127: api.app.v1.App.AdminLandConfigList:input_type -> api.app.v1.AdminLandConfigRequest
+	124, // 128: api.app.v1.App.AdminLandConfigSet:input_type -> api.app.v1.AdminLandConfigSetRequest
+	126, // 129: api.app.v1.App.AdminSeedConfigList:input_type -> api.app.v1.AdminSeedConfigRequest
+	130, // 130: api.app.v1.App.AdminSeedConfigSet:input_type -> api.app.v1.AdminSeedConfigSetRequest
+	132, // 131: api.app.v1.App.AdminPropConfigList:input_type -> api.app.v1.AdminPropConfigRequest
+	134, // 132: api.app.v1.App.AdminPropConfigSet:input_type -> api.app.v1.AdminPropConfigSetRequest
+	140, // 133: api.app.v1.App.AdminSetGiw:input_type -> api.app.v1.AdminSetGiwRequest
+	138, // 134: api.app.v1.App.AdminSetAddress:input_type -> api.app.v1.AdminSetAddressRequest
+	142, // 135: api.app.v1.App.AdminSetGiwTwo:input_type -> api.app.v1.AdminSetGiwTwoRequest
+	144, // 136: api.app.v1.App.AdminSetGit:input_type -> api.app.v1.AdminSetGitRequest
+	146, // 137: api.app.v1.App.AdminSetUsdt:input_type -> api.app.v1.AdminSetUsdtRequest
+	148, // 138: api.app.v1.App.AdminSetVip:input_type -> api.app.v1.AdminSetVipRequest
+	150, // 139: api.app.v1.App.AdminSetCanSell:input_type -> api.app.v1.AdminSetCanSellRequest
+	150, // 140: api.app.v1.App.AdminSetCanSellProp:input_type -> api.app.v1.AdminSetCanSellRequest
+	152, // 141: api.app.v1.App.AdminSetCanPlayAdd:input_type -> api.app.v1.AdminSetCanPlayAddRequest
+	154, // 142: api.app.v1.App.AdminSetCanPlaySix:input_type -> api.app.v1.AdminSetCanPlaySixRequest
+	156, // 143: api.app.v1.App.AdminSetCanRent:input_type -> api.app.v1.AdminSetCanRentRequest
+	158, // 144: api.app.v1.App.AdminSetWithdrawMax:input_type -> api.app.v1.AdminSetWithdrawMaxRequest
+	160, // 145: api.app.v1.App.AdminSetCanLand:input_type -> api.app.v1.AdminSetCanLandRequest
+	162, // 146: api.app.v1.App.AdminSetLock:input_type -> api.app.v1.AdminSetLockRequest
+	164, // 147: api.app.v1.App.AdminSetOneTwoThree:input_type -> api.app.v1.AdminSetOneTwoThreeRequest
+	166, // 148: api.app.v1.App.AdminSetLockReward:input_type -> api.app.v1.AdminSetLockRewardRequest
+	168, // 149: api.app.v1.App.AdminGetBox:input_type -> api.app.v1.AdminGetBoxRequest
+	170, // 150: api.app.v1.App.AdminSetBox:input_type -> api.app.v1.AdminSetBoxRequest
+	172, // 151: api.app.v1.App.AdminGetConfig:input_type -> api.app.v1.AdminGetConfigRequest
+	174, // 152: api.app.v1.App.AdminLandReward:input_type -> api.app.v1.AdminLandRewardRequest
+	176, // 153: api.app.v1.App.AdminSetConfig:input_type -> api.app.v1.AdminSetConfigRequest
+	174, // 154: api.app.v1.App.AdminSetQueue:input_type -> api.app.v1.AdminLandRewardRequest
+	178, // 155: api.app.v1.App.AdminSetLand:input_type -> api.app.v1.AdminSetLandRequest
+	188, // 156: api.app.v1.App.AdminSetProp:input_type -> api.app.v1.AdminSetPropRequest
+	180, // 157: api.app.v1.App.AdminSetSeed:input_type -> api.app.v1.AdminSetSeedRequest
+	182, // 158: api.app.v1.App.AdminSetBuyLand:input_type -> api.app.v1.AdminSetBuyLandRequest
+	184, // 159: api.app.v1.App.SetAdminMessages:input_type -> api.app.v1.SetAdminMessagesRequest
+	186, // 160: api.app.v1.App.DeleteAdminMessages:input_type -> api.app.v1.DeleteAdminMessagesRequest
+	128, // 161: api.app.v1.App.AdminMessagesList:input_type -> api.app.v1.AdminMessagesListRequest
+	1,   // 162: api.app.v1.App.TestSign:output_type -> api.app.v1.TestSignReply
+	3,   // 163: api.app.v1.App.EthAuthorize:output_type -> api.app.v1.EthAuthorizeReply
+	5,   // 164: api.app.v1.App.UserInfo:output_type -> api.app.v1.UserInfoReply
+	7,   // 165: api.app.v1.App.UserRecommend:output_type -> api.app.v1.UserRecommendReply
+	9,   // 166: api.app.v1.App.UserRecommendL:output_type -> api.app.v1.UserRecommendLReply
+	11,  // 167: api.app.v1.App.UserLand:output_type -> api.app.v1.UserLandReply
+	13,  // 168: api.app.v1.App.UserStakeGitRewardList:output_type -> api.app.v1.UserStakeGitRewardListReply
+	15,  // 169: api.app.v1.App.UserStakeGitStakeList:output_type -> api.app.v1.UserStakeGitStakeListReply
+	17,  // 170: api.app.v1.App.UserBoxList:output_type -> api.app.v1.UserBoxListReply
+	19,  // 171: api.app.v1.App.UserBackList:output_type -> api.app.v1.UserBackListReply
+	21,  // 172: api.app.v1.App.UserMarketSeedList:output_type -> api.app.v1.UserMarketSeedListReply
+	23,  // 173: api.app.v1.App.UserMarketLandList:output_type -> api.app.v1.UserMarketLandListReply
+	25,  // 174: api.app.v1.App.UserMarketPropList:output_type -> api.app.v1.UserMarketPropListReply
+	27,  // 175: api.app.v1.App.UserMarketRentLandList:output_type -> api.app.v1.UserMarketRentLandListReply
+	29,  // 176: api.app.v1.App.UserMyMarketList:output_type -> api.app.v1.UserMyMarketListReply
+	31,  // 177: api.app.v1.App.UserNoticeList:output_type -> api.app.v1.UserNoticeListReply
+	33,  // 178: api.app.v1.App.UserStakeRewardList:output_type -> api.app.v1.UserStakeRewardListReply
+	35,  // 179: api.app.v1.App.UserIndexList:output_type -> api.app.v1.UserIndexListReply
+	37,  // 180: api.app.v1.App.UserOrderList:output_type -> api.app.v1.UserOrderListReply
+	39,  // 181: api.app.v1.App.Withdraw:output_type -> api.app.v1.WithdrawReply
+	41,  // 182: api.app.v1.App.Exchange:output_type -> api.app.v1.ExchangeReply
+	43,  // 183: api.app.v1.App.GetLand:output_type -> api.app.v1.GetLandReply
+	45,  // 184: api.app.v1.App.StakeGit:output_type -> api.app.v1.StakeGitReply
+	47,  // 185: api.app.v1.App.BuyBox:output_type -> api.app.v1.BuyBoxReply
+	49,  // 186: api.app.v1.App.OpenBox:output_type -> api.app.v1.OpenBoxReply
+	51,  // 187: api.app.v1.App.Sell:output_type -> api.app.v1.SellReply
+	53,  // 188: api.app.v1.App.Buy:output_type -> api.app.v1.BuyReply
+	55,  // 189: api.app.v1.App.RentLand:output_type -> api.app.v1.RentLandReply
+	57,  // 190: api.app.v1.App.LandAddOutRate:output_type -> api.app.v1.LandAddOutRateReply
+	59,  // 191: api.app.v1.App.StakeGet:output_type -> api.app.v1.StakeGetReply
+	61,  // 192: api.app.v1.App.StakeGetPlay:output_type -> api.app.v1.StakeGetPlayReply
+	63,  // 193: api.app.v1.App.LandPlay:output_type -> api.app.v1.LandPlayReply
+	65,  // 194: api.app.v1.App.LandPlayOne:output_type -> api.app.v1.LandPlayOneReply
+	67,  // 195: api.app.v1.App.LandPlayTwo:output_type -> api.app.v1.LandPlayTwoReply
+	69,  // 196: api.app.v1.App.LandPlayThree:output_type -> api.app.v1.LandPlayThreeReply
+	71,  // 197: api.app.v1.App.LandPlayFour:output_type -> api.app.v1.LandPlayFourReply
+	73,  // 198: api.app.v1.App.LandPlayFive:output_type -> api.app.v1.LandPlayFiveReply
+	75,  // 199: api.app.v1.App.LandPlaySix:output_type -> api.app.v1.LandPlaySixReply
+	77,  // 200: api.app.v1.App.LandPlaySeven:output_type -> api.app.v1.LandPlaySevenReply
+	79,  // 201: api.app.v1.App.SetGiw:output_type -> api.app.v1.SetGiwReply
+	81,  // 202: api.app.v1.App.SetGit:output_type -> api.app.v1.SetGitReply
+	83,  // 203: api.app.v1.App.SetLand:output_type -> api.app.v1.SetLandReply
+	85,  // 204: api.app.v1.App.AdminLogin:output_type -> api.app.v1.AdminLoginReply
+	89,  // 205: api.app.v1.App.AdminUserList:output_type -> api.app.v1.AdminUserListReply
+	87,  // 206: api.app.v1.App.AdminUserStakeList:output_type -> api.app.v1.AdminUserStakeListReply
+	91,  // 207: api.app.v1.App.AdminUserBuy:output_type -> api.app.v1.AdminUserBuyReply
+	93,  // 208: api.app.v1.App.AdminUserLand:output_type -> api.app.v1.AdminUserLandReply
+	119, // 209: api.app.v1.App.AdminRewardListTwo:output_type -> api.app.v1.AdminRewardListTwoReply
+	121, // 210: api.app.v1.App.AdminRewardList:output_type -> api.app.v1.AdminRewardListReply
+	97,  // 211: api.app.v1.App.AdminUserBackList:output_type -> api.app.v1.AdminUserBackListReply
+	99,  // 212: api.app.v1.App.AdminUserSendList:output_type -> api.app.v1.AdminSendListReply
+	95,  // 213: api.app.v1.App.AdminUserSendLandList:output_type -> api.app.v1.AdminSendLandListReply
+	137, // 214: api.app.v1.App.AdminUserRecommend:output_type -> api.app.v1.AdminUserRecommendReply
+	101, // 215: api.app.v1.App.AdminDeposit:output_type -> api.app.v1.AdminDepositReply
+	103, // 216: api.app.v1.App.AdminDepositUsdt:output_type -> api.app.v1.AdminDepositUsdtReply
+	105, // 217: api.app.v1.App.AdminDepositUsdtTwo:output_type -> api.app.v1.AdminDepositUsdtTwoReply
+	113, // 218: api.app.v1.App.AdminWithdraw:output_type -> api.app.v1.AdminWithdrawReply
+	107, // 219: api.app.v1.App.AdminDaily:output_type -> api.app.v1.AdminDailyReply
+	109, // 220: api.app.v1.App.AdminDailyReward:output_type -> api.app.v1.AdminDailyRewardReply
+	111, // 221: api.app.v1.App.AdminPriceChange:output_type -> api.app.v1.AdminPriceChangeReply
+	115, // 222: api.app.v1.App.AdminWithdrawList:output_type -> api.app.v1.AdminWithdrawListReply
+	117, // 223: api.app.v1.App.AdminRecordList:output_type -> api.app.v1.RecordListReply
+	123, // 224: api.app.v1.App.AdminLandConfigList:output_type -> api.app.v1.AdminLandConfigReply
+	125, // 225: api.app.v1.App.AdminLandConfigSet:output_type -> api.app.v1.AdminLandConfigSetReply
+	127, // 226: api.app.v1.App.AdminSeedConfigList:output_type -> api.app.v1.AdminSeedConfigReply
+	131, // 227: api.app.v1.App.AdminSeedConfigSet:output_type -> api.app.v1.AdminSeedConfigSetReply
+	133, // 228: api.app.v1.App.AdminPropConfigList:output_type -> api.app.v1.AdminPropConfigReply
+	135, // 229: api.app.v1.App.AdminPropConfigSet:output_type -> api.app.v1.AdminPropConfigSetReply
+	141, // 230: api.app.v1.App.AdminSetGiw:output_type -> api.app.v1.AdminSetGiwReply
+	139, // 231: api.app.v1.App.AdminSetAddress:output_type -> api.app.v1.AdminSetAddressReply
+	143, // 232: api.app.v1.App.AdminSetGiwTwo:output_type -> api.app.v1.AdminSetGiwTwoReply
+	145, // 233: api.app.v1.App.AdminSetGit:output_type -> api.app.v1.AdminSetGitReply
+	147, // 234: api.app.v1.App.AdminSetUsdt:output_type -> api.app.v1.AdminSetUsdtReply
+	149, // 235: api.app.v1.App.AdminSetVip:output_type -> api.app.v1.AdminSetVipReply
+	151, // 236: api.app.v1.App.AdminSetCanSell:output_type -> api.app.v1.AdminSetCanSellReply
+	151, // 237: api.app.v1.App.AdminSetCanSellProp:output_type -> api.app.v1.AdminSetCanSellReply
+	153, // 238: api.app.v1.App.AdminSetCanPlayAdd:output_type -> api.app.v1.AdminSetCanPlayAddReply
+	155, // 239: api.app.v1.App.AdminSetCanPlaySix:output_type -> api.app.v1.AdminSetCanPlaySixReply
+	157, // 240: api.app.v1.App.AdminSetCanRent:output_type -> api.app.v1.AdminSetCanRentReply
+	159, // 241: api.app.v1.App.AdminSetWithdrawMax:output_type -> api.app.v1.AdminSetWithdrawMaxReply
+	161, // 242: api.app.v1.App.AdminSetCanLand:output_type -> api.app.v1.AdminSetCanLandReply
+	163, // 243: api.app.v1.App.AdminSetLock:output_type -> api.app.v1.AdminSetLockReply
+	165, // 244: api.app.v1.App.AdminSetOneTwoThree:output_type -> api.app.v1.AdminSetOneTwoThreeReply
+	167, // 245: api.app.v1.App.AdminSetLockReward:output_type -> api.app.v1.AdminSetLockRewardReply
+	169, // 246: api.app.v1.App.AdminGetBox:output_type -> api.app.v1.AdminGetBoxReply
+	171, // 247: api.app.v1.App.AdminSetBox:output_type -> api.app.v1.AdminSetBoxReply
+	173, // 248: api.app.v1.App.AdminGetConfig:output_type -> api.app.v1.AdminGetConfigReply
+	175, // 249: api.app.v1.App.AdminLandReward:output_type -> api.app.v1.AdminLandRewardReply
+	177, // 250: api.app.v1.App.AdminSetConfig:output_type -> api.app.v1.AdminSetConfigReply
+	175, // 251: api.app.v1.App.AdminSetQueue:output_type -> api.app.v1.AdminLandRewardReply
+	179, // 252: api.app.v1.App.AdminSetLand:output_type -> api.app.v1.AdminSetLandReply
+	189, // 253: api.app.v1.App.AdminSetProp:output_type -> api.app.v1.AdminSetPropReply
+	181, // 254: api.app.v1.App.AdminSetSeed:output_type -> api.app.v1.AdminSetSeedReply
+	183, // 255: api.app.v1.App.AdminSetBuyLand:output_type -> api.app.v1.AdminSetBuyLandReply
+	185, // 256: api.app.v1.App.SetAdminMessages:output_type -> api.app.v1.SetAdminMessagesReply
+	187, // 257: api.app.v1.App.DeleteAdminMessages:output_type -> api.app.v1.DeleteAdminMessagesReply
+	129, // 258: api.app.v1.App.AdminMessagesList:output_type -> api.app.v1.AdminMessagesListReply
+	162, // [162:259] is the sub-list for method output_type
+	65,  // [65:162] is the sub-list for method input_type
+	65,  // [65:65] is the sub-list for extension type_name
+	65,  // [65:65] is the sub-list for extension extendee
+	0,   // [0:65] is the sub-list for field type_name
 }
 
 func init() { file_api_app_v1_app_proto_init() }
@@ -18891,7 +19125,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[86].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserListRequest); i {
+			switch v := v.(*AdminUserStakeListRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -18903,7 +19137,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[87].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserListReply); i {
+			switch v := v.(*AdminUserStakeListReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -18915,7 +19149,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[88].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserBuyRequest); i {
+			switch v := v.(*AdminUserListRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -18927,7 +19161,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[89].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserBuyReply); i {
+			switch v := v.(*AdminUserListReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -18939,7 +19173,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[90].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserLandRequest); i {
+			switch v := v.(*AdminUserBuyRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -18951,7 +19185,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[91].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserLandReply); i {
+			switch v := v.(*AdminUserBuyReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -18963,7 +19197,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[92].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSendLandListRequest); i {
+			switch v := v.(*AdminUserLandRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -18975,7 +19209,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[93].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSendLandListReply); i {
+			switch v := v.(*AdminUserLandReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -18987,7 +19221,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[94].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserBackListRequest); i {
+			switch v := v.(*AdminSendLandListRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -18999,7 +19233,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[95].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserBackListReply); i {
+			switch v := v.(*AdminSendLandListReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19011,7 +19245,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[96].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSendListRequest); i {
+			switch v := v.(*AdminUserBackListRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19023,7 +19257,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[97].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSendListReply); i {
+			switch v := v.(*AdminUserBackListReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19035,7 +19269,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[98].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminDepositRequest); i {
+			switch v := v.(*AdminSendListRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19047,7 +19281,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[99].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminDepositReply); i {
+			switch v := v.(*AdminSendListReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19059,7 +19293,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[100].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminDepositUsdtRequest); i {
+			switch v := v.(*AdminDepositRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19071,7 +19305,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[101].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminDepositUsdtReply); i {
+			switch v := v.(*AdminDepositReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19083,7 +19317,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[102].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminDepositUsdtTwoRequest); i {
+			switch v := v.(*AdminDepositUsdtRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19095,7 +19329,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[103].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminDepositUsdtTwoReply); i {
+			switch v := v.(*AdminDepositUsdtReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19107,7 +19341,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[104].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminDailyRequest); i {
+			switch v := v.(*AdminDepositUsdtTwoRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19119,7 +19353,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[105].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminDailyReply); i {
+			switch v := v.(*AdminDepositUsdtTwoReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19131,7 +19365,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[106].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminDailyRewardRequest); i {
+			switch v := v.(*AdminDailyRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19143,7 +19377,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[107].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminDailyRewardReply); i {
+			switch v := v.(*AdminDailyReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19155,7 +19389,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[108].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminPriceChangeRequest); i {
+			switch v := v.(*AdminDailyRewardRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19167,7 +19401,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[109].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminPriceChangeReply); i {
+			switch v := v.(*AdminDailyRewardReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19179,7 +19413,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[110].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminWithdrawRequest); i {
+			switch v := v.(*AdminPriceChangeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19191,7 +19425,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[111].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminWithdrawReply); i {
+			switch v := v.(*AdminPriceChangeReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19203,7 +19437,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[112].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminWithdrawListRequest); i {
+			switch v := v.(*AdminWithdrawRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19215,7 +19449,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[113].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminWithdrawListReply); i {
+			switch v := v.(*AdminWithdrawReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19227,7 +19461,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[114].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecordListRequest); i {
+			switch v := v.(*AdminWithdrawListRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19239,7 +19473,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[115].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecordListReply); i {
+			switch v := v.(*AdminWithdrawListReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19251,7 +19485,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[116].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminRewardListTwoRequest); i {
+			switch v := v.(*RecordListRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19263,7 +19497,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[117].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminRewardListTwoReply); i {
+			switch v := v.(*RecordListReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19275,7 +19509,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[118].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminRewardListRequest); i {
+			switch v := v.(*AdminRewardListTwoRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19287,7 +19521,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[119].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminRewardListReply); i {
+			switch v := v.(*AdminRewardListTwoReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19299,7 +19533,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[120].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminLandConfigRequest); i {
+			switch v := v.(*AdminRewardListRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19311,7 +19545,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[121].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminLandConfigReply); i {
+			switch v := v.(*AdminRewardListReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19323,7 +19557,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[122].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminLandConfigSetRequest); i {
+			switch v := v.(*AdminLandConfigRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19335,7 +19569,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[123].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminLandConfigSetReply); i {
+			switch v := v.(*AdminLandConfigReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19347,7 +19581,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[124].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSeedConfigRequest); i {
+			switch v := v.(*AdminLandConfigSetRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19359,7 +19593,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[125].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSeedConfigReply); i {
+			switch v := v.(*AdminLandConfigSetReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19371,7 +19605,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[126].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminMessagesListRequest); i {
+			switch v := v.(*AdminSeedConfigRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19383,7 +19617,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[127].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminMessagesListReply); i {
+			switch v := v.(*AdminSeedConfigReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19395,7 +19629,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[128].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSeedConfigSetRequest); i {
+			switch v := v.(*AdminMessagesListRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19407,7 +19641,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[129].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSeedConfigSetReply); i {
+			switch v := v.(*AdminMessagesListReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19419,7 +19653,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[130].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminPropConfigRequest); i {
+			switch v := v.(*AdminSeedConfigSetRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19431,7 +19665,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[131].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminPropConfigReply); i {
+			switch v := v.(*AdminSeedConfigSetReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19443,7 +19677,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[132].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminPropConfigSetRequest); i {
+			switch v := v.(*AdminPropConfigRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19455,7 +19689,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[133].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminPropConfigSetReply); i {
+			switch v := v.(*AdminPropConfigReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19467,7 +19701,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[134].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserRecommendRequest); i {
+			switch v := v.(*AdminPropConfigSetRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19479,7 +19713,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[135].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserRecommendReply); i {
+			switch v := v.(*AdminPropConfigSetReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19491,7 +19725,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[136].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetAddressRequest); i {
+			switch v := v.(*AdminUserRecommendRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19503,7 +19737,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[137].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetAddressReply); i {
+			switch v := v.(*AdminUserRecommendReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19515,7 +19749,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[138].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetGiwRequest); i {
+			switch v := v.(*AdminSetAddressRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19527,7 +19761,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[139].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetGiwReply); i {
+			switch v := v.(*AdminSetAddressReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19539,7 +19773,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[140].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetGiwTwoRequest); i {
+			switch v := v.(*AdminSetGiwRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19551,7 +19785,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[141].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetGiwTwoReply); i {
+			switch v := v.(*AdminSetGiwReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19563,7 +19797,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[142].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetGitRequest); i {
+			switch v := v.(*AdminSetGiwTwoRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19575,7 +19809,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[143].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetGitReply); i {
+			switch v := v.(*AdminSetGiwTwoReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19587,7 +19821,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[144].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetUsdtRequest); i {
+			switch v := v.(*AdminSetGitRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19599,7 +19833,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[145].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetUsdtReply); i {
+			switch v := v.(*AdminSetGitReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19611,7 +19845,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[146].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetVipRequest); i {
+			switch v := v.(*AdminSetUsdtRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19623,7 +19857,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[147].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetVipReply); i {
+			switch v := v.(*AdminSetUsdtReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19635,7 +19869,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[148].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetCanSellRequest); i {
+			switch v := v.(*AdminSetVipRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19647,7 +19881,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[149].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetCanSellReply); i {
+			switch v := v.(*AdminSetVipReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19659,7 +19893,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[150].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetCanPlayAddRequest); i {
+			switch v := v.(*AdminSetCanSellRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19671,7 +19905,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[151].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetCanPlayAddReply); i {
+			switch v := v.(*AdminSetCanSellReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19683,7 +19917,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[152].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetCanPlaySixRequest); i {
+			switch v := v.(*AdminSetCanPlayAddRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19695,7 +19929,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[153].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetCanPlaySixReply); i {
+			switch v := v.(*AdminSetCanPlayAddReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19707,7 +19941,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[154].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetCanRentRequest); i {
+			switch v := v.(*AdminSetCanPlaySixRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19719,7 +19953,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[155].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetCanRentReply); i {
+			switch v := v.(*AdminSetCanPlaySixReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19731,7 +19965,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[156].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetWithdrawMaxRequest); i {
+			switch v := v.(*AdminSetCanRentRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19743,7 +19977,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[157].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetWithdrawMaxReply); i {
+			switch v := v.(*AdminSetCanRentReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19755,7 +19989,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[158].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetCanLandRequest); i {
+			switch v := v.(*AdminSetWithdrawMaxRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19767,7 +20001,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[159].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetCanLandReply); i {
+			switch v := v.(*AdminSetWithdrawMaxReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19779,7 +20013,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[160].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetLockRequest); i {
+			switch v := v.(*AdminSetCanLandRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19791,7 +20025,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[161].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetLockReply); i {
+			switch v := v.(*AdminSetCanLandReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19803,7 +20037,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[162].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetOneTwoThreeRequest); i {
+			switch v := v.(*AdminSetLockRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19815,7 +20049,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[163].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetOneTwoThreeReply); i {
+			switch v := v.(*AdminSetLockReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19827,7 +20061,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[164].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetLockRewardRequest); i {
+			switch v := v.(*AdminSetOneTwoThreeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19839,7 +20073,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[165].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetLockRewardReply); i {
+			switch v := v.(*AdminSetOneTwoThreeReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19851,7 +20085,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[166].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminGetBoxRequest); i {
+			switch v := v.(*AdminSetLockRewardRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19863,7 +20097,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[167].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminGetBoxReply); i {
+			switch v := v.(*AdminSetLockRewardReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19875,7 +20109,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[168].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetBoxRequest); i {
+			switch v := v.(*AdminGetBoxRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19887,7 +20121,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[169].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetBoxReply); i {
+			switch v := v.(*AdminGetBoxReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19899,7 +20133,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[170].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminGetConfigRequest); i {
+			switch v := v.(*AdminSetBoxRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19911,7 +20145,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[171].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminGetConfigReply); i {
+			switch v := v.(*AdminSetBoxReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19923,7 +20157,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[172].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminLandRewardRequest); i {
+			switch v := v.(*AdminGetConfigRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19935,7 +20169,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[173].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminLandRewardReply); i {
+			switch v := v.(*AdminGetConfigReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19947,7 +20181,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[174].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetConfigRequest); i {
+			switch v := v.(*AdminLandRewardRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19959,7 +20193,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[175].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetConfigReply); i {
+			switch v := v.(*AdminLandRewardReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19971,7 +20205,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[176].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetLandRequest); i {
+			switch v := v.(*AdminSetConfigRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19983,7 +20217,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[177].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetLandReply); i {
+			switch v := v.(*AdminSetConfigReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -19995,7 +20229,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[178].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetSeedRequest); i {
+			switch v := v.(*AdminSetLandRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20007,7 +20241,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[179].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetSeedReply); i {
+			switch v := v.(*AdminSetLandReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20019,7 +20253,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[180].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetBuyLandRequest); i {
+			switch v := v.(*AdminSetSeedRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20031,7 +20265,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[181].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetBuyLandReply); i {
+			switch v := v.(*AdminSetSeedReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20043,7 +20277,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[182].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetAdminMessagesRequest); i {
+			switch v := v.(*AdminSetBuyLandRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20055,7 +20289,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[183].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetAdminMessagesReply); i {
+			switch v := v.(*AdminSetBuyLandReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20067,7 +20301,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[184].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteAdminMessagesRequest); i {
+			switch v := v.(*SetAdminMessagesRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20079,7 +20313,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[185].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteAdminMessagesReply); i {
+			switch v := v.(*SetAdminMessagesReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20091,7 +20325,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[186].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetPropRequest); i {
+			switch v := v.(*DeleteAdminMessagesRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20103,7 +20337,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[187].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetPropReply); i {
+			switch v := v.(*DeleteAdminMessagesReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20115,7 +20349,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[188].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EthAuthorizeRequest_SendBody); i {
+			switch v := v.(*AdminSetPropRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20127,7 +20361,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[189].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserRecommendReply_List); i {
+			switch v := v.(*AdminSetPropReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20139,7 +20373,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[190].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserRecommendLReply_List); i {
+			switch v := v.(*EthAuthorizeRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20151,7 +20385,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[191].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserLandReply_List); i {
+			switch v := v.(*UserRecommendReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20163,7 +20397,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[192].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserStakeGitRewardListReply_List); i {
+			switch v := v.(*UserRecommendLReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20175,7 +20409,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[193].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserStakeGitStakeListReply_List); i {
+			switch v := v.(*UserLandReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20187,7 +20421,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[194].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserBoxListReply_List); i {
+			switch v := v.(*UserStakeGitRewardListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20199,7 +20433,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[195].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserBackListReply_List); i {
+			switch v := v.(*UserStakeGitStakeListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20211,7 +20445,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[196].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserMarketSeedListReply_List); i {
+			switch v := v.(*UserBoxListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20223,7 +20457,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[197].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserMarketLandListReply_List); i {
+			switch v := v.(*UserBackListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20235,7 +20469,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[198].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserMarketPropListReply_List); i {
+			switch v := v.(*UserMarketSeedListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20247,7 +20481,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[199].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserMarketRentLandListReply_List); i {
+			switch v := v.(*UserMarketLandListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20259,7 +20493,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[200].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserMyMarketListReply_List); i {
+			switch v := v.(*UserMarketPropListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20271,7 +20505,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[201].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserNoticeListReply_List); i {
+			switch v := v.(*UserMarketRentLandListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20283,7 +20517,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[202].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserStakeRewardListReply_List); i {
+			switch v := v.(*UserMyMarketListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20295,7 +20529,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[203].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserIndexListReply_List); i {
+			switch v := v.(*UserNoticeListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20307,7 +20541,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[204].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserOrderListReply_List); i {
+			switch v := v.(*UserStakeRewardListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20319,7 +20553,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[205].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WithdrawRequest_SendBody); i {
+			switch v := v.(*UserIndexListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20331,7 +20565,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[206].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExchangeRequest_SendBody); i {
+			switch v := v.(*UserOrderListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20343,7 +20577,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[207].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetLandRequest_SendBody); i {
+			switch v := v.(*WithdrawRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20355,7 +20589,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[208].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StakeGitRequest_SendBody); i {
+			switch v := v.(*ExchangeRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20367,7 +20601,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[209].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BuyBoxRequest_SendBody); i {
+			switch v := v.(*GetLandRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20379,7 +20613,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[210].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OpenBoxRequest_SendBody); i {
+			switch v := v.(*StakeGitRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20391,7 +20625,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[211].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SellRequest_SendBody); i {
+			switch v := v.(*BuyBoxRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20403,7 +20637,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[212].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BuyRequest_SendBody); i {
+			switch v := v.(*OpenBoxRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20415,7 +20649,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[213].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RentLandRequest_SendBody); i {
+			switch v := v.(*SellRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20427,7 +20661,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[214].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LandAddOutRateRequest_SendBody); i {
+			switch v := v.(*BuyRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20439,7 +20673,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[215].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StakeGetRequest_SendBody); i {
+			switch v := v.(*RentLandRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20451,7 +20685,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[216].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StakeGetPlayRequest_SendBody); i {
+			switch v := v.(*LandAddOutRateRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20463,7 +20697,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[217].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LandPlayRequest_SendBody); i {
+			switch v := v.(*StakeGetRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20475,7 +20709,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[218].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LandPlayOneRequest_SendBody); i {
+			switch v := v.(*StakeGetPlayRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20487,7 +20721,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[219].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LandPlayTwoRequest_SendBody); i {
+			switch v := v.(*LandPlayRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20499,7 +20733,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[220].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LandPlayThreeRequest_SendBody); i {
+			switch v := v.(*LandPlayOneRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20511,7 +20745,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[221].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LandPlayFourRequest_SendBody); i {
+			switch v := v.(*LandPlayTwoRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20523,7 +20757,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[222].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LandPlayFiveRequest_SendBody); i {
+			switch v := v.(*LandPlayThreeRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20535,7 +20769,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[223].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LandPlaySixRequest_SendBody); i {
+			switch v := v.(*LandPlayFourRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20547,7 +20781,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[224].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LandPlaySevenRequest_SendBody); i {
+			switch v := v.(*LandPlayFiveRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20559,7 +20793,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[225].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminLoginRequest_SendBody); i {
+			switch v := v.(*LandPlaySixRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20571,7 +20805,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[226].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserListReply_List); i {
+			switch v := v.(*LandPlaySevenRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20583,7 +20817,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[227].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserLandReply_List); i {
+			switch v := v.(*AdminLoginRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20595,7 +20829,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[228].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSendLandListReply_List); i {
+			switch v := v.(*AdminUserStakeListReply_ListStake); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20607,7 +20841,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[229].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserBackListReply_List); i {
+			switch v := v.(*AdminUserListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20619,7 +20853,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[230].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSendListReply_List); i {
+			switch v := v.(*AdminUserLandReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20631,7 +20865,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[231].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminWithdrawListReply_List); i {
+			switch v := v.(*AdminSendLandListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20643,7 +20877,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[232].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecordListReply_List); i {
+			switch v := v.(*AdminUserBackListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20655,7 +20889,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[233].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminRewardListTwoReply_List); i {
+			switch v := v.(*AdminSendListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20667,7 +20901,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[234].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminRewardListReply_List); i {
+			switch v := v.(*AdminWithdrawListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20679,7 +20913,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[235].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminLandConfigReply_List); i {
+			switch v := v.(*RecordListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20691,7 +20925,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[236].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminLandConfigSetRequest_SendBody); i {
+			switch v := v.(*AdminRewardListTwoReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20703,7 +20937,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[237].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSeedConfigReply_List); i {
+			switch v := v.(*AdminRewardListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20715,7 +20949,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[238].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminMessagesListReply_List); i {
+			switch v := v.(*AdminLandConfigReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20727,7 +20961,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[239].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSeedConfigSetRequest_SendBody); i {
+			switch v := v.(*AdminLandConfigSetRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20739,7 +20973,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[240].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminPropConfigReply_List); i {
+			switch v := v.(*AdminSeedConfigReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20751,7 +20985,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[241].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminPropConfigSetRequest_SendBody); i {
+			switch v := v.(*AdminMessagesListReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20763,7 +20997,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[242].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminUserRecommendReply_List); i {
+			switch v := v.(*AdminSeedConfigSetRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20775,7 +21009,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[243].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetBoxRequest_SendBody); i {
+			switch v := v.(*AdminPropConfigReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20787,7 +21021,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[244].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminGetConfigReply_List); i {
+			switch v := v.(*AdminPropConfigSetRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20799,7 +21033,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[245].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetConfigRequest_SendBody); i {
+			switch v := v.(*AdminUserRecommendReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20811,7 +21045,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[246].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetLandRequest_SendBody); i {
+			switch v := v.(*AdminSetBoxRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20823,7 +21057,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[247].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetSeedRequest_SendBody); i {
+			switch v := v.(*AdminGetConfigReply_List); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20835,7 +21069,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[248].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdminSetBuyLandRequest_SendBody); i {
+			switch v := v.(*AdminSetConfigRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20847,7 +21081,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[249].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetAdminMessagesRequest_SendBody); i {
+			switch v := v.(*AdminSetLandRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20859,7 +21093,7 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[250].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteAdminMessagesRequest_SendBody); i {
+			switch v := v.(*AdminSetSeedRequest_SendBody); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -20871,6 +21105,42 @@ func file_api_app_v1_app_proto_init() {
 			}
 		}
 		file_api_app_v1_app_proto_msgTypes[251].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AdminSetBuyLandRequest_SendBody); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_app_v1_app_proto_msgTypes[252].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetAdminMessagesRequest_SendBody); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_app_v1_app_proto_msgTypes[253].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteAdminMessagesRequest_SendBody); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_app_v1_app_proto_msgTypes[254].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AdminSetPropRequest_SendBody); i {
 			case 0:
 				return &v.state
@@ -20889,7 +21159,7 @@ func file_api_app_v1_app_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_api_app_v1_app_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   252,
+			NumMessages:   255,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

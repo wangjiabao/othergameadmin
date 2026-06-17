@@ -2799,6 +2799,56 @@ func (u *UserRepo) GetStakeGitByUserID(ctx context.Context, userID int64) (*biz.
 	}, nil
 }
 
+func (u *UserRepo) GetStakeGitRecordsByUserIDIspayRecord(ctx context.Context, userID int64, b *biz.Pagination) ([]*biz.StakeGitRecord, error) {
+
+	var (
+		records []*StakeGitRecord
+	)
+
+	res := make([]*biz.StakeGitRecord, 0)
+	instance := u.data.DB(ctx).Table("stake_git_record_ispay")
+
+	if userID > 0 {
+		instance = instance.Where("user_id = ?", userID)
+	}
+
+	if err := instance.Order("id desc").Scopes(Paginate(b.PageNum, b.PageSize)).Find(&records).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return res, nil
+		}
+		return nil, errors.New(500, "STAKE GIT RECORD ERROR", err.Error())
+	}
+
+	for _, record := range records {
+		res = append(res, &biz.StakeGitRecord{
+			ID:        record.ID,
+			UserId:    record.UserId,
+			Amount:    record.Amount,
+			StakeType: record.StakeType,
+			CreatedAt: record.CreatedAt,
+			UpdatedAt: record.UpdatedAt,
+			Day:       record.Day,
+		})
+	}
+
+	return res, nil
+}
+
+func (u *UserRepo) GetStakeGitRecordsByUserIDIspayRecordCount(ctx context.Context, userId uint64) (int64, error) {
+	var count int64
+	instance := u.data.DB(ctx).Table("stake_git_record_ispay")
+
+	if 0 < userId {
+		instance = instance.Where("user_id=?", userId)
+	}
+
+	if err := instance.Count(&count).Error; err != nil {
+		return count, errors.New(500, "withdraw ERROR", err.Error())
+	}
+
+	return count, nil
+}
+
 func (u *UserRepo) GetStakeGitRecordsByUserIDIspay(ctx context.Context, userID uint64) ([]*biz.StakeGitRecord, error) {
 	var (
 		records []*StakeGitRecord
