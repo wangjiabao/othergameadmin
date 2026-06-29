@@ -5535,7 +5535,7 @@ func (ac *AppUsecase) AdminUserList(ctx context.Context, req *pb.AdminUserListRe
 		useRes = append(useRes, &pb.AdminUserListReply_List{
 			UserId:                    v.ID,
 			Address:                   v.Address,
-			Level:                     v.Level,
+			Level:                     v.Vip,
 			Giw:                       v.Giw,
 			GiwTwo:                    v.GiwTwo,
 			Git:                       v.Git,
