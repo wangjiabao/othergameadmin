@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/md5"
 	"crypto/rand"
+	"encoding/json"
 	"fmt"
 	pb "game/api/app/v1"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -14,6 +15,7 @@ import (
 	"math"
 	"math/big"
 	rand2 "math/rand"
+	"net/http"
 	"strconv"
 	"strings"
 	"sync"
@@ -8844,6 +8846,62 @@ func (ac *AppUsecase) DepositNewNew(ctx context.Context, eth *EthRecord, amountF
 	return nil
 }
 
+type SymbolThumb struct {
+	Symbol  string  `json:"symbol"`
+	Close   float64 `json:"close"`
+	UsdRate float64 `json:"usdRate"`
+}
+
+// GetIspayPrice 获取 ISPAY 当前 U 价格
+func GetIspayPrice() (float64, error) {
+	url := "https://ex.ispay.vip/market/symbol-thumb"
+
+	client := &http.Client{
+		Timeout: 10 * time.Second,
+	}
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return 0, err
+	}
+
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("User-Agent", "Mozilla/5.0")
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return 0, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return 0, fmt.Errorf("request failed, status: %d", resp.StatusCode)
+	}
+
+	var list []SymbolThumb
+	if err := json.NewDecoder(resp.Body).Decode(&list); err != nil {
+		return 0, err
+	}
+
+	for _, item := range list {
+		if strings.EqualFold(item.Symbol, "ISPAY/USDT") {
+			// 优先返回 usdRate，它表示折合 U / USD 的价格
+			if item.UsdRate > 0 {
+				return item.UsdRate, nil
+			}
+
+			// 兜底返回 close
+			if item.Close > 0 {
+				return item.Close, nil
+			}
+
+			return 0, fmt.Errorf("ISPAY/USDT price is zero")
+		}
+	}
+
+	return 0, fmt.Errorf("ISPAY/USDT not found")
+}
+
 func GetReservers() (float64, float64, error) {
 	urls := []string{
 		"https://bsc-dataseed4.binance.org/",
@@ -9038,12 +9096,21 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		return err
 	}
 
+	//var (
+	//	tmp0 float64
+	//	tmp1 float64
+	//)
+	//tmp0, tmp1, err = GetReservers()
+	//if nil != err || 1 >= tmp0 || 1 >= tmp1 {
+	//	return err
+	//}
+
 	var (
-		tmp0 float64
-		tmp1 float64
+		newIspayPrice float64
 	)
-	tmp0, tmp1, err = GetReservers()
-	if nil != err || 1 >= tmp0 || 1 >= tmp1 {
+	newIspayPrice, err = GetIspayPrice()
+	if nil != err || 0.0000001 > newIspayPrice {
+		fmt.Println(err, newIspayPrice, "err ispay price")
 		return err
 	}
 
@@ -9124,7 +9191,7 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 			if 1 == priceOpenUse {
 				ispayL = reward / priceOpen
 			} else {
-				ispayL = reward * tmp1 / tmp0
+				ispayL = reward / newIspayPrice
 			}
 
 			if 0 < reward {
@@ -9259,7 +9326,7 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 			if 1 == priceOpenUse {
 				ispayL = tmpReward / priceOpen
 			} else {
-				ispayL = tmpReward * tmp1 / tmp0
+				ispayL = tmpReward / newIspayPrice
 			}
 
 			// 入金
