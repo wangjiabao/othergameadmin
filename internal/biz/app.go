@@ -5462,6 +5462,74 @@ func (ac *AppUsecase) AdminUserList(ctx context.Context, req *pb.AdminUserListRe
 		}, nil
 	}
 
+	// 推荐人
+	var (
+		configs []*Config
+		v1      float64
+		v2      float64
+		v3      float64
+		v4      float64
+		v5      float64
+		v6      float64
+		v7      float64
+		v8      float64
+		v9      float64
+		v10     float64
+	)
+
+	// 配置
+	configs, err = ac.userRepo.GetConfigByKeys(ctx,
+		"v_1",
+		"v_2",
+		"v_3",
+		"v_4",
+		"v_5",
+		"v_6",
+		"v_7",
+		"v_8",
+		"v_9",
+		"v_10",
+	)
+	if nil != err || nil == configs {
+		return &pb.AdminUserListReply{
+			Status: "错误",
+		}, nil
+	}
+
+	for _, vConfig := range configs {
+
+		if "v_1" == vConfig.KeyName {
+			v1, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_2" == vConfig.KeyName {
+			v2, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_3" == vConfig.KeyName {
+			v3, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_4" == vConfig.KeyName {
+			v4, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_5" == vConfig.KeyName {
+			v5, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_6" == vConfig.KeyName {
+			v6, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_7" == vConfig.KeyName {
+			v7, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_8" == vConfig.KeyName {
+			v8, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_9" == vConfig.KeyName {
+			v9, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_10" == vConfig.KeyName {
+			v10, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+	}
+
 	var (
 		stakeGetTotal *StakeGetTotal
 	)
@@ -5532,10 +5600,33 @@ func (ac *AppUsecase) AdminUserList(ctx context.Context, req *pb.AdminUserListRe
 			}
 		}
 
+		tmpVip := 0
+		if v10 <= v.MyTotalAmountNew || 10 == v.Vip {
+			tmpVip = 10
+		} else if v9 <= v.MyTotalAmountNew || 9 == v.Vip {
+			tmpVip = 9
+		} else if v8 <= v.MyTotalAmountNew || 8 == v.Vip {
+			tmpVip = 8
+		} else if v7 <= v.MyTotalAmountNew || 7 == v.Vip {
+			tmpVip = 7
+		} else if v6 <= v.MyTotalAmountNew || 6 == v.Vip {
+			tmpVip = 6
+		} else if v5 <= v.MyTotalAmountNew || 5 == v.Vip {
+			tmpVip = 5
+		} else if v4 <= v.MyTotalAmountNew || 4 == v.Vip {
+			tmpVip = 4
+		} else if v3 <= v.MyTotalAmountNew || 3 == v.Vip {
+			tmpVip = 3
+		} else if v2 <= v.MyTotalAmountNew || 2 == v.Vip {
+			tmpVip = 2
+		} else if v1 <= v.MyTotalAmountNew || 1 == v.Vip {
+			tmpVip = 1
+		}
+
 		useRes = append(useRes, &pb.AdminUserListReply_List{
 			UserId:                    v.ID,
 			Address:                   v.Address,
-			Level:                     v.Vip,
+			Level:                     tmpVip,
 			Giw:                       v.Giw,
 			GiwTwo:                    v.GiwTwo,
 			Git:                       v.Git,

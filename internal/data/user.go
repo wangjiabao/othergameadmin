@@ -842,6 +842,7 @@ func (u *UserRepo) GetUserPage(ctx context.Context, address string, orderU, orde
 			CanPlaySix:       user.CanPlaySix,
 			CanSellProp:      user.CanSellProp,
 			Vip:              user.Vip,
+			MyTotalAmountNew: user.MyTotalAmountNew,
 		})
 	}
 	return res, nil
