@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/md5"
 	"crypto/rand"
+	"encoding/json"
 	"fmt"
 	pb "game/api/app/v1"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -14,6 +15,7 @@ import (
 	"math"
 	"math/big"
 	rand2 "math/rand"
+	"net/http"
 	"strconv"
 	"strings"
 	"sync"
@@ -5462,6 +5464,74 @@ func (ac *AppUsecase) AdminUserList(ctx context.Context, req *pb.AdminUserListRe
 		}, nil
 	}
 
+	// 推荐人
+	var (
+		configs []*Config
+		v1      float64
+		v2      float64
+		v3      float64
+		v4      float64
+		v5      float64
+		v6      float64
+		v7      float64
+		v8      float64
+		v9      float64
+		v10     float64
+	)
+
+	// 配置
+	configs, err = ac.userRepo.GetConfigByKeys(ctx,
+		"v_1",
+		"v_2",
+		"v_3",
+		"v_4",
+		"v_5",
+		"v_6",
+		"v_7",
+		"v_8",
+		"v_9",
+		"v_10",
+	)
+	if nil != err || nil == configs {
+		return &pb.AdminUserListReply{
+			Status: "错误",
+		}, nil
+	}
+
+	for _, vConfig := range configs {
+
+		if "v_1" == vConfig.KeyName {
+			v1, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_2" == vConfig.KeyName {
+			v2, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_3" == vConfig.KeyName {
+			v3, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_4" == vConfig.KeyName {
+			v4, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_5" == vConfig.KeyName {
+			v5, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_6" == vConfig.KeyName {
+			v6, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_7" == vConfig.KeyName {
+			v7, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_8" == vConfig.KeyName {
+			v8, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_9" == vConfig.KeyName {
+			v9, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "v_10" == vConfig.KeyName {
+			v10, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+	}
+
 	var (
 		stakeGetTotal *StakeGetTotal
 	)
@@ -5532,10 +5602,33 @@ func (ac *AppUsecase) AdminUserList(ctx context.Context, req *pb.AdminUserListRe
 			}
 		}
 
+		tmpVip := 0
+		if v10 <= v.MyTotalAmountNew || 10 == v.Vip {
+			tmpVip = 10
+		} else if v9 <= v.MyTotalAmountNew || 9 == v.Vip {
+			tmpVip = 9
+		} else if v8 <= v.MyTotalAmountNew || 8 == v.Vip {
+			tmpVip = 8
+		} else if v7 <= v.MyTotalAmountNew || 7 == v.Vip {
+			tmpVip = 7
+		} else if v6 <= v.MyTotalAmountNew || 6 == v.Vip {
+			tmpVip = 6
+		} else if v5 <= v.MyTotalAmountNew || 5 == v.Vip {
+			tmpVip = 5
+		} else if v4 <= v.MyTotalAmountNew || 4 == v.Vip {
+			tmpVip = 4
+		} else if v3 <= v.MyTotalAmountNew || 3 == v.Vip {
+			tmpVip = 3
+		} else if v2 <= v.MyTotalAmountNew || 2 == v.Vip {
+			tmpVip = 2
+		} else if v1 <= v.MyTotalAmountNew || 1 == v.Vip {
+			tmpVip = 1
+		}
+
 		useRes = append(useRes, &pb.AdminUserListReply_List{
 			UserId:                    v.ID,
 			Address:                   v.Address,
-			Level:                     v.Vip,
+			Level:                     uint64(tmpVip),
 			Giw:                       v.Giw,
 			GiwTwo:                    v.GiwTwo,
 			Git:                       v.Git,
@@ -8753,6 +8846,62 @@ func (ac *AppUsecase) DepositNewNew(ctx context.Context, eth *EthRecord, amountF
 	return nil
 }
 
+type SymbolThumb struct {
+	Symbol  string  `json:"symbol"`
+	Close   float64 `json:"close"`
+	UsdRate float64 `json:"usdRate"`
+}
+
+// GetIspayPrice 获取 ISPAY 当前 U 价格
+func GetIspayPrice() (float64, error) {
+	url := "https://ex.ispay.vip/market/symbol-thumb"
+
+	client := &http.Client{
+		Timeout: 10 * time.Second,
+	}
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return 0, err
+	}
+
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("User-Agent", "Mozilla/5.0")
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return 0, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return 0, fmt.Errorf("request failed, status: %d", resp.StatusCode)
+	}
+
+	var list []SymbolThumb
+	if err := json.NewDecoder(resp.Body).Decode(&list); err != nil {
+		return 0, err
+	}
+
+	for _, item := range list {
+		if strings.EqualFold(item.Symbol, "ISPAY/USDT") {
+			// 优先返回 usdRate，它表示折合 U / USD 的价格
+			if item.UsdRate > 0 {
+				return item.UsdRate, nil
+			}
+
+			// 兜底返回 close
+			if item.Close > 0 {
+				return item.Close, nil
+			}
+
+			return 0, fmt.Errorf("ISPAY/USDT price is zero")
+		}
+	}
+
+	return 0, fmt.Errorf("ISPAY/USDT not found")
+}
+
 func GetReservers() (float64, float64, error) {
 	urls := []string{
 		"https://bsc-dataseed4.binance.org/",
@@ -8947,12 +9096,21 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		return err
 	}
 
+	//var (
+	//	tmp0 float64
+	//	tmp1 float64
+	//)
+	//tmp0, tmp1, err = GetReservers()
+	//if nil != err || 1 >= tmp0 || 1 >= tmp1 {
+	//	return err
+	//}
+
 	var (
-		tmp0 float64
-		tmp1 float64
+		newIspayPrice float64
 	)
-	tmp0, tmp1, err = GetReservers()
-	if nil != err || 1 >= tmp0 || 1 >= tmp1 {
+	newIspayPrice, err = GetIspayPrice()
+	if nil != err || 0.0000001 > newIspayPrice {
+		fmt.Println(err, newIspayPrice, "err ispay price")
 		return err
 	}
 
@@ -9033,7 +9191,7 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 			if 1 == priceOpenUse {
 				ispayL = reward / priceOpen
 			} else {
-				ispayL = reward * tmp1 / tmp0
+				ispayL = reward / newIspayPrice
 			}
 
 			if 0 < reward {
@@ -9168,7 +9326,7 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 			if 1 == priceOpenUse {
 				ispayL = tmpReward / priceOpen
 			} else {
-				ispayL = tmpReward * tmp1 / tmp0
+				ispayL = tmpReward / newIspayPrice
 			}
 
 			// 入金
