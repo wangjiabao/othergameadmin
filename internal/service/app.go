@@ -1921,6 +1921,140 @@ func (a *AppService) AdminSetQueue(ctx context.Context, req *pb.AdminLandRewardR
 	return nil, nil
 }
 
+func getUserLengthIspay(address string) (int64, error) {
+	url1 := "https://rpc.ispay.vip/"
+
+	var balInt int64
+	for i := 0; i < 5; i++ {
+		//if 1 == i {
+		//	url1 = "https://binance.llamarpc.com/"
+		//} else if 2 == i {
+		//	url1 = "https://bscrpc.com/"
+		//} else if 3 == i {
+		//	url1 = "https://bsc-pokt.nodies.app/"
+		//} else if 4 == i {
+		//	url1 = "https://data-seed-prebsc-1-s3.binance.org:8545/"
+		//}
+
+		client, err := ethclient.Dial(url1)
+		if err != nil {
+			fmt.Println(nil, err)
+			continue
+		}
+
+		tokenAddress := common.HexToAddress(address)
+		instance, err := NewBuySomething(tokenAddress, client)
+		if err != nil {
+			fmt.Println(nil, err)
+			continue
+		}
+
+		bals, err := instance.GetUserLength(&bind.CallOpts{})
+		if err != nil {
+			fmt.Println(err)
+			//url1 = "https://bsc-dataseed4.binance.org"
+			continue
+		}
+
+		balInt = bals.Int64()
+		break
+	}
+
+	return balInt, nil
+}
+
+func getUserInfoIspay(start int64, end int64, address string) ([]*userDeposit, error) {
+	url1 := "https://rpc.ispay.vip/"
+
+	var (
+		bals  []common.Address
+		bals2 []*big.Int
+	)
+	users := make([]*userDeposit, 0)
+
+	for i := 0; i < 5; i++ {
+		//if 1 == i {
+		//	url1 = "https://binance.llamarpc.com/"
+		//} else if 2 == i {
+		//	url1 = "https://bscrpc.com/"
+		//} else if 3 == i {
+		//	url1 = "https://bsc-pokt.nodies.app/"
+		//} else if 4 == i {
+		//	url1 = "https://data-seed-prebsc-1-s3.binance.org:8545/"
+		//}
+
+		client, err := ethclient.Dial(url1)
+		if err != nil {
+			fmt.Println(nil, err)
+			continue
+		}
+
+		tokenAddress := common.HexToAddress(address)
+		instance, err := NewBuySomething(tokenAddress, client)
+		if err != nil {
+			fmt.Println(nil, err)
+			continue
+		}
+
+		bals, err = instance.GetUsersByIndex(&bind.CallOpts{}, new(big.Int).SetInt64(start), new(big.Int).SetInt64(end))
+		if err != nil {
+			fmt.Println(err)
+			//url1 = "https://bsc-dataseed4.binance.org"
+			continue
+		}
+
+		break
+	}
+
+	for i := 0; i < 5; i++ {
+		//if 1 == i {
+		//	url1 = "https://binance.llamarpc.com/"
+		//} else if 2 == i {
+		//	url1 = "https://bscrpc.com/"
+		//} else if 3 == i {
+		//	url1 = "https://bsc-pokt.nodies.app/"
+		//} else if 4 == i {
+		//	url1 = "https://data-seed-prebsc-1-s3.binance.org:8545/"
+		//}
+
+		client, err := ethclient.Dial(url1)
+		if err != nil {
+			fmt.Println(nil, err)
+			continue
+		}
+
+		tokenAddress := common.HexToAddress(address)
+		instance, err := NewBuySomething(tokenAddress, client)
+		if err != nil {
+			fmt.Println(nil, err)
+			continue
+		}
+
+		bals2, err = instance.GetUsersAmountByIndex(&bind.CallOpts{}, new(big.Int).SetInt64(start), new(big.Int).SetInt64(end))
+		if err != nil {
+			fmt.Println(err)
+			//url1 = "https://bsc-dataseed4.binance.org"
+			continue
+		}
+
+		break
+	}
+
+	if len(bals) != len(bals2) {
+		fmt.Println("数量不一致，错误")
+		return users, nil
+	}
+
+	for k, v := range bals {
+		users = append(users, &userDeposit{
+			Address: v.String(),
+			Amount:  bals2[k].Int64(),
+		})
+	}
+
+	return users, nil
+}
+
 func getUserLength(address string) (int64, error) {
 	url1 := "https://bsc-dataseed4.binance.org/"
 

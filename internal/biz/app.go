@@ -358,6 +358,7 @@ type StakeGitRecord struct {
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	Day       uint64
+	Price     float64
 }
 
 type Withdraw struct {
@@ -468,6 +469,7 @@ type StakeGitRecordTwo struct {
 	Day         uint64
 	CreatedAt   time.Time
 	UpdatedAt   time.Time
+	Price       float64
 }
 
 type UserRepo interface {
@@ -670,7 +672,7 @@ type UserRepo interface {
 	DeleteMessages(ctx context.Context, id uint64) error
 	GetStakeGitRecordsByUserIDQueueToday(ctx context.Context) (float64, error)
 	GetStakeGitRecordsQueue(ctx context.Context) ([]*StakeGitRecordTwo, error)
-	SetStakeGitByQueue(ctx context.Context, id, userId uint64, amount, amountTwo float64, day uint64) error
+	SetStakeGitByQueue(ctx context.Context, id, userId uint64, amount, amountTwo, price float64, day uint64) error
 	NewRecommendReward(ctx context.Context, userId, lowUserId uint64, amount, ispay float64) error
 	UpdateUserMyTotalAmountAdd(ctx context.Context, userId, userIdTwo uint64, amountUsdt float64, i bool) error
 	NewRecommendRewardNew(ctx context.Context, userId, userIdTwo, i uint64, amount, ispay float64) error
@@ -5428,6 +5430,7 @@ func (ac *AppUsecase) AdminUserStakeList(ctx context.Context, req *pb.AdminUserS
 			Amount:    v.Amount,
 			Status:    uint64(v.StakeType),
 			CreatedAt: v.CreatedAt.Add(8 * time.Hour).Format("2006-01-02 15:04:05"),
+			Price:     v.Price,
 		})
 	}
 
@@ -6577,7 +6580,7 @@ func (ac *AppUsecase) AdminSetQueue(ctx context.Context, req *pb.AdminLandReward
 			break
 		}
 		if err = ac.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
-			err = ac.userRepo.SetStakeGitByQueue(ctx, v.ID, v.UserId, v.Amount, v.AmountTwo, v.Day)
+			err = ac.userRepo.SetStakeGitByQueue(ctx, v.ID, v.UserId, v.Amount, v.AmountTwo, v.Price, v.Day)
 			if nil != err {
 				return err
 			}

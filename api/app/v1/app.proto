@@ -1441,6 +1441,7 @@ message AdminUserStakeListReply {// 用户信息
 		uint64 userId = 20;
 		string address = 2;
 		double amount = 3;
+		double price = 5;
 		uint64 status = 4;
 		string createdAt = 1;
 	}
