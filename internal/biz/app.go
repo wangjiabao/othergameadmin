@@ -4995,7 +4995,7 @@ func (ac *AppUsecase) StakeGetPlay(ctx context.Context, address string, req *pb.
 		}
 
 		return &pb.StakeGetPlayReply{Status: "ok", PlayStatus: 1, Amount: tmpGit}, nil
-	} else { // 输：下注金额加入池子
+	} else {                                                         // 输：下注金额加入池子
 		if err = ac.tx.ExecTx(ctx, func(ctx context.Context) error { // 事务
 			err = ac.userRepo.SetStakeGetPlaySub(ctx, user.ID, float64(req.SendBody.Amount))
 			if nil != err {
@@ -6321,8 +6321,8 @@ func (ac *AppUsecase) AdminLandReward(ctx context.Context, req *pb.AdminLandRewa
 			err = ac.userRepo.CreateNotice(
 				ctx,
 				v.UserId,
-				"土地静态分红"+fmt.Sprintf("%.2f", rewardLand)+"ISPAY",
-				"land daily reward "+fmt.Sprintf("%.2f", rewardLand)+" ISPAY",
+				"土地静态分红"+fmt.Sprintf("%.4f", rewardLand)+"ISPAY",
+				"land daily reward "+fmt.Sprintf("%.4f", rewardLand)+" ISPAY",
 			)
 			if nil != err {
 				return err
