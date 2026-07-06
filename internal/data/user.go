@@ -324,6 +324,7 @@ type StakeGitRecord struct {
 	CreatedAt time.Time `gorm:"type:datetime;not null"`
 	UpdatedAt time.Time `gorm:"type:datetime;not null"`
 	Day       uint64    `gorm:"type:int;not null"`
+	Price     float64   `gorm:"type:decimal(65,18);not null;default:0.0"`
 }
 
 type StakeGitRecordTwo struct {
@@ -336,6 +337,7 @@ type StakeGitRecordTwo struct {
 	CreatedAt   time.Time `gorm:"type:datetime;not null"`
 	UpdatedAt   time.Time `gorm:"type:datetime;not null"`
 	Day         uint64    `gorm:"type:int;not null;"`
+	Price       float64   `gorm:"type:decimal(65,18);not null;default:0.0"`
 }
 
 type Withdraw struct {
@@ -2830,6 +2832,7 @@ func (u *UserRepo) GetStakeGitRecordsByUserIDIspayRecord(ctx context.Context, us
 			CreatedAt: record.CreatedAt,
 			UpdatedAt: record.UpdatedAt,
 			Day:       record.Day,
+			Price:     record.Price,
 		})
 	}
 
@@ -5117,7 +5120,7 @@ func (u *UserRepo) NewRecommendRewardNew(ctx context.Context, userId, userIdTwo,
 	return nil
 }
 
-func (u *UserRepo) SetStakeGitByQueue(ctx context.Context, id, userId uint64, amount, amountTwo float64, day uint64) error {
+func (u *UserRepo) SetStakeGitByQueue(ctx context.Context, id, userId uint64, amount, amountTwo, price float64, day uint64) error {
 	res := u.data.DB(ctx).Table("stake_git_record_ispay_queue").Where("id=?", id).
 		Updates(map[string]interface{}{
 			"stake_type": 2,
@@ -5133,6 +5136,7 @@ func (u *UserRepo) SetStakeGitByQueue(ctx context.Context, id, userId uint64, am
 	stakeRecord.UserId = userId
 	stakeRecord.StakeType = 1
 	stakeRecord.Day = day
+	stakeRecord.Price = price
 
 	res = u.data.DB(ctx).Table("stake_git_record_ispay").Create(&stakeRecord)
 	if res.Error != nil {
@@ -5248,6 +5252,7 @@ func (u *UserRepo) GetStakeGitRecordsQueue(ctx context.Context) ([]*biz.StakeGit
 			CreatedAt:   record.CreatedAt,
 			UpdatedAt:   record.UpdatedAt,
 			Day:         record.Day,
+			Price:       record.Price,
 		})
 	}
 
