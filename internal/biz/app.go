@@ -8988,6 +8988,8 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		//g8           float64
 		//g9           float64
 		//g10          float64
+		stakePrice   float64
+		stakePriceOn uint64
 	)
 
 	// 配置
@@ -9015,6 +9017,8 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		"v_8",
 		"v_9",
 		"v_10",
+		"stake_price",
+		"stake_price_on",
 	)
 	if nil != err || nil == configs {
 		return nil
@@ -9092,6 +9096,12 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 		if "v_10" == vConfig.KeyName {
 			v10, _ = strconv.ParseFloat(vConfig.Value, 10)
 		}
+		if "stake_price" == vConfig.KeyName {
+			stakePrice, _ = strconv.ParseFloat(vConfig.Value, 10)
+		}
+		if "stake_price_on" == vConfig.KeyName {
+			stakePriceOn, _ = strconv.ParseUint(vConfig.Value, 10, 64)
+		}
 	}
 
 	user, err = ac.userRepo.GetUserByAddress(ctx, eth.Address) // 查询用户
@@ -9111,10 +9121,18 @@ func (ac *AppUsecase) DepositNewTwo(ctx context.Context, eth *EthRecord) error {
 	var (
 		newIspayPrice float64
 	)
-	newIspayPrice, err = GetIspayPrice()
-	if nil != err || 0.0000001 > newIspayPrice {
-		fmt.Println(err, newIspayPrice, "err ispay price")
-		return err
+	if 1 == stakePriceOn {
+		newIspayPrice = stakePrice
+		if 0.0000001 > newIspayPrice {
+			fmt.Println(err, newIspayPrice, "err ispay price dd")
+			return err
+		}
+	} else {
+		newIspayPrice, err = GetIspayPrice()
+		if nil != err || 0.0000001 > newIspayPrice {
+			fmt.Println(err, newIspayPrice, "err ispay price")
+			return err
+		}
 	}
 
 	// 推荐
